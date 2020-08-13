@@ -1,0 +1,11 @@
+.Grandpa {
+    background-color: inherit;
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.Grandpa img {
+    height: 100%;
+}
