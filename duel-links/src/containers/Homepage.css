@@ -3,4 +3,17 @@
     text-align: center;
     padding: none;
     height: 100%;
+    color: black;
+}
+
+.Homepage ul {
+    list-style: none;
+    text-align: center;
+}
+
+.Homepage li {
+    list-style: none;
+    display: inline-flex;
+    padding-right: 100px;
+    padding-left: 100px;
 }
