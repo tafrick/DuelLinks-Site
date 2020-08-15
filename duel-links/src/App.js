@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
 import Homepage from './containers/Homepage';
 import CardLookup from './containers/CardLookup/CardLookup';
 import Decks from './containers/Decks/Decks';
+import Beginners from './components/Beginners/Beginners';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Switch>
             <Route path="/cardlookup" exact component={CardLookup}/>
             <Route path="/decks" exact component={Decks}/>
+            <Route path="/beginners" exact render={Beginners}/>
             <Route path="/" exact component={Homepage}/>
             <Redirect to="/" />
           </Switch>

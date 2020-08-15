@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './Homepage.css';
 import Logo from '../components/Logo/Logo';
-import Icon from '../components/Logo/Icon';
 
 class Homepage extends Component {
     render () {

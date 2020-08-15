@@ -15,7 +15,7 @@ const footer = (props) => {
                 <a href="https://apps.apple.com/de/app/yu-gi-oh-duel-links/id1068378177?mt=8">
                     <img style={{ width: "88%", margin: "6%"}} alt="Get it from app store" src='https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2017-01-18&kind=iossoftware&bubble=ios_apps'/>
                 </a>
-                <iframe src="https://store.steampowered.com/widget/601510/" frameBorder="0" width="646" height="190"></iframe>
+                <iframe src="https://store.steampowered.com/widget/601510/" title="steam" frameBorder="0" width="646" height="190"></iframe>
             </div>
         </div>
     );

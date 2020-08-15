@@ -1,7 +1,6 @@
 import React from 'react';
 
 import icon3 from '../../assets/images/icon3rd.png';
-import classes from './Logo.module.css';
 
 const icon = props => (
     <div>
