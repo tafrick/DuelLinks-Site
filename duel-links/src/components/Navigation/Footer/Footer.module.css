@@ -1,7 +1,7 @@
 .Footer {
-    height: 20%;
+    height: 15%;
     width: 100%;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     background-color: darkblue;
@@ -13,3 +13,8 @@
     z-index: 90;
 }
 
+a{
+    text-align: center;
+    justify-content: center;
+    margin: auto 10px;
+}

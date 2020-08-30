@@ -10,6 +10,8 @@ import classes from './DeckTypes.module.css';
 
 const deckTypes = (props) => {
     return (
+            <div className="header">
+                <h1>Look up more decks here</h1>
             <ul>
                 <li className={classes.DeckTypes}>
                     <NavLink to="/" exact>Meta Tier Decks</NavLink>
@@ -28,6 +30,7 @@ const deckTypes = (props) => {
                     <img src={teap} alt="Farming Decks" />
                 </li>
             </ul>
+            </div>
     );
 }
 
