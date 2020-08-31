@@ -1,12 +1,14 @@
 import React from 'react';
+import './Cards.css';
 
 const cards = props => (
-    <div>
+    <div className="card-wrapper">
         <h1>
-            Title: {props.title}
+            Name: {props.title}
         </h1>
         <img src={props.image} alt={props.source} />
-        <p>Effect: {props.effect}</p>
+        <h2>Description: </h2>
+        <p>{props.effect}</p>
     </div>
 );
 
