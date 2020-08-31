@@ -72,6 +72,7 @@ class CardLookup extends Component {
                         race={card.race}
                         atk = {card.atk}
                         def = {card.def}
+                        level = {card.level}
                         attribute = {card.attribute}
                         image={card.card_images[0].image_url}
                         source={card.name}

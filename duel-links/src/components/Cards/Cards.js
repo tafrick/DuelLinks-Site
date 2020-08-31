@@ -1,14 +1,19 @@
 import React from 'react';
 import './Cards.css';
 
-const filt = (card) => {
+const filterDetails = (card) => {
 
     if(card.attribute != undefined) {
         return card.attribute + " / ";
     }
-    else{
-        return "";
+    return "";
+}
+
+const showLevel = (card) => {
+    if(card.level != undefined) {
+        return (" / " + card.level + "⭑");
     }
+    return "";
 }
 const cards = props => (
     <div className="card-wrapper">
@@ -20,7 +25,7 @@ const cards = props => (
                 <span id="card-name">{props.title}</span>
                 <br></br>
                 <br></br>
-                <span id="card-type">{filt(props)}{props.race} / {props.type}</span>
+                <span id="card-type">{filterDetails(props)}{props.race} / {props.type}{showLevel(props)}</span>
                 <br></br>
                 <br></br>
                 <p id="card-description">{props.effect}</p>
