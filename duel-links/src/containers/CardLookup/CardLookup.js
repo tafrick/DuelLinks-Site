@@ -21,22 +21,11 @@ class CardLookup extends Component {
     loadData(name) {
         console.log(`name is ${name}`);
         if (name !== 'undefined') {
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' + name)
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + name)
                 .then(response => {
                     let cards = [];
                     cards.push(response.data);
-                    this.setState({ loadedCards: cards })
-
-                })
-                .catch(error => {
-                    console.error(error.message);
-                })
-        }
-        if (!this.state.loadedCards) {
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Decode%20Talker')
-                .then(response => {
-                    let cards = [];
-                    cards.push(response.data);
+                    console.log(response.data);
                     this.setState({ loadedCards: cards })
 
                 })
@@ -45,17 +34,29 @@ class CardLookup extends Component {
                 })
         }
     }
+
+    createFilter(filter) {
+        const timer = setTimeout(() => {
+            this.loadData(filter);
+        }, 1000);
+        return () => {
+            clearTimeout(timer);
+        };
+    };
+
     render() {
         let cards = <p>Search Some Cards</p>;
         if (this.state.loadedCards) {
-            cards = this.state.loadedCards.map(card => {
+            console.log('in if:');
+            console.log(this.state.loadedCards[0].data);
+            cards = this.state.loadedCards[0].data.map(card => {
                 return (
                     <Cards
-                        key={card.data[0].id}
-                        title={card.data[0].name}
-                        image={card.data[0].card_images[0].image_url}
-                        source={card.data[0].name}
-                        effect={card.data[0].desc} />
+                        key={card.id}
+                        title={card.name}
+                        image={card.card_images[0].image_url}
+                        source={card.name}
+                        effect={card.desc} />
                 );
             })
         }
@@ -71,7 +72,7 @@ class CardLookup extends Component {
                         <input
                             type="text"
                             onChange={(event) => {
-                                this.loadData(event.target.value)
+                                this.createFilter(event.target.value)
                             }}
                             placeholder="Enter exact card name..." />
                     </label>
