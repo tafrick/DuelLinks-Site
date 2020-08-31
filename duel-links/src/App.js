@@ -11,6 +11,7 @@ import Community from './containers/Community/Community';
 function App() {
   return (
     <div>
+        
         <Layout>
           <Switch>
             <Route path="/cardlookup" exact component={CardLookup}/>
