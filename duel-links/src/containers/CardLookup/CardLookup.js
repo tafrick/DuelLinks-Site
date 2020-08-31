@@ -4,12 +4,33 @@ import axios from 'axios';
 import Grandpa from '../../components/Grandpa/Grandpa';
 import './CardLookup.css';
 import Cards from '../../components/Cards/Cards';
+import Button from '@material-ui/core/Button';
 
 class CardLookup extends Component {
-    state = {
-        loadedCards: null
+    constructor(props) {
+        super(props)
+        this.state = {
+            loadedCards: null,
+            text: ''
+        }
+    }
+    // state = {
+    //     loadedCards: null
+    // }
+
+    handleChange = (event) => {
+        this.setState({
+            text: event.target.value
+        })
     }
 
+    handleClick = (event) => {
+        if(this.state.text != "") {
+            this.createFilter(this.state.text);
+        }
+        
+    }
+    
     // componentDidMount() {
     //     this.loadData();
     // }
@@ -17,6 +38,7 @@ class CardLookup extends Component {
     // componentDidUpdate() {
     //     this.loadData();
     // }
+
 
     loadData(name) {
         console.log(`name is ${name}`);
@@ -37,6 +59,7 @@ class CardLookup extends Component {
 
     createFilter(filter) {
         const timer = setTimeout(() => {
+            
             this.loadData(filter);
         }, 1000);
         return () => {
@@ -68,16 +91,15 @@ class CardLookup extends Component {
                     <Grandpa />
                     Hello! Which card would you like to search?
                 </header>
-                <form>
+                <form >
                     <label>
                         <input
                             type="text"
-                            onChange={(event) => {
-                                this.createFilter(event.target.value)
-                            }}
+                            value={this.state.text}
+                            onChange={this.handleChange}
                             placeholder="Enter exact card name..." />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <Button variant = "contained" onClick={this.handleClick}>Submit</Button>
                 </form>
                 {cards}
             </div>
