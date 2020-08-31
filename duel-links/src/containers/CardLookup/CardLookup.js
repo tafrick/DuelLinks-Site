@@ -25,10 +25,9 @@ class CardLookup extends Component {
     }
 
     handleClick = (event) => {
-        if(this.state.text != "") {
-            this.createFilter(this.state.text);
+        if(this.state.text != "" && this.state.text != " "){
+            this.loadData(this.state.text);
         }
-        
     }
     
     // componentDidMount() {
@@ -57,15 +56,7 @@ class CardLookup extends Component {
         }
     }
 
-    createFilter(filter) {
-        const timer = setTimeout(() => {
-            
-            this.loadData(filter);
-        }, 1000);
-        return () => {
-            clearTimeout(timer);
-        };
-    };
+
 
     render() {
         let cards = <p>Search Some Cards</p>;
@@ -78,6 +69,10 @@ class CardLookup extends Component {
                         key={card.id}
                         title={card.name}
                         type={card.type}
+                        race={card.race}
+                        atk = {card.atk}
+                        def = {card.def}
+                        attribute = {card.attribute}
                         image={card.card_images[0].image_url}
                         source={card.name}
                         effect={card.desc} />
@@ -91,7 +86,7 @@ class CardLookup extends Component {
                     <Grandpa />
                     Hello! Which card would you like to search?
                 </header>
-                <form >
+                <form onSubmit={this.handleClick}>
                     <label>
                         <input
                             type="text"
@@ -99,7 +94,7 @@ class CardLookup extends Component {
                             onChange={this.handleChange}
                             placeholder="Enter exact card name..." />
                     </label>
-                    <Button variant = "contained" onClick={this.handleClick}>Submit</Button>
+                    <Button variant = "contained" color="primary" onClick={this.handleClick}>Search</Button>
                 </form>
                 {cards}
             </div>
