@@ -18,7 +18,7 @@ class Community extends Component{
                 <header>
                     <h1>Share your deck or duel experiences</h1>
                     <Button variant="contained">Create Post</Button>
-                    <h5><a href="https://material-ui.com/components/buttons/">https://material-ui.com/components/buttons/</a></h5>
+                    <h5><a href="https://material-ui.com/components/buttons/" target="_blank">https://material-ui.com/components/buttons/</a></h5>
                 </header>
 
                 {/* <form>
