@@ -14,7 +14,7 @@
 }
 
 .col-img {
-    margin-left: 250px;
+    margin-left: 100px;
     padding-top: 25px;
 }
 
@@ -39,6 +39,7 @@
 #card-description {
     position: absolute;
     bottom: 0;
+    width: 85%;
     font-size: 17px;
 }
 

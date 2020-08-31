@@ -11,12 +11,13 @@ class CardLookup extends Component {
         super(props)
         this.state = {
             loadedCards: null,
-            text: ''
+            text: '',
+            result: '',
+            showResult: false,
+            cardNotFound: true,
+            showCardNotFound: false
         }
     }
-    // state = {
-    //     loadedCards: null
-    // }
 
     handleChange = (event) => {
         this.setState({
@@ -25,8 +26,14 @@ class CardLookup extends Component {
     }
 
     handleClick = (event) => {
-        if(this.state.text != "" && this.state.text != " "){
+        event.preventDefault();
+        if(this.state.text !== "" && this.state.text !== " "){
             this.loadData(this.state.text);
+            this.state.result = this.state.text;
+            this.setState({
+                showResult: true,
+                text: ''
+            });
         }
     }
     
@@ -40,26 +47,30 @@ class CardLookup extends Component {
 
 
     loadData(name) {
-        console.log(`name is ${name}`);
+
         if (name !== 'undefined') {
             axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + name)
                 .then(response => {
                     let cards = [];
                     cards.push(response.data);
                     console.log(response.data);
-                    this.setState({ loadedCards: cards })
-
+                    this.setState({ 
+                        loadedCards: cards,
+                        cardNotFound: false
+                     });
                 })
                 .catch(error => {
                     console.error(error.message);
+                    this.setState({
+                        cardNotFound: true,
+                        showCardNotFound: true
+                    })
                 })
         }
     }
 
-
-
     render() {
-        let cards = <p>Search Some Cards</p>;
+        let cards = "";
         if (this.state.loadedCards) {
             console.log('in if:');
             console.log(this.state.loadedCards[0].data);
@@ -83,7 +94,6 @@ class CardLookup extends Component {
         return (
             <div className="CardLookup">
                 <header>
-                    <h5>Use API: https://db.ygoprodeck.com/api/v7/cardinfo.php</h5>
                     <Grandpa />
                     Hello! Which card would you like to search?
                 </header>
@@ -93,11 +103,14 @@ class CardLookup extends Component {
                             type="text"
                             value={this.state.text}
                             onChange={this.handleChange}
-                            placeholder="Enter exact card name..." />
+                            placeholder="Enter card name..." />
                     </label>
                     <Button variant = "contained" color="primary" onClick={this.handleClick}>Search</Button>
                 </form>
+                {!this.state.cardNotFound && this.state.showCardNotFound && this.state.showResult && <h2 id="searchResult">Ahh! Based on your request for: <u>{this.state.result}</u> <br></br>this is what I have for you!</h2>}
+                {this.state.cardNotFound && this.state.showCardNotFound && <h2 id="searchResult">Oh no! It doesn't appear like I have: <u>{this.state.result}</u>!</h2>}
                 {cards}
+
             </div>
         );
     }

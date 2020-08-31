@@ -9,3 +9,9 @@ input {
     border-radius: 5px;
     box-shadow: black 0.5px 0.5px 0.5px;
 }
+
+#searchResult {
+    color:black;
+
+    text-align: center;
+}

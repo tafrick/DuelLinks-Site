@@ -3,14 +3,14 @@ import './Cards.css';
 
 const filterDetails = (card) => {
 
-    if(card.attribute != undefined) {
+    if(card.attribute !== undefined) {
         return card.attribute + " / ";
     }
     return "";
 }
 
 const showLevel = (card) => {
-    if(card.level != undefined) {
+    if(card.level !== undefined) {
         return (" / " + card.level + "⭑");
     }
     return "";
