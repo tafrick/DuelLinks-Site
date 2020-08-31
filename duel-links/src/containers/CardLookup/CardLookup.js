@@ -53,6 +53,7 @@ class CardLookup extends Component {
                     <Cards
                         key={card.data[0].id}
                         title={card.data[0].name}
+                        type={card.data[0].type}
                         image={card.data[0].card_images[0].image_url}
                         source={card.data[0].name}
                         effect={card.data[0].desc} />

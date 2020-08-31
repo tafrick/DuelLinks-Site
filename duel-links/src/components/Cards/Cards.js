@@ -3,9 +3,11 @@ import './Cards.css';
 
 const cards = props => (
     <div className="card-wrapper">
-        <h1>
+        <h2>
             Name: {props.title}
-        </h1>
+            <br></br>
+            Type: {props.type}
+        </h2>
         <img src={props.image} alt={props.source} />
         <h2>Description: </h2>
         <p>{props.effect}</p>
