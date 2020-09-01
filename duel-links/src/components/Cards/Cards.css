@@ -38,8 +38,12 @@
 
 #card-description {
     position: absolute;
-    bottom: 0;
+    /* bottom: 0; */
     width: 85%;
     font-size: 17px;
+}
+
+#atkDef {
+    line-height: 0;
 }
 
