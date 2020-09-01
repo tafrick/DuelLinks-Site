@@ -6,6 +6,10 @@
     top: 0;
     left: 0;
     background-color: darkblue;
+  /* will be "on top", if browser supports it */
+  background-image: linear-gradient(steelblue, black);
+
+  /* these will reset other properties, like background-position, but it does know what you mean */
     display: flex;
     justify-content: space-between;
     align-items: center;

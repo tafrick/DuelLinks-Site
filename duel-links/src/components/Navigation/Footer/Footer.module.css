@@ -5,6 +5,7 @@
     bottom: 0;
     left: 0;
     background-color: darkblue;
+    background-image: linear-gradient(black, steelblue);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -9,6 +9,7 @@ import teap from '../../assets/images/TéaGardner-DULI.png';
 import Button from '@material-ui/core/Button';
 
 import classes from './DeckTypes.module.css';
+import Table from './Table.js';
 
 const deckTypes = (props) => {
     return (
@@ -32,6 +33,7 @@ const deckTypes = (props) => {
                     <img src={teap} alt="Farming Decks" />
                 </li>
             </ul>
+            <Table />
             </div>
     );
 }

@@ -13,3 +13,7 @@
         flex-flow: row;
     }
 }
+
+Link {
+    font-size: 32px;
+}
