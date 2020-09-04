@@ -6,7 +6,10 @@ import kaibap from '../../assets/images/SetoKaibaMD.png';
 import joeyp from '../../assets/images/joey-wheeler.png';
 import teap from '../../assets/images/TéaGardner-DULI.png';
 
+import Button from '@material-ui/core/Button';
+
 import classes from './DeckTypes.module.css';
+import Table from './Table.js';
 
 const deckTypes = (props) => {
     return (
@@ -14,22 +17,23 @@ const deckTypes = (props) => {
                 <h1>Look up more decks here</h1>
             <ul>
                 <li className={classes.DeckTypes}>
-                    <NavLink to="/" exact>Meta Tier Decks</NavLink>
+                    <NavLink to="/" exact><Button variant="contained" color="primary">Meta Tier Decks </Button></NavLink>
                     <img src={yugip} alt="Meta Decks" />
                 </li>
                 <li className={classes.DeckTypes}>
-                    <NavLink to="/" exact>KOG Tier Decks</NavLink>
+                    <NavLink to="/" exact><Button variant="contained" color="primary">KoG Tier Decks</Button></NavLink>
                     <img src={kaibap} alt="KOG Decks" />
                 </li>
                 <li className={classes.DeckTypes}>
-                    <NavLink to="/" exact>Casual Decks</NavLink>
+                    <NavLink to="/" exact><Button variant="contained" color="primary">Casual Decks</Button></NavLink>
                     <img src={joeyp} alt="Casual Decks" />
                 </li>
                 <li className={classes.DeckTypes}>
-                    <NavLink to="/" exact>Farming Decks</NavLink>
+                    <NavLink to="/" exact><Button variant="contained" color="primary">Farming Decks</Button></NavLink>
                     <img src={teap} alt="Farming Decks" />
                 </li>
             </ul>
+            <Table />
             </div>
     );
 }

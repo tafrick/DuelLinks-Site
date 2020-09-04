@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
-  
+  margin-bottom: 150px;
   font-family: "Open Sans", sans-serif;
   background-color: #cccccc;
   overflow: scroll;

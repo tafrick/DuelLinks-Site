@@ -4,12 +4,39 @@ import axios from 'axios';
 import Grandpa from '../../components/Grandpa/Grandpa';
 import './CardLookup.css';
 import Cards from '../../components/Cards/Cards';
+import Button from '@material-ui/core/Button';
 
 class CardLookup extends Component {
-    state = {
-        loadedCards: null
+    constructor(props) {
+        super(props)
+        this.state = {
+            loadedCards: null,
+            text: '',
+            result: '',
+            showResult: false,
+            cardNotFound: true,
+            showCardNotFound: false
+        }
     }
 
+    handleChange = (event) => {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    handleClick = (event) => {
+        event.preventDefault();
+        if(this.state.text !== "" && this.state.text !== " "){
+            this.loadData(this.state.text);
+            this.state.result = this.state.text;
+            this.setState({
+                showResult: true,
+                text: ''
+            });
+        }
+    }
+    
     // componentDidMount() {
     //     this.loadData();
     // }
@@ -18,34 +45,32 @@ class CardLookup extends Component {
     //     this.loadData();
     // }
 
+
     loadData(name) {
-        console.log(`name is ${name}`);
+
         if (name !== 'undefined') {
             axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + name)
                 .then(response => {
                     let cards = [];
                     cards.push(response.data);
                     console.log(response.data);
-                    this.setState({ loadedCards: cards })
-
+                    this.setState({ 
+                        loadedCards: cards,
+                        cardNotFound: false
+                     });
                 })
                 .catch(error => {
                     console.error(error.message);
+                    this.setState({
+                        cardNotFound: true,
+                        showCardNotFound: true
+                    })
                 })
         }
     }
 
-    createFilter(filter) {
-        const timer = setTimeout(() => {
-            this.loadData(filter);
-        }, 1000);
-        return () => {
-            clearTimeout(timer);
-        };
-    };
-
     render() {
-        let cards = <p>Search Some Cards</p>;
+        let cards = "";
         if (this.state.loadedCards) {
             console.log('in if:');
             console.log(this.state.loadedCards[0].data);
@@ -54,6 +79,12 @@ class CardLookup extends Component {
                     <Cards
                         key={card.id}
                         title={card.name}
+                        type={card.type}
+                        race={card.race}
+                        atk = {card.atk}
+                        def = {card.def}
+                        level = {card.level}
+                        attribute = {card.attribute}
                         image={card.card_images[0].image_url}
                         source={card.name}
                         effect={card.desc} />
@@ -63,22 +94,23 @@ class CardLookup extends Component {
         return (
             <div className="CardLookup">
                 <header>
-                    <h5>Use API: https://db.ygoprodeck.com/api/v7/cardinfo.php</h5>
                     <Grandpa />
                     Hello! Which card would you like to search?
                 </header>
-                <form>
+                <form onSubmit={this.handleClick}>
                     <label>
                         <input
                             type="text"
-                            onChange={(event) => {
-                                this.createFilter(event.target.value)
-                            }}
-                            placeholder="Enter exact card name..." />
+                            value={this.state.text}
+                            onChange={this.handleChange}
+                            placeholder="Enter card name..." />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <Button variant = "contained" color="primary" onClick={this.handleClick}>Search</Button>
                 </form>
+                {this.state.cardNotFound !== true && this.state.showCardNotFound && this.state.showResult && <h2 id="searchResult">Ahh! Based on your request for: <u>{this.state.result}</u> <br></br>this is what I have for you!</h2>}
+                {this.state.cardNotFound && this.state.showCardNotFound && <h2 id="searchResult">Oh no! It doesn't appear like I have: <u>{this.state.result}</u>!</h2>}
                 {cards}
+
             </div>
         );
     }

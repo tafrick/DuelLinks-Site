@@ -1,3 +1,17 @@
 .CardLookup {
     text-align: center;
 }
+
+input {
+    height: 32px;
+    width: 200px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    box-shadow: black 0.5px 0.5px 0.5px;
+}
+
+#searchResult {
+    color:black;
+
+    text-align: center;
+}

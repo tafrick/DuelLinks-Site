@@ -1,28 +1,22 @@
 .Footer {
 <<<<<<< HEAD
-    position: fixed;
-||||||| 2ae620c
     height: 15%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 =======
-    height: 15%;
-    width: 100%;
     position: fixed;
-    bottom: 0;
->>>>>>> benny-test
+>>>>>>> 9faebd9befaef6a6a8433256f8356cb0d4468dd4
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: darkblue;
 <<<<<<< HEAD
+    background-image: linear-gradient(black, steelblue);
+=======
     color: white;
     text-align: center;
-||||||| 2ae620c
-=======
-    background-image: linear-gradient(black, steelblue);
->>>>>>> benny-test
+>>>>>>> 9faebd9befaef6a6a8433256f8356cb0d4468dd4
     display: flex;
     justify-content: center;
 }
