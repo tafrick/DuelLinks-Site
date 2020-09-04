@@ -1,0 +1,15 @@
+GET http://localhost:3000/boxes
+
+###
+
+GET http://localhost:3000/boxes/22
+
+###
+
+POST http://localhost:3000/boxes
+Content-Type: application/json
+
+{
+    "name": "Blazing Rose",
+    "cardsIn": "['Black Rose']"
+}
