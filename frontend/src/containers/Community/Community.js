@@ -76,21 +76,6 @@ class Community extends Component {
             })
     }
 
-    createPost(noteReq) {
-        let newPost = {
-            title: "TEst",
-            description: noteReq.val(),
-            username: "John Doe"
-        }
-        axios.post('http://localhost:9000/posts', newPost)
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error(error.message);
-            })
-    }
-
 
     render() {
         return (
