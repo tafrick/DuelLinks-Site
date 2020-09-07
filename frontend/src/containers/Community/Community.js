@@ -18,7 +18,10 @@ class Community extends Component {
         this.fileUploadHandler.bind(this);
         this.state = {
             loadedPosts: [],
-            selectedFile: ""
+            selectedFile: "",
+            newPostTitle: '',
+            username: 'Weevil',
+            newPostDescription: '',
         }
     }
 
@@ -32,12 +35,30 @@ class Community extends Component {
     fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-        axios.post('', fd, {onUploadProgress: progressEvent => {
-            console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%');
-        }})//api endpoint
-        .then(res => {
-            console.log(res);
-        })
+        axios.post('', fd, {
+            onUploadProgress: progressEvent => {
+                console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%');
+            }
+        })//api endpoint
+            .then(res => {
+                console.log(res);
+            })
+    }
+
+    postDataHandler = () => {
+        const newPost = {
+            title: this.state.newPostTitle,
+            username: this.state.username,
+            description: this.state.newPostDescription
+        };
+        axios.post('http://localhost:9000/posts/', newPost)
+            .then(response => {
+                console.log(response);
+                this.props.history.replace('/');
+            })
+            .catch(err => {
+                console.error({ message: err.message })
+            })
     }
 
     componentDidMount() {
@@ -81,15 +102,26 @@ class Community extends Component {
                     <h5><a href="https://material-ui.com/components/buttons/" target="_blank">https://material-ui.com/components/buttons/</a></h5>
                 </header>
 
-                <form>
-                    <label>
-                        <textarea rows="15" cols="50" id="new-post"></textarea>
-                    </label>
-                    <br></br>
-                    <input type="file" onChange={this.fileSelectedHandler} />
-                    <button onClick={this.fileUploadHandler}>Upload</button> 
-                    <input type="submit" value="Submit" onSubmit={() => { }} />
-                </form>
+                <div className="NewPost">
+                    <h1>Add a Post</h1>
+                    <label>Title</label>
+                    <input type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
+                    <label>Desciption</label>
+                    <textarea rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
+                    <label>Username</label>
+                    <select value={this.state.username} onChange={(event) => this.setState({ username: event.target.value })}>
+                        <option value="Weevil">Weevil</option>
+                        <option value="Rex">Rex</option>
+                        <option value="Benny">Benny</option>
+                        <option value="Tyler">Tyler</option>
+                        <option value="Jasko">Jasko</option>
+                        <option value="Joey">Joey</option>
+                        <option value="Kaiba">Kaiba</option>
+                        <option value="Tristan">Tristan</option>
+                    </select>
+                    <button onClick={this.fileUploadHandler}>Upload</button>
+                    <button onClick={this.postDataHandler}>Add Post</button>
+                </div>
 
                 <div className="posts-wrapper">
                     {this.state.loadedPosts.map((post, index) => (
