@@ -21,4 +21,7 @@ const boxesRouter = require('./routes/boxes')
 app.use(cors())
 app.use('/boxes', boxesRouter)
 
+const postsRouter = require('./routes/posts')
+app.use('/posts', postsRouter)
+
 app.listen(9000, () => console.log('Server Started'))

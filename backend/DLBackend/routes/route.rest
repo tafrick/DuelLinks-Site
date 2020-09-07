@@ -6,10 +6,24 @@ GET http://localhost:3000/boxes/22
 
 ###
 
-POST http://localhost:3000/boxes
+POST http://localhost:9000/posts
 Content-Type: application/json
 
 {
-    "name": "Blazing Rose",
-    "cardsIn": "['Black Rose']"
+    "title": "Vagabond Cheats",
+    "author": "Jasko"
 }
+
+###
+
+GET http://localhost:9000/posts/5f55bc89def743f92702dbad
+
+###
+PATCH http://localhost:9000/posts/5f55bc89def743f92702dbad
+Content-Type: application/json
+
+{
+    "title": "Vagabond 111Cheats",
+    "author": "Jasko11"
+}
+
