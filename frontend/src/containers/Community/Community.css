@@ -222,21 +222,21 @@ header {
   background-color: #fa923f;
 }
 
-a:link {
+.posts-wrapper a:link {
   text-decoration: none;
   color: inherit;
 }
 
-a:visited {
+.posts-wrapper a:visited {
   text-decoration: none;
   color: inherit;
 }
 
-a:hover {
+.posts-wrapper a:hover {
   text-decoration: underline;
   color: blue;
 }
 
-a:active {
+.posts-wrapper a:active {
   text-decoration: underline;
 }
