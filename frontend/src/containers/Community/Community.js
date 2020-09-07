@@ -76,6 +76,41 @@ class Community extends Component {
             })
     }
 
+    upvoteHandler(postId, oldUpvotes) {
+        console.log(`upvoteHandler ${postId}`);
+        console.log(` old upvotes value ${oldUpvotes}`);
+        const newUpvotes = oldUpvotes + 1;
+        console.log(` new upvotes value ${newUpvotes}`);
+        const updatedPost = {
+            upvotes: newUpvotes
+        }
+        axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
+            .then(response => {
+                console.log("Update Successful!");
+                this.props.history.go('/community');
+            })
+            .catch(err => {
+                console.error(err.message);
+            })
+    }
+
+    downvoteHandler(postId, oldVotes) {
+        console.log(` old upvotes value ${oldVotes}`);
+        const newVotes = oldVotes - 1;
+        console.log(` new upvotes value ${newVotes}`);
+        const updatedDownvotedPost = {
+            upvotes: newVotes
+        }
+        axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
+            .then(response => {
+                console.log("Update Successful!");
+                this.props.history.go('/community');
+            })
+            .catch(err => {
+                console.error(err.message);
+            })
+    }
+
 
     render() {
         return (
@@ -112,9 +147,9 @@ class Community extends Component {
                     {this.state.loadedPosts.map((post, index) => (
                         <div className="post" key={index * Math.random()}>
                             <div className="post-sidebar">
-                                <ArrowUpwardIcon className="upvote" />
+                                <ArrowUpwardIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes) }} />
                                 <span>{post.upvotes}</span>
-                                <ArrowDownwardIcon className="downvote" />
+                                <ArrowDownwardIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes) }} />
                             </div>
                             <div className="post-title">
                                 <img src={post.image_src} />
