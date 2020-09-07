@@ -189,7 +189,7 @@ class CardLookup extends Component {
                     </label>
                     <Button variant="contained" color="primary" onClick={this.handleClick}>Search</Button>
                 </form>
-                {this.state.cardNotFound !== true && this.state.showCardNotFound && this.state.showResult && <h2 id="searchResult">Ahh! Based on your request for: <u>{this.state.result}</u> <br></br>this is what I have for you!</h2>}
+                {this.state.cardNotFound !== true  && this.state.showResult && <h2 id="searchResult">Ahh! Based on your request for: <u>{this.state.result}</u> <br></br>this is what I have for you!</h2>}
                 {this.state.cardNotFound && this.state.showCardNotFound && <h2 id="searchResult">Oh no! It doesn't appear like I have: <u>{this.state.result}</u>!</h2>}
                 {cards}
 
