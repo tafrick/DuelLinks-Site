@@ -11,7 +11,6 @@ import Community from './containers/Community/Community';
 function App() {
   return (
     <div>
-        
         <Layout>
           <Switch>
             <Route path="/cardlookup" exact component={CardLookup}/>
@@ -20,7 +19,7 @@ function App() {
             
             <Route path="/" exact component={Homepage}/>
             <Route path="/community" exact component={Community}/>
-            <Redirect to="/" />
+            {/* <Redirect to="/" /> */}
           </Switch>
         </Layout>
     </div>
