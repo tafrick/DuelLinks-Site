@@ -13,10 +13,31 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
 class Community extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.fileSelectedHandler.bind(this);
+        this.fileUploadHandler.bind(this);
         this.state = {
             loadedPosts: [],
+            selectedFile: ""
         }
+    }
+
+    fileSelectedHandler = (event) => {
+        console.log(event.target.files[0]);
+        this.setState({
+            selectedFile: event.target.files
+        })
+    }
+
+    fileUploadHandler = () => {
+        const fd = new FormData();
+        fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+        axios.post('', fd, {onUploadProgress: progressEvent => {
+            console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%');
+        }})//api endpoint
+        .then(res => {
+            console.log(res);
+        })
     }
 
     componentDidMount() {
@@ -49,6 +70,7 @@ class Community extends Component {
             })
     }
 
+
     render() {
         return (
             <div className="Community">
@@ -64,7 +86,8 @@ class Community extends Component {
                         <textarea rows="15" cols="50" id="new-post"></textarea>
                     </label>
                     <br></br>
-                    <input type="submit" value="Upload" />
+                    <input type="file" onChange={this.fileSelectedHandler} />
+                    <button onClick={this.fileUploadHandler}>Upload</button> 
                     <input type="submit" value="Submit" onSubmit={() => { }} />
                 </form>
 

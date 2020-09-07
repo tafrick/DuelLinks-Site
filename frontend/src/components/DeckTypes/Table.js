@@ -1,72 +1,55 @@
 import React from "react";
+import axios from 'axios';
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import './Table.css';
 
-const data = require("./data");
+const data = require("./finalUpdatedBoxes.json");
 
-const Table = () => {
-  const dataImport = data[0];
-
-  function renderHeaderCells() {
-    let headerCells = [];
-
-    Object.keys(dataImport).map((x, i) => {
-      let items = Object.values(dataImport)[i];
-      headerCells.push(
-        <th colSpan={Object.keys(items).length} key={i.name}>
-          {x}
-        </th>
-      );
-      return headerCells;
-    });
-    return headerCells;
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650
   }
+});
 
-  function renderSubHeaders() {
-    let subHeaders = [];
-    let subs = Object.values(dataImport);
+function createData(name, box) {
+  return { name, box };
+}
 
-    subs.map((x, i) => {
-      if (subs[i] !== undefined) {
-        Object.keys(subs[i]).map(y => {
-          subHeaders.push(<td>{y}</td>);
-          return subHeaders;
-        });
-      }
-      return subHeaders;
-    });
-    return subHeaders;
-  }
+const rows = data;
 
-  function renderResults() {
-    let results = [];
-    let res = Object.values(dataImport);
 
-    res.map((x, i) => {
-      if (res[i] !== undefined) {
-        Object.values(res[i]).map(y => {
-          results.push(<td>{y}</td>);
-          return results;
-        });
-      }
-      return results;
-    });
-
-    return results;
-  }
+export default function DenseTable() {
+  const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <p>Fruit Basket</p>
-      <table>
-        <thead>
-          <tr>{renderHeaderCells()}</tr>
-        </thead>
-        <tbody>
-          <tr>{renderSubHeaders()}</tr>
-          <tr>{renderResults()}</tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  );
-};
+    <TableContainer component={Paper}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell style={{fontSize:'18px', backgroundColor:'#cccccc', color: 'black',}}align="center">Name</TableCell>
+            <TableCell style={{fontSize:'18px', backgroundColor:'#cccccc', color: 'black',}}align="center">Box</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody style={{backgroundColor:'#cccccc', color: 'black',}}>
+          {rows.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row" align="center" style={{fontSize:'23px', color: 'black',textTransform: "uppercase"}}>
+                {row.name}
+              </TableCell>
 
-export default Table;
+              <TableCell align="center">{<a href={row.img_src} target="_blank"><img src={row.img_src}/></a>}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
