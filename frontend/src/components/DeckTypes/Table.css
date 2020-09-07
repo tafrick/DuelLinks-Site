@@ -1,0 +1,14 @@
+.banner-container {
+    /* justify-content: center;
+    align-items: center;
+    text-align: center; */
+}
+
+.banner-container .row {
+    width:50%;
+}
+
+.banner-container .row .column {
+    width: 100%;
+}
+

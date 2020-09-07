@@ -36,3 +36,7 @@ h1 {
     max-width: 250px;
     max-height: 100px;
 }
+
+.row {
+    width: 200px;
+}
