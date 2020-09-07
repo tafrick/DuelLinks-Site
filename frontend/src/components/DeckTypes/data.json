@@ -1,0 +1,14 @@
+[
+    {
+      "John": {
+        "bananas": 5,
+        "apples": 4,
+        "pears": 1
+      },
+      "Agnes": {
+        "bananas": 3,
+        "apples": 2
+      }
+    }
+  ]
+  

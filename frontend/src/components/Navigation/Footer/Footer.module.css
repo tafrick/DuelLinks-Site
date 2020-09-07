@@ -1,0 +1,21 @@
+.Footer {
+    height: 15%;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: darkblue;
+    background-image: linear-gradient(black, steelblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 90;
+}
+
+a {
+    text-align: center;
+    justify-content: center;
+    margin: auto 10px;
+}

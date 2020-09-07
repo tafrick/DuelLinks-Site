@@ -1,0 +1,28 @@
+.Footer {
+<<<<<<< HEAD
+    height: 15%;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+=======
+    position: fixed;
+>>>>>>> 9faebd9befaef6a6a8433256f8356cb0d4468dd4
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: darkblue;
+<<<<<<< HEAD
+    background-image: linear-gradient(black, steelblue);
+=======
+    color: white;
+    text-align: center;
+>>>>>>> 9faebd9befaef6a6a8433256f8356cb0d4468dd4
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    text-align: center;
+    justify-content: center;
+    margin: auto 10px;
+}
