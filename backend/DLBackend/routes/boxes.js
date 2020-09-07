@@ -42,6 +42,9 @@ router.patch('/:id', getBox, async (req, res) => {
     if (req.body.cardsIn != null) {
         res.box.cardsIn = req.body.cardsIn
     }
+    if (req.body.img_src != null) {
+        res.box.img_src = req.body.img_src
+    }
     try {
         const updatedBox = await res.box.save()
         res.json(updatedBox)

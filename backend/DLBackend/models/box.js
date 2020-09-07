@@ -8,6 +8,13 @@ const boxSchema = new mongoose.Schema({
     cardsIn: [{
         type: String,
     }],
+    img_src: {
+        type: String,
+        default: 'test',
+    },
+    id: {
+        type: String,
+    },
     releaseDate: {
         type: Date,
         required: true,
