@@ -7,6 +7,7 @@ import Cards from '../../components/Cards/Cards';
 import Button from '@material-ui/core/Button';
 import Boxes from './yugioh-boxes-updated.json';
 import cards from '../../components/Cards/Cards';
+import box_imgs from './box_images.json';
 
 class CardLookup extends Component {
     constructor(props) {
@@ -40,13 +41,15 @@ class CardLookup extends Component {
         }
     }
 
-    //componentDidMount() {
-    //this.loadData();
-    //this.postData();
-    //}
+    // componentDidMount() {
+    //     //this.loadData();
+    //     //this.postData();
+    //     this.patchData();
+    // }
 
     // componentDidUpdate() {
-    //     this.loadData();
+    //     //this.loadData();
+    //     this.patchData();
     // }
 
 
@@ -82,6 +85,7 @@ class CardLookup extends Component {
     }
 
     postData() {
+        console.log("posting data");
         for (let box_title in Boxes) {
             let newBox = {
                 name: box_title,
@@ -94,6 +98,41 @@ class CardLookup extends Component {
                 .catch(error => {
                     console.error(error.message)
                 })
+        }
+    }
+
+    patchData() {
+        console.log("patching data");
+        let all_ids = [];
+        for (let box in this.state.loadedBoxes) {
+            let box_id = this.state.loadedBoxes[box]._id;
+            //console.log(`the id is ${box_id}`);
+            //found box_id
+            all_ids.push(box_id);
+        }
+
+        console.log(`all ids ${all_ids}`)
+        for (let b_title in box_imgs) {
+            let newBox = {
+                img_src: box_imgs[b_title].img_src
+            }
+            if (this.state.loadedBoxes) {
+                console.log(`the box_id is ${all_ids[b_title]}`);
+                axios.patch('http://localhost:9000/boxes/' + all_ids[b_title], newBox)
+                    .then(response => {
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.error(error.message);
+                    })
+            }
+            // axios.patch('http://localhost:9000/boxes', newBox)
+            //     .then(response => {
+            //         console.log(response.data)
+            //     })
+            //     .catch(error => {
+            //         console.error(error.message)
+            //     })
         }
     }
 
