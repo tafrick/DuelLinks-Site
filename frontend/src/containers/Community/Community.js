@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import './Community.css';
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
@@ -9,6 +10,7 @@ import ModeCommentIcon from "@material-ui/icons/ModeComment";
 import ShareIcon from "@material-ui/icons/Share";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+//import FullPost from './FullPost';
 
 
 class Community extends Component {
@@ -22,6 +24,7 @@ class Community extends Component {
             newPostTitle: '',
             username: 'Weevil',
             newPostDescription: '',
+            selectedPost: null,
         }
     }
 
@@ -111,8 +114,21 @@ class Community extends Component {
             })
     }
 
+    postSelectedHandler = (post) => {
+        const copyPost = { ...post };
+        this.setState({ selectedPost: copyPost });
+    }
+
 
     render() {
+        let selectedPost = null;
+        // if (this.state.selectedPost) {
+        //     selectedPost = <FullPost
+        //         title={this.state.selectedPost.title}
+        //         username={this.state.selectedPost.username}
+        //         description={this.state.selectedPost.description}
+        //         comments={this.state.selectedPost.comments} />
+        // }
         return (
             <div className="Community">
 
@@ -121,6 +137,8 @@ class Community extends Component {
                     <Button variant="contained">Create Post</Button>
                     <h5><a href="https://material-ui.com/components/buttons/" target="_blank">https://material-ui.com/components/buttons/</a></h5>
                 </header>
+
+                {selectedPost}
 
                 <div className="NewPost">
                     <h1>Add a Post</h1>
@@ -160,7 +178,7 @@ class Community extends Component {
 
                             </div>
                             <div className="post-body">
-                                <span className="title">{post.title}</span>
+                                <span className="title"><Link to={this.props.match.url + '/' + post._id}>{post.title}</Link></span>
                                 {post.image_src && <img src={post.image_src} />}
                                 {post.description && <span className="description">{post.description}</span>}
                             </div>
