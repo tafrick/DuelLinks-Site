@@ -6,24 +6,42 @@ GET http://localhost:3000/boxes/22
 
 ###
 
-POST http://localhost:9000/posts
+POST http://localhost:9000/posts/
 Content-Type: application/json
 
 {
-    "title": "Vagabond Cheats",
-    "author": "Jasko"
+    "username": "Test",
+    "title": "Why is this broken",
+    "description": "This sucks.",
+    "upvotes": 42
 }
 
 ###
 
-GET http://localhost:9000/posts/5f55bc89def743f92702dbad
+GET http://localhost:9000/posts/
 
 ###
-PATCH http://localhost:9000/posts/5f55bc89def743f92702dbad
+PATCH http://localhost:9000/posts/5f55d884b2ccdcfd2d9f77c6
 Content-Type: application/json
 
 {
-    "title": "Vagabond 111Cheats",
-    "author": "Jasko11"
+    "upvotes": 431
 }
 
+###
+DELETE http://localhost:9000/posts/5f5662e7e69a93035284aeb5
+
+
+
+###
+POST http://localhost:9000/comments/
+Content-Type: application/json
+
+{
+    postId: "5f55d884b2ccdcfd2d9f77c6",
+    username: "Tristan",
+    body: "Hahahaa Wow what a first rate duelist"
+}
+
+###
+GET http://localhost:9000/comments/

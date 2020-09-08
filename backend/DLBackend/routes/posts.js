@@ -23,7 +23,8 @@ router.get('/:id', getPost, (req, res) => {
 router.post('/', async (req, res) => {
     const post = new Post({
         title: req.body.title,
-        author: req.body.author,
+        username: req.body.username,
+        description: req.body.description,
     })
     try {
         const newPost = await post.save()
@@ -40,17 +41,20 @@ router.patch('/:id', getPost, async (req, res) => {
     if (req.body.title != null) {
         res.post.title = req.body.title
     }
-    if (req.body.author != null) {
-        res.post.author = req.body.author
+    if (req.body.username != null) {
+        res.post.username = req.body.username
     }
     if (req.body.comments != null) {
         res.post.comments = req.body.comments
     }
-    if (req.body.likes != null) {
-        res.post.likes = req.body.likes
+    if (req.body.upvotes != null) {
+        res.post.upvotes = req.body.upvotes
     }
-    if (req.body.dislikes != null) {
-        res.post.dislikes = req.body.dislikes
+    if (req.body.image_src != null) {
+        res.post.image_src = req.body.image_src
+    }
+    if (req.body.description != null) {
+        res.post.description = req.body.description
     }
     try {
         const updatedPost = await res.post.save()

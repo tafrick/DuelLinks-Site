@@ -5,7 +5,11 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    author: {
+    description: {
+        type: String,
+        required: true,
+    },
+    username: {
         type: String,
         required: true
     },
@@ -20,13 +24,12 @@ const postSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
-    likes: {
+    upvotes: {
         type: Number,
         default: 0
     },
-    dislikes: {
-        type: Number,
-        default: 0,
+    image_src: {
+        type: String
     }
 })
 

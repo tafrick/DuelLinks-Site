@@ -24,4 +24,7 @@ app.use('/boxes', boxesRouter)
 const postsRouter = require('./routes/posts')
 app.use('/posts', postsRouter)
 
+const commentRouter = require('./routes/comments')
+app.use('/comments', commentRouter)
+
 app.listen(9000, () => console.log('Server Started'))
