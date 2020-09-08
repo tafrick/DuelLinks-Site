@@ -185,7 +185,7 @@ class Community extends Component {
                             <div className="post-footer">
                                 <div className="comments footer-action">
                                     <ModeCommentIcon className="comment-icon" />
-                                    <span>{post.comments} Comments</span>
+                                    <span>{(post.comments.length === 0) ? (post.comments.length) : (post.comments.length + 1)} Comments</span>
                                 </div>
                                 <div className="share footer-action">
                                     <ShareIcon />

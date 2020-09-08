@@ -1,0 +1,80 @@
+.Comment {
+    text-align: center;
+    margin: auto 220px;
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: 1fr 12fr;
+    grid-template-rows: 1fr auto 1fr;
+
+    margin: 10px 0px;
+
+    grid-template-areas:
+        "Comment-sidebar Comment-title"
+        "Comment-sidebar Comment-body"
+        "Comment-sidebar Comment-footer";
+
+    background-color: white;
+}
+
+.Comment:hover {
+    cursor: pointer;
+}
+
+.Comment .Comment-sidebar {
+    grid-area: Comment-sidebar;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 15px;
+
+    background-color: rgb(245, 245, 245);
+}
+
+.Comment .Comment-sidebar>svg {
+    color: rgb(130, 130, 130);
+}
+
+.Comment .Comment-sidebar>svg:hover {
+    border-radius: 2px;
+
+    background-color: rgb(220, 220, 220);
+}
+
+.Comment .Comment-sidebar>.upvote:hover {
+    color: rgb(200, 0, 0);
+}
+
+.Comment .Comment-sidebar>.downvote:hover {
+    color: var(--primary-color);
+}
+
+.Comment .Comment-sidebar>span {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.Comment .Comment-title {
+    grid-area: Comment-title;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.Comment .Comment-body {
+    grid-area: Comment-body;
+}
+
+.Comment .Comment-title>.Comment-user {
+    padding-left: 5px;
+    font-size: 12px;
+
+    color: rgb(150, 150, 150);
+}
+
+.Comment .Comment-title>.underline:hover {
+    text-decoration: underline;
+}
