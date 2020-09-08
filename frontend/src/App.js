@@ -8,6 +8,7 @@ import Decks from './containers/Decks/Decks';
 import Beginners from './components/Beginners/Beginners';
 import Community from './containers/Community/Community';
 import FullPost from './containers/Community/FullPost';
+import FullBox from './containers/Boxes/FullBox';
 
 import GoogleButton from './components/Login/GoogleBtn';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/beginners" exact render={Beginners} />
 
           <Route path="/" exact component={Homepage} />
+          <Route path="/boxes/:boxId" exact component={FullBox} />
           <Route path="/community/:postId" exact component={FullPost} />
           <Route path="/community" exact component={Community} />
           {/* <Redirect to="/" /> */}
