@@ -16,6 +16,7 @@ const Comment = (props) => {
             <div className="Comment-title">
                 <span className="Comment-user">Posted By </span>
                 <span className="Comment-user underline">u/{props.username}</span>
+                <span className="Comment-user">at {props.time} </span>
                 <div className="spacer"></div>
             </div>
             <div className="Comment-body">

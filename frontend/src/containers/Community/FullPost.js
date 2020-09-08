@@ -86,7 +86,8 @@ class FullPost extends Component {
                 <Comments
                     upvotes={comment.upvotes}
                     username={comment.username}
-                    body={comment.body} />
+                    body={comment.body}
+                    time={comment.date} />
             ))
         }
         return (
