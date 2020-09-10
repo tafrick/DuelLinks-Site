@@ -1,9 +1,11 @@
 .Homepage {
-    background-color: #cccccc;
     text-align: center;
     padding: none;
     height: 100%;
-    color: black;
+}
+
+.Homepage h1 {
+    font-size: 250%;
 }
 
 .Homepage ul {
@@ -16,4 +18,23 @@
     display: inline-flex;
     padding-right: 100px;
     padding-left: 100px;
+}
+
+.table a:link {
+    text-decoration: none;
+    color: #66FCF1;
+}
+
+.table a:visited {
+    text-decoration: none;
+    color: #66FCF1;
+}
+
+.table a:hover {
+    text-decoration: underline;
+    color: #66FCF1;
+}
+
+.table a:active {
+    text-decoration: underline;
 }

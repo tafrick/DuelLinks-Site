@@ -80,6 +80,7 @@ class FullPost extends Component {
                     <p>{this.state.loadedPost.description}</p>
                     <p>{this.state.loadedPost.username}</p>
                     <p>{this.state.loadedPost.upvotes}</p>
+                    <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.title} />
                 </div>
             );
             postComments = this.state.loadedcomments.map((comment, index) => (

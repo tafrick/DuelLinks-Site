@@ -13,8 +13,8 @@ import Table from './Table.js';
 
 const deckTypes = (props) => {
     return (
-            <div className="header">
-                <h1>Look up more decks here</h1>
+        <div className="header">
+            <h1>Look up more decks here</h1>
             <ul>
                 <li className={classes.DeckTypes}>
                     <NavLink to="/" exact><Button variant="contained" color="primary">Meta Tier Decks </Button></NavLink>
@@ -33,8 +33,7 @@ const deckTypes = (props) => {
                     <img src={teap} alt="Farming Decks" />
                 </li>
             </ul>
-            <Table />
-            </div>
+        </div>
     );
 }
 

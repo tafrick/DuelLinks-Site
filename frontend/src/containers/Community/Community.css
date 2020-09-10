@@ -23,7 +23,7 @@ header {
     "post-sidebar post-body"
     "post-sidebar post-footer";
 
-  background-color: white;
+  background-color: #0B0C10;
 }
 
 .posts-wrapper .post:hover {
@@ -39,7 +39,7 @@ header {
 
   padding-top: 15px;
 
-  background-color: rgb(245, 245, 245);
+  background-color: #1F2833;
 }
 
 .posts-wrapper .post .post-sidebar>svg {
@@ -180,7 +180,7 @@ header {
 }
 
 .NewPost {
-  width: 80%;
+  width: 100%;
   margin: 20px auto;
   border: 1px solid #eee;
   box-shadow: 0 2px 3px #ccc;
@@ -210,9 +210,9 @@ header {
   margin: 5px 0;
   padding: 10px;
   font: inherit;
-  border: 1px solid #fa923f;
+  border: 1px solid #66FCF1;
   background-color: transparent;
-  color: #fa923f;
+  color: #66FCF1;
   cursor: pointer;
 }
 
@@ -224,12 +224,12 @@ header {
 
 .posts-wrapper a:link {
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
 .posts-wrapper a:visited {
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
 .posts-wrapper a:hover {

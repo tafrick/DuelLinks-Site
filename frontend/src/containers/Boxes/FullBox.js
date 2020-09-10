@@ -41,9 +41,10 @@ class FullBox extends Component {
             );
             displayCards = this.state.cardsArray.map((card, index) => {
                 return (
-                    <Cards
-                        key={index}
-                        title={card} />
+                    <li key={index}>
+                        <Cards
+                            title={card} />
+                    </li>
                 );
             })
         }
@@ -52,7 +53,9 @@ class FullBox extends Component {
                 <p>The BOX ID</p>
                 <p>{this.props.match.params.boxId}</p>
                 {Box}
-                {displayCards}
+                <ul>
+                    {displayCards}
+                </ul>
             </div>
         );
     }

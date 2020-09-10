@@ -134,8 +134,7 @@ class Community extends Component {
 
                 <header>
                     <h1>Share your deck or duel experiences</h1>
-                    <Button variant="contained">Create Post</Button>
-                    <h5><a href="https://material-ui.com/components/buttons/" target="_blank">https://material-ui.com/components/buttons/</a></h5>
+                    {/* <h5><a href="https://material-ui.com/components/buttons/" target="_blank">https://material-ui.com/components/buttons/</a></h5> */}
                 </header>
 
                 {selectedPost}
@@ -173,7 +172,7 @@ class Community extends Component {
                                 <img src={post.image_src} />
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
                                 <span className="post-user">Posted by</span>
-                                <span className="post-user underline">u/{post.username}</span>
+                                <span className="post-user underline">{post.username}</span>
                                 <div className="spacer"></div>
 
                             </div>

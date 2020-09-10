@@ -55,14 +55,14 @@ class Homepage extends Component {
                     <Table className={classes.table} size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{ fontSize: '18px', backgroundColor: '#cccccc', color: 'black', }} align="center">Name</TableCell>
-                                <TableCell style={{ fontSize: '18px', backgroundColor: '#cccccc', color: 'black', }} align="center">Box</TableCell>
+                                <TableCell style={{ fontSize: '18px', backgroundColor: '#0B0C10', color: '#66FCF1', }} align="center">Name</TableCell>
+                                <TableCell style={{ fontSize: '18px', backgroundColor: '#0B0C10', color: '#66FCF1', }} align="center">Box</TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody style={{ backgroundColor: '#cccccc', color: 'black', }}>
+                        <TableBody style={{ backgroundColor: '#0B0C10', color: '66FCF1', }}>
                             {this.state.loadedBoxes.map((row) => (
                                 <TableRow key={row._id}>
-                                    <TableCell component="th" scope="row" align="center" style={{ fontSize: '23px', color: 'black', textTransform: "uppercase" }}>
+                                    <TableCell className="table" component="th" scope="row" align="center" style={{ fontSize: '23px', color: 'black', textTransform: "uppercase" }}>
                                         <Link to={'/boxes/' + row._id}>
                                             {row.name}
                                         </Link>
