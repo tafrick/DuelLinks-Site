@@ -14,7 +14,7 @@
         "Comment-sidebar Comment-body"
         "Comment-sidebar Comment-footer";
 
-    background-color: white;
+    background-color: #0B0C10;
 }
 
 .Comment:hover {
@@ -30,7 +30,7 @@
 
     padding-top: 15px;
 
-    background-color: rgb(245, 245, 245);
+    background-color: #1F2833;
 }
 
 .Comment .Comment-sidebar>svg {

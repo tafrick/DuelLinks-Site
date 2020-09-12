@@ -9,14 +9,15 @@ import Beginners from './components/Beginners/Beginners';
 import Community from './containers/Community/Community';
 import FullPost from './containers/Community/FullPost';
 import FullBox from './containers/Boxes/FullBox';
+import FullCard from './containers/Boxes/FullCard';
 
-import GoogleButton from './components/Login/GoogleBtn';
+import GoogleBtn from './components/Login/GoogleBtn';
 
 function App() {
   return (
     <div>
       <Layout>
-        <GoogleButton />
+        <GoogleBtn />
         <Switch>
           <Route path="/cardlookup" exact component={CardLookup} />
           <Route path="/decks" exact component={Decks} />
@@ -24,6 +25,7 @@ function App() {
 
           <Route path="/" exact component={Homepage} />
           <Route path="/boxes/:boxId" exact component={FullBox} />
+          <Route path="/boxes/:boxId/:cardName" exact component={FullCard} />
           <Route path="/community/:postId" exact component={FullPost} />
           <Route path="/community" exact component={Community} />
           {/* <Redirect to="/" /> */}

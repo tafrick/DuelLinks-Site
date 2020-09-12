@@ -9,12 +9,12 @@ const toolbar = (props) => {
 
     return (
         <header className={styles.Toolbar}>
-            <DrawerToggle clicked={props.drawerToggleClicked}/>
+            <DrawerToggle clicked={props.drawerToggleClicked} />
             <div className={styles.Logo}>
                 <Logo />
             </div>
             <nav className={styles.DesktopOnly}>
-                <NavigationItems/>
+                <NavigationItems />
             </nav>
         </header>
     );

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-import Cards from '../../components/Cards/Cards';
+import axios from 'axios';
+import classes from './FullBox.module.css';
+
 
 class FullBox extends Component {
     constructor(props) {
@@ -42,21 +44,29 @@ class FullBox extends Component {
             displayCards = this.state.cardsArray.map((card, index) => {
                 return (
                     <li key={index}>
-                        <Cards
-                            title={card} />
+                        <Link to={this.props.match.params.url + '/' + card}><p>{card}</p></Link>
                     </li>
+                    // <table className={classes.cardlist}>
+                    //     <tr>
+                    //         <th>Card Name</th>
+                    //         <th> Set </th>
+                    //     </tr>
+                    //     <tr>
+                    //         <td><Link to={this.props.match.params.url + '/' + card}><p>{card}</p></Link></td>
+                    //         <td>{this.state.loadedBox.name}</td>
+                    //     </tr>
+                    // </table>
                 );
             })
         }
         return (
             <div>
-                <p>The BOX ID</p>
-                <p>{this.props.match.params.boxId}</p>
                 {Box}
-                <ul>
+                <h4>Cards In:</h4>
+                <ul className={classes.cardlist}>
                     {displayCards}
                 </ul>
-            </div>
+            </div >
         );
     }
 }
