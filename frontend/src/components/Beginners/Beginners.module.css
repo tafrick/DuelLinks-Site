@@ -1,0 +1,14 @@
+.BeginnerList {
+    text-align: center;
+    background-color: white;
+    margin: auto 220px;
+    color: black;
+}
+
+.BeginnerList p {
+    text-align: left;
+}
+
+.BeginnerList img {
+    max-height: 700px;
+}

@@ -15,6 +15,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import '../components/DeckTypes/Table.css';
+import JoeyPic from '../assets/images/joey.jpg';
 
 class Homepage extends Component {
     constructor(props) {
@@ -81,6 +82,20 @@ class Homepage extends Component {
                     <h1>Welcolme to the Duel Links Academy!</h1>
                     <p>A fansite for the popular mobile game, no affiliation with konami</p>
                     <Logo />
+                    <ul className="articles">
+                        <li>
+                            <Link to="/beginners">
+                                <div className="beginners-guide">
+
+                                    <img src={JoeyPic} alt="begginners guide" />
+                                    <div className="container">
+                                        <h4><b>Beginner's Guide</b></h4>
+                                    </div>
+
+                                </div>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
                 {boxes}
                 <div>

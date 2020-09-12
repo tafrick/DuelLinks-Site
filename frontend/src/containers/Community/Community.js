@@ -179,7 +179,7 @@ class Community extends Component {
                             <div className="post-body">
                                 <span className="title"><Link to={this.props.match.url + '/' + post._id}>{post.title}</Link></span>
                                 {post.image_src && <img src={post.image_src} />}
-                                {post.description && <span className="description">{post.description}</span>}
+                                {post.description.length < 50 ? <span className="description">{post.description}</span> : <span className="description">{post.description.substring(0, 50) + '...'}</span>}
                             </div>
                             <div className="post-footer">
                                 <div className="comments footer-action">

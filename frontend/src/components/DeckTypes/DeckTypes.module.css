@@ -9,9 +9,11 @@
     padding-left: 25px;
     padding-bottom: 100px;
 }
+
 h1 {
     text-align: center;
 }
+
 .DeckTypes a {
     color: white;
 
@@ -25,8 +27,8 @@ h1 {
 .DeckTypes a:hover,
 .DeckTypes a:active,
 .DeckTypes a:active {
-    background-color: red;
-    border-bottom: 4px solid #40A4C8;
+    background-color: white;
+    border-bottom: 4px solid #66FCF1;
     color: black;
 }
 

@@ -38,3 +38,42 @@
 .table a:active {
     text-decoration: underline;
 }
+
+.beginners-guide {
+    position: relative;
+    text-align: left;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: fit-content;
+    background-color: gray;
+}
+
+.beginners-guide:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.beginners-guide h4 {
+    position: relative;
+    bottom: 8px;
+    left: 16px;
+}
+
+.articles {
+    width: auto;
+    height: auto;
+    list-style: none;
+}
+
+.articles li {
+    display: inline;
+}
+
+.articles a:link {
+    text-decoration: none;
+    color: #66FCF1;
+}
