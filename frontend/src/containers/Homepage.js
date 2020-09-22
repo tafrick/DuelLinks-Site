@@ -79,15 +79,15 @@ class Homepage extends Component {
         return (
             <div className="Homepage">
                 <div>
-                    <h1>Welcolme to the Duel Links Academy!</h1>
-                    <p>A fansite for the popular mobile game, no affiliation with konami</p>
+                    <h1 class="animate__animated animate__fadeIn animate__slower">Welcome to the Duel Links Academy!</h1>
+                    <p class="animate__animated animate__fadeInLeftBig animate__slow">A fansite for the popular mobile game, no affiliation with Konami</p>
                     <Logo />
                     <ul className="articles">
                         <li>
                             <Link to="/beginners">
                                 <div className="beginners-guide">
 
-                                    <img src={JoeyPic} alt="begginners guide" />
+                                    <img src={JoeyPic} alt="beginners guide" />
                                     <div className="container">
                                         <h4><b>Beginner's Guide</b></h4>
                                     </div>

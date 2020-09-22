@@ -1,6 +1,9 @@
 .cardlist {
     list-style: none;
     text-align: left;
+
+    line-height: 30px;
+    margin: auto 17.5%;
 }
 
 .cardlist a:link {
@@ -42,7 +45,6 @@ td {
     vertical-align: bottom;
 }
 
-.box-page h4{
-    color: red;
-    margin: 200px 200px;
+.box-page {
+    text-align: center;
 }
