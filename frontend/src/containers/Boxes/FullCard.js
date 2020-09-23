@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
+import rateLimit from 'axios-rate-limit';
 import Cards from '../../components/Cards/Cards';
+import FullBox from './FullBox';
 
 class FullCard extends Component {
     constructor(props) {
@@ -16,7 +18,11 @@ class FullCard extends Component {
     }
 
     loadCard() {
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' + this.props.match.params.cardName)
+        // axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' + this.props.cardName)
+        const http = rateLimit(axios.create(), 
+            { maxRequests: 19, perMilliseconds: 1000, maxRPS: 18 })
+            http.getMaxRPS();
+            http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + this.props.cardName)
             .then(response => {
                 const card = { ...response.data };
                 this.setState({ loadedCard: card });
@@ -26,30 +32,28 @@ class FullCard extends Component {
             })
     }
     render() {
+        const cardName = this.props.cardName;
+        console.log("fullcard: ", this.props.cardName);
+
         let ldcard = null;
         if (this.state.loadedCard) {
-            console.log(this.state.loadedCard);
+            console.log("box: " ,this.props.box);
             let card = { ...this.state.loadedCard.data[0] }
             console.log(card);
-            ldcard = <Cards
-                key={card.id}
-                title={card.name}
-                type={card.type}
-                race={card.race}
-                atk={card.atk}
-                def={card.def}
-                level={card.level}
-                attribute={card.attribute}
-                image={card.card_images[0].image_url}
-                source={card.name}
-                effect={card.desc}
-            />;
+            ldcard = <span style={{display: "inline-block"}}>
+
+                <img src = {card.card_images[0].image_url} style={{width: 200}}/>
+
+            </span>
         }
         return (
-            <div>
-                <p>Here you go you little bitch!</p>
-                {ldcard}
-            </div>
+            <span>
+                {this.props.box}
+                <span style={{display: "inline-block"}}>
+                    {ldcard}
+                </span>
+                
+            </span>
         );
     }
 }
