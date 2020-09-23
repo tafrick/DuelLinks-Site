@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import Comments from './Comments';
@@ -119,4 +120,10 @@ class FullPost extends Component {
     }
 }
 
-export default FullPost;
+const mapStateToProps = state => {
+    return {
+        token: state.token
+    }
+}
+
+export default connect(mapStateToProps, null)(FullPost);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './Community.css';
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
@@ -129,6 +130,28 @@ class Community extends Component {
         //         description={this.state.selectedPost.description}
         //         comments={this.state.selectedPost.comments} />
         // }
+        const newPost = (
+            <div className="NewPost">
+                <h1>Add a Post</h1>
+                <label>Title</label>
+                <input type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
+                <label>Desciption</label>
+                <textarea rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
+                <label>Username</label>
+                <select value={this.state.username} onChange={(event) => this.setState({ username: event.target.value })}>
+                    <option value="Weevil">Weevil</option>
+                    <option value="Rex">Rex</option>
+                    <option value="Benny">Benny</option>
+                    <option value="Tyler">Tyler</option>
+                    <option value="Jasko">Jasko</option>
+                    <option value="Joey">Joey</option>
+                    <option value="Kaiba">Kaiba</option>
+                    <option value="Tristan">Tristan</option>
+                </select>
+                <button onClick={this.fileUploadHandler}>Upload</button>
+                <button onClick={this.postDataHandler}>Add Post</button>
+            </div>
+        );
         return (
             <div className="Community">
 
@@ -139,26 +162,7 @@ class Community extends Component {
 
                 {selectedPost}
 
-                <div className="NewPost">
-                    <h1>Add a Post</h1>
-                    <label>Title</label>
-                    <input type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
-                    <label>Desciption</label>
-                    <textarea rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
-                    <label>Username</label>
-                    <select value={this.state.username} onChange={(event) => this.setState({ username: event.target.value })}>
-                        <option value="Weevil">Weevil</option>
-                        <option value="Rex">Rex</option>
-                        <option value="Benny">Benny</option>
-                        <option value="Tyler">Tyler</option>
-                        <option value="Jasko">Jasko</option>
-                        <option value="Joey">Joey</option>
-                        <option value="Kaiba">Kaiba</option>
-                        <option value="Tristan">Tristan</option>
-                    </select>
-                    <button onClick={this.fileUploadHandler}>Upload</button>
-                    <button onClick={this.postDataHandler}>Add Post</button>
-                </div>
+                {this.props.token == null ? <p>Please login to post!</p> : newPost}
 
                 <div className="posts-wrapper">
                     {this.state.loadedPosts.map((post, index) => (
@@ -207,4 +211,10 @@ class Community extends Component {
     }
 }
 
-export default Community;
+const mapStateToProps = state => {
+    return {
+        token: state.token
+    }
+}
+
+export default connect(mapStateToProps, null)(Community);
