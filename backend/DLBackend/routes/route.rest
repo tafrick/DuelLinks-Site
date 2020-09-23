@@ -1,4 +1,4 @@
-GET http://localhost:3000/boxes
+GET http://localhost:9000/boxes
 
 ###
 
@@ -21,11 +21,11 @@ Content-Type: application/json
 GET http://localhost:9000/posts/
 
 ###
-PATCH http://localhost:9000/posts/5f55d884b2ccdcfd2d9f77c6
+PATCH http://localhost:9000/posts/5f585937da7c0b25bec0526d
 Content-Type: application/json
 
 {
-    "upvotes": 431
+    "image_src": "https://i.redd.it/i27lg8mp1yl51.jpg"
 }
 
 ###
@@ -34,14 +34,18 @@ DELETE http://localhost:9000/posts/5f5662e7e69a93035284aeb5
 
 
 ###
-POST http://localhost:9000/comments/
+POST http://localhost:9000/comments
 Content-Type: application/json
 
 {
-    postId: "5f55d884b2ccdcfd2d9f77c6",
-    username: "Tristan",
-    body: "Hahahaa Wow what a first rate duelist"
+    "postId": "5f55d884b2ccdcfd2d9f77c6",
+    "username": "Kaiba",
+    "body": "I ripped up 3 of those!"
 }
 
 ###
 GET http://localhost:9000/comments/
+
+###
+
+GET http://localhost:9000/comments/postId=/5f55cb8be945c1fd01aa6605
