@@ -46,10 +46,10 @@
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    background:linear-gradient(rgb(255, 255, 255), rgba(44, 67, 87, 0.692));
+    background: linear-gradient(rgb(255, 255, 255), rgba(44, 67, 87, 0.692));
     box-sizing: border-box;
-    height: 250px;
-    width: 350px;
+    height: 187.5px;
+    width: 400px;
     margin: auto 10px;
 }
 
@@ -90,7 +90,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    
+
 
 }
 
