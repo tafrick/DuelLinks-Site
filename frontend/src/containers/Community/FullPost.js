@@ -99,8 +99,8 @@ class FullPost extends Component {
                 {/* <span className="Comment-user">Posted By {this.state.loadedPost.username}</span> */}
 
                     <div className="post-title">
-                            {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
-                            
+                            <span>Posted by u/</span>
+                            {/* <span>Posted by </span> */}
                             <h2 className="post-user underline">{this.state.loadedPost.username}</h2>
                             <hr/>
                             <div className="spacer"></div>

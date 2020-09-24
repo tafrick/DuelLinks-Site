@@ -58,13 +58,22 @@
 
 .__react_modal_image__header {
     /* bottom: 0 !important; */
+    top: 50% !important;
+    background-color: transparent !important;
     
 }
 
 .__react_modal_image__caption {
-    /* width: 32%; */
+    /* top: 50% !important; */
+    /* -ms-transform: translateY(-50%);
+    transform: translateY(-50%); */
+    /* position: absolute; */
+    width: 32%;
     /* margin: 25% auto !important; */
-    /* margin-left: -52% !important; */
+    margin-left: 65% !important;
     text-align: left;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+
+    
 
 }
