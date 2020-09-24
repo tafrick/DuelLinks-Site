@@ -1,8 +1,73 @@
+#title-post {
+    text-align: center;
+}
+
+.post-body {
+    padding-left: 10px;
+    width: 95%;
+}
+
+.post-sidebar {
+    grid-area: Comment-sidebar;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #1F2833;
+}
+
+.post-title {
+    padding-left: 10px;
+}
+.post-wrapper {
+    text-align: left !important;
+    display: grid;
+    width: 85%;
+    grid-template-columns: 1fr 12fr;
+    margin: 10px auto;
+    grid-template-areas:
+        "Comment-sidebar Comment-title"
+        "Comment-sidebar Comment-body"
+        "Comment-sidebar Comment-footer";
+
+    background-color: #2F4454;
+
+    border: solid black 0.1em;
+    cursor: pointer;
+    box-shadow: 0 1px 2px black;
+}
+
+.post-wrapper .post-sidebar>svg {
+    color: rgb(130, 130, 130);
+}
+
+.post-wrapper .post-sidebar>svg:hover {
+    border-radius: 2px;
+
+    background-color: rgb(220, 220, 220);
+}
+
+.post-wrapper .post-sidebar>.upvote:hover {
+    color: rgb(200, 0, 0);
+}
+
+.post-wrapper .post-sidebar>.downvote:hover {
+    color: var(--primary-color);
+}
+
+.modal img {
+  width: 100%;
+  height: 100%;
+}
+
 .NewComment {
     width: 80%;
     margin: 20px auto;
-    border: 1px solid #eee;
-    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid black;
+    box-shadow: 0 1px 2px black;
     text-align: center;
 }
 
@@ -26,17 +91,14 @@
 }
 
 .NewComment button {
-    margin: 5px 0;
+    margin: 10px 0;
     padding: 10px;
     font: inherit;
-    border: 1px solid #fa923f;
-    background-color: transparent;
-    color: #fa923f;
     cursor: pointer;
 }
 
 .NewComment button:hover,
 .NewComment button:active {
     color: white;
-    background-color: #fa923f;
+
 }

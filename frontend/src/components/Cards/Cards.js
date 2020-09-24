@@ -30,7 +30,7 @@ const cards = props => (
         <ModalImage
                     small={props.image}
                     large={props.image}
-                    alt={props.source}
+                    alt={props.effect}
                     className="modal"
                     style={{width: 200}}
                 />
@@ -44,8 +44,9 @@ const cards = props => (
             <span id="card-type">{filterDetails(props)}{props.race} / {props.type}{showLevel(props)}</span>
             <br></br>
             <p id="atkDef">{showAtkDef(props)}</p>
-            <p id="card-description">{props.effect}</p>
             <p id="where-to-get">{props.box}</p>
+            <p id="card-description">{props.effect}</p>
+            
         </div>
 
     </div>

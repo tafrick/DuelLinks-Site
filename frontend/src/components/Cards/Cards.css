@@ -44,10 +44,27 @@
     font-size: 17px;
 }
 
+#where-to-get {
+    line-height: 1;
+}
+
 #atkDef {
     line-height: 0;
 }
 
 .modal {
     width: 200px;
+}
+
+.__react_modal_image__header {
+    /* bottom: 0 !important; */
+    
+}
+
+.__react_modal_image__caption {
+    /* width: 32%; */
+    /* margin: 25% auto !important; */
+    /* margin-left: -52% !important; */
+    text-align: left;
+
 }

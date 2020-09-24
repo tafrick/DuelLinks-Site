@@ -169,7 +169,7 @@ class CardLookup extends Component {
                         image={card.card_images[0].image_url}
                         source={card.name}
                         effect={card.desc}
-                        box={(this.cardBoxCheckHandler(card.name) == null) ? 'Currently Unavailable in any box' : this.cardBoxCheckHandler(card.name)} />
+                        box={(this.cardBoxCheckHandler(card.name) == null) ? 'Currently Unavailable in Any Box' : this.cardBoxCheckHandler(card.name)} />
                 );
             })
         }
