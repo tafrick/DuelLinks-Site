@@ -16,6 +16,10 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import '../components/DeckTypes/Table.css';
 import JoeyPic from '../assets/images/joey.jpg';
+import TournamentPic from '../assets/images/tournaments.png';
+import TopTierPic from '../assets/images/top-tier-dekcs.png';
+import BeginnersPic from '../assets/images/beginners-guide.png';
+import KCPic from '../assets/images/kc-cup-things.png';
 
 class Homepage extends Component {
     constructor(props) {
@@ -84,16 +88,36 @@ class Homepage extends Component {
                     <Logo />
                     <ul className="articles">
                         <li>
-                            <Link to="/beginners">
-                                <div className="beginners-guide">
-
-                                    <img src={JoeyPic} alt="beginners guide" />
-                                    <div className="container">
-                                        <h4><b>Beginner's Guide</b></h4>
-                                    </div>
-
+                            <div className="guide">
+                                <Link to="/beginners"><img src={BeginnersPic} alt="beginners guide" /></Link>
+                                <div className="container">
+                                    <h4><b>Beginner's Guide</b></h4>
                                 </div>
-                            </Link>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="guide">
+                                <Link to="/beginners"><img src={KCPic} alt="KC" /></Link>
+                                <div className="container">
+                                    <h4><b>KC CUP Guide</b></h4>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="guide">
+                                <Link to="/beginners"><img src={TopTierPic} alt="top tier" /></Link>
+                                <div className="container">
+                                    <h4><b>Top Tier Decks</b></h4>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="guide">
+                                <Link to="/beginners"><img src={TournamentPic} alt="tournaments" /></Link>
+                                <div className="container">
+                                    <h4><b>Upcoming Tournaments</b></h4>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>

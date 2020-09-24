@@ -14,7 +14,7 @@
     z-index: 90;
 }
 
-a {
+.Footer a {
     text-align: center;
     justify-content: center;
     margin: auto 10px;

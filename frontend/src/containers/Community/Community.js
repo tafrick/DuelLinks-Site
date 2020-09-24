@@ -23,7 +23,7 @@ class Community extends Component {
             loadedPosts: [],
             selectedFile: "",
             newPostTitle: '',
-            username: 'Weevil',
+            username: '',
             newPostDescription: '',
             selectedPost: null,
         }
@@ -67,6 +67,9 @@ class Community extends Component {
 
     componentDidMount() {
         this.fetchPosts();
+        if (this.props.isAuth) {
+            this.setState({ username: this.props.email })
+        }
     }
 
     fetchPosts() {
@@ -81,38 +84,46 @@ class Community extends Component {
     }
 
     upvoteHandler(postId, oldUpvotes) {
-        console.log(`upvoteHandler ${postId}`);
-        console.log(` old upvotes value ${oldUpvotes}`);
-        const newUpvotes = oldUpvotes + 1;
-        console.log(` new upvotes value ${newUpvotes}`);
-        const updatedPost = {
-            upvotes: newUpvotes
+        if (this.props.isAuth) {
+            console.log(`upvoteHandler ${postId}`);
+            console.log(` old upvotes value ${oldUpvotes}`);
+            const newUpvotes = oldUpvotes + 1;
+            console.log(` new upvotes value ${newUpvotes}`);
+            const updatedPost = {
+                upvotes: newUpvotes
+            }
+            axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
+                .then(response => {
+                    console.log("Update Successful!");
+                    this.props.history.go('/community');
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
+        } else {
+            alert("You must be logged in to like/dislike posts");
         }
-        axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
-            .then(response => {
-                console.log("Update Successful!");
-                this.props.history.go('/community');
-            })
-            .catch(err => {
-                console.error(err.message);
-            })
     }
 
     downvoteHandler(postId, oldVotes) {
-        console.log(` old upvotes value ${oldVotes}`);
-        const newVotes = oldVotes - 1;
-        console.log(` new upvotes value ${newVotes}`);
-        const updatedDownvotedPost = {
-            upvotes: newVotes
+        if (this.props.isAuth) {
+            console.log(` old upvotes value ${oldVotes}`);
+            const newVotes = oldVotes - 1;
+            console.log(` new upvotes value ${newVotes}`);
+            const updatedDownvotedPost = {
+                upvotes: newVotes
+            }
+            axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
+                .then(response => {
+                    console.log("Update Successful!");
+                    this.props.history.go('/community');
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
+        } else {
+            alert("You must be logged in to like/dislike posts");
         }
-        axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
-            .then(response => {
-                console.log("Update Successful!");
-                this.props.history.go('/community');
-            })
-            .catch(err => {
-                console.error(err.message);
-            })
     }
 
     postSelectedHandler = (post) => {
@@ -137,9 +148,9 @@ class Community extends Component {
                 <input type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
                 <label>Desciption</label>
                 <textarea rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
-                <label>Username</label>
+                {/* <label>Category</label>
                 <select value={this.state.username} onChange={(event) => this.setState({ username: event.target.value })}>
-                    <option value="Weevil">Weevil</option>
+                    <option value="KOG DE">Weevil</option>
                     <option value="Rex">Rex</option>
                     <option value="Benny">Benny</option>
                     <option value="Tyler">Tyler</option>
@@ -147,7 +158,7 @@ class Community extends Component {
                     <option value="Joey">Joey</option>
                     <option value="Kaiba">Kaiba</option>
                     <option value="Tristan">Tristan</option>
-                </select>
+                </select> */}
                 <button onClick={this.fileUploadHandler}>Upload</button>
                 <button onClick={this.postDataHandler}>Add Post</button>
             </div>
@@ -162,7 +173,7 @@ class Community extends Component {
 
                 {selectedPost}
 
-                {this.props.token == null ? <p>Please login to post!</p> : newPost}
+                {this.props.isAuth ? newPost : <p>Please login to post!</p>}
 
                 <div className="posts-wrapper">
                     {this.state.loadedPosts.map((post, index) => (
@@ -213,7 +224,9 @@ class Community extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.token
+        token: state.token,
+        isAuth: state.token !== null,
+        email: state.userEmail
     }
 }
 
