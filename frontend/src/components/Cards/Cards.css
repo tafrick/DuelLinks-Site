@@ -3,14 +3,14 @@
     width: 50%;
 } */
 
-.card-wrapper .col-img img{
-    width: 40%;
-}
+/* .card-wrapper .col-img img{
+    width: 50%;
+} */
 
 .card-wrapper {
     display: flex;
-    width: 95%;
-    margin-top: 50px;
+    width: 90%;
+    margin: 50px 150px;
 }
 
 .col-img {
@@ -23,6 +23,7 @@
     text-align: left;
     padding: 25px;
     position: relative;
+    margin-left: 50px;
 }
 
 #card-name {
@@ -47,3 +48,6 @@
     line-height: 0;
 }
 
+.modal {
+    width: 200px;
+}

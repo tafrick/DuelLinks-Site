@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalImage from "react-modal-image";
 import './Cards.css';
 
 const filterDetails = (card) => {
@@ -26,7 +27,14 @@ const showAtkDef = (card) => {
 const cards = props => (
     <div className="card-wrapper">
         <div className="col-img">
-            <a href={props.image} target="_blank"><img src={props.image} alt={props.source} /></a>
+        <ModalImage
+                    small={props.image}
+                    large={props.image}
+                    alt={props.source}
+                    className="modal"
+                    style={{width: 200}}
+                />
+           
             {/* <img src={props.image} alt={props.source} /> */}
         </div>
         <div className="col-text">

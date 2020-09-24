@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import rateLimit from 'axios-rate-limit';
+import ModalImage from "react-modal-image";
 import Cards from '../../components/Cards/Cards';
 import FullBox from './FullBox';
+import './FullBox.css'
+
 
 class FullCard extends Component {
     constructor(props) {
@@ -41,8 +44,13 @@ class FullCard extends Component {
             let card = { ...this.state.loadedCard.data[0] }
             console.log(card);
             ldcard = <span style={{display: "inline-block"}}>
-
-                <img src = {card.card_images[0].image_url} style={{width: 200}}/>
+                <ModalImage
+                    small={card.card_images[0].image_url}
+                    large={card.card_images[0].image_url}
+                    alt={cardName}
+                    className="modal"
+                />
+                {/* <img src = {card.card_images[0].image_url} style={{width: 200}}/> */}
 
             </span>
         }

@@ -61,6 +61,7 @@ class FullBox extends Component {
     }
 
     render() {
+
         let cards = "";
         if (this.state.loadedCards) {
             cards = this.state.loadedCards[0].data.map(card => {
@@ -88,6 +89,7 @@ class FullBox extends Component {
                 // this.loadCardData(card);
 
                 return (
+                    
                     <span key={index}>
                         
                         {console.log("name of card: ", card)}
@@ -118,6 +120,7 @@ class FullBox extends Component {
                 <span className="cardlist">
                     {displayCards}
                 </span>
+
             </div >
         );
         

@@ -48,3 +48,8 @@ td {
 .box-page {
     text-align: center;
 }
+
+.modal {
+    width: 200px;
+    margin: auto 5px;
+}
