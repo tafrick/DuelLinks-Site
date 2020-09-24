@@ -20,6 +20,18 @@ class FullCard extends Component {
         this.loadCard();
     }
 
+    modalDescription(name, desc) {
+        return(
+            <>
+            <div style={{textAlign: "center"}}>
+                {name}
+            </div>
+                <br></br>
+                {desc}
+            
+            </>
+        );
+    }
     loadCard() {
         // axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' + this.props.cardName)
         const http = rateLimit(axios.create(), 
@@ -36,18 +48,20 @@ class FullCard extends Component {
     }
     render() {
         const cardName = this.props.cardName;
-        console.log("fullcard: ", this.props.cardName);
+        console.log('Fullcard data: ' + this.state.loadedCard);
+        //console.log("fullcard: ", this.props.cardName);
 
         let ldcard = null;
         if (this.state.loadedCard) {
-            console.log("box: " ,this.props.box);
+            //console.log("box: " ,this.props.box);
             let card = { ...this.state.loadedCard.data[0] }
-            console.log(card);
+            console.log('2card: ' + card.desc);
             ldcard = <span style={{display: "inline-block"}}>
                 <ModalImage
                     small={card.card_images[0].image_url}
                     large={card.card_images[0].image_url}
-                    alt={cardName}
+                    alt={this.modalDescription(cardName, card.desc)}
+                    
                     className="modal"
                 />
                 {/* <img src = {card.card_images[0].image_url} style={{width: 200}}/> */}

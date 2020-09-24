@@ -10,6 +10,19 @@ const filterDetails = (card) => {
     return "";
 }
 
+const modalDescription = (name, desc) => {
+    return(
+        <>
+        <div style={{textAlign: "center"}}>
+            {name}
+        </div>
+            <br></br>
+            {desc}
+        
+        </>
+    );
+}
+
 const showLevel = (card) => {
     if (card.level !== undefined) {
         return (" / " + card.level + "⭑");
@@ -30,7 +43,7 @@ const cards = props => (
         <ModalImage
                     small={props.image}
                     large={props.image}
-                    alt={props.effect}
+                    alt={modalDescription(props.title, props.effect)}
                     className="modal"
                     style={{width: 200}}
                 />

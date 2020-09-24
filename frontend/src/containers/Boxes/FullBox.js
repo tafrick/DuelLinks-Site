@@ -46,17 +46,17 @@ class FullBox extends Component {
             { maxRequests: 19, perMilliseconds: 1000, maxRPS: 18 })
             http.getMaxRPS();
             http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + name)
-            // .then(response => {
-            //         console.log(response);
-            //         let cards = [];
-            //         cards.push(response.data);
-            //         this.setState({
-            //             loadedCards: cards
-            //         });
-            //     })
-            //     .catch(error => {
-            //         console.error(error.message);
-            //     })
+            .then(response => {
+                    console.log(response);
+                    let cards = [];
+                    cards.push(response.data);
+                    this.setState({
+                        loadedCards: cards
+                    });
+                })
+                .catch(error => {
+                    console.error(error.message);
+                })
         }
     }
 
@@ -69,6 +69,7 @@ class FullBox extends Component {
                     <Cards
                         key={card.id}
                         title={card.name}
+                        effect={card.desc}
                         image={card.card_images[0].image_url} />
                 );
             })
@@ -84,6 +85,10 @@ class FullBox extends Component {
                     <img src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
                 </div>
             );
+            console.log('112sadasfadfassafa');
+            if(this.state.loadedCards) {
+                console.log('loadedCards: ' + this.state.loadedCards[0].data);
+            }
             displayCards = this.state.cardsArray.map((card, index) => {
 
                 // this.loadCardData(card);
