@@ -19,12 +19,28 @@ router.get('/:id', getPost, (req, res) => {
     res.json(res.post)
 })
 
+//getting posts for a specific category
+router.get('/category=/:category', async (req, res) => {
+    try {
+        const posts = await Post.find({
+            category: req.params.category
+        })
+        res.json(posts)
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
 //creating a post
 router.post('/', async (req, res) => {
     const post = new Post({
         title: req.body.title,
         username: req.body.username,
         description: req.body.description,
+        category: req.body.category,
+        image_src: req.body.image_src
     })
     try {
         const newPost = await post.save()
@@ -55,6 +71,9 @@ router.patch('/:id', getPost, async (req, res) => {
     }
     if (req.body.description != null) {
         res.post.description = req.body.description
+    }
+    if (req.body.category != null) {
+        res.post.category = req.body.category
     }
     try {
         const updatedPost = await res.post.save()

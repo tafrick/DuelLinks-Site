@@ -49,3 +49,7 @@ GET http://localhost:9000/comments/
 ###
 
 GET http://localhost:9000/comments/postId=/5f55cb8be945c1fd01aa6605
+
+###
+
+GET http://localhost:9000/posts/category=/KC Cup
