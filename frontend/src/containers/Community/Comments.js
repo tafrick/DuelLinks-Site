@@ -24,7 +24,7 @@ const formatDate = (dateTime) => {
     const dayDifference = Math.abs(currentDay - getDay);
     const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : ' Yesterday');
 
-    return result === 'Today' || result === 'Yesterday' ? result + formatTime(time) : result;
+    return result === 'Today' || result === 'Yesterday' ? result + ' ' + formatTime(time) : result;
 }
 
 const formatTime = (dateTime) => {
