@@ -108,12 +108,12 @@ class FullPost extends Component {
                     <div className="post-body">
                         
                         <p>{this.state.loadedPost.description}</p>
-                        <ModalImage
+                       {this.state.loadedPost.image_src === undefined ? null : <ModalImage
                             small={this.state.loadedPost.image_src}
                             large={this.state.loadedPost.image_src}
                             alt={this.state.loadedPost.title}
                             className="modal"
-                            />
+                            />}
                         {/* <img src={this.state.loadedPost.image_src}/> */}
                     </div>
                     

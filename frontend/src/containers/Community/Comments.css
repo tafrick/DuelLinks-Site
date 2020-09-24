@@ -69,6 +69,7 @@
 .Comment .Comment-body {
     grid-area: Comment-body;
     padding-left: 6px;
+
 }
 
 .Comment .Comment-title>.Comment-user {
