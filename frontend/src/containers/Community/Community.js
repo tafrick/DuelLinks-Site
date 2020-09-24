@@ -24,8 +24,10 @@ class Community extends Component {
             selectedFile: "",
             newPostTitle: '',
             username: '',
+            imgURL: '',
             newPostDescription: '',
             selectedPost: null,
+            newPostCategory: 'Meme'
         }
     }
 
@@ -53,7 +55,9 @@ class Community extends Component {
         const newPost = {
             title: this.state.newPostTitle,
             username: this.state.username,
-            description: this.state.newPostDescription
+            description: this.state.newPostDescription,
+            category: this.state.newPostCategory,
+            image_src: this.state.imgURL
         };
         axios.post('http://localhost:9000/posts/', newPost)
             .then(response => {
@@ -148,17 +152,20 @@ class Community extends Component {
                 <input type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
                 <label>Desciption</label>
                 <textarea rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
-                {/* <label>Category</label>
-                <select value={this.state.username} onChange={(event) => this.setState({ username: event.target.value })}>
-                    <option value="KOG DE">Weevil</option>
-                    <option value="Rex">Rex</option>
-                    <option value="Benny">Benny</option>
-                    <option value="Tyler">Tyler</option>
-                    <option value="Jasko">Jasko</option>
-                    <option value="Joey">Joey</option>
-                    <option value="Kaiba">Kaiba</option>
-                    <option value="Tristan">Tristan</option>
-                </select> */}
+                <label>Image URL</label>
+                <input type="text" value={this.state.imgURL} onChange={(event) => this.setState({ imgURL: event.target.value })} />
+                <label>Category</label>
+                <select value={this.state.newPostCategory} onChange={(event) => this.setState({ newPostCategory: event.target.value })}>
+                    <option value="KOG_Deck">KOG Deck</option>
+                    <option value="Meta_Deck">Meta Deck</option>
+                    <option value="Casual_Deck">Casual Deck</option>
+                    <option value="Tournament">Tournament</option>
+                    <option value="Meme">Meme</option>
+                    <option value="KC_Cup">KC Cup</option>
+                    <option value="Announcements">Announcements</option>
+                    <option value="Gameplay_Tips">Gameplay Tips</option>
+                    <option value="Farming_Deck">Farming Deck</option>
+                </select>
                 <button onClick={this.fileUploadHandler}>Upload</button>
                 <button onClick={this.postDataHandler}>Add Post</button>
             </div>
@@ -189,6 +196,7 @@ class Community extends Component {
                                 <span className="post-user">Posted by</span>
                                 <span className="post-user underline">{post.username}</span>
                                 <div className="spacer"></div>
+                                <span>{post.category}</span>
 
                             </div>
                             <div className="post-body">

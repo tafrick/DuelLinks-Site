@@ -10,6 +10,7 @@ import Community from './containers/Community/Community';
 import FullPost from './containers/Community/FullPost';
 import FullBox from './containers/Boxes/FullBox';
 import FullCard from './containers/Boxes/FullCard';
+import CategoryPosts from './containers/Community/CategoryPosts';
 
 import GoogleBtn from './components/Login/GoogleBtn';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/boxes/:boxId/:cardName" exact component={FullCard} />
           <Route path="/community/:postId" exact component={FullPost} />
           <Route path="/community" exact component={Community} />
+          <Route path="/:category" exact component={CategoryPosts} />
           {/* <Redirect to="/" /> */}
         </Switch>
       </Layout>

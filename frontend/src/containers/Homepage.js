@@ -97,7 +97,7 @@ class Homepage extends Component {
                         </li>
                         <li>
                             <div className="guide">
-                                <Link to="/beginners"><img src={KCPic} alt="KC" /></Link>
+                                <Link to="/KC_Cup"><img src={KCPic} alt="KC" /></Link>
                                 <div className="container">
                                     <h4><b>KC CUP Guide</b></h4>
                                 </div>
@@ -105,7 +105,7 @@ class Homepage extends Component {
                         </li>
                         <li>
                             <div className="guide">
-                                <Link to="/beginners"><img src={TopTierPic} alt="top tier" /></Link>
+                                <Link to="/Meta_Deck"><img src={TopTierPic} alt="top tier" /></Link>
                                 <div className="container">
                                     <h4><b>Top Tier Decks</b></h4>
                                 </div>
@@ -113,7 +113,7 @@ class Homepage extends Component {
                         </li>
                         <li>
                             <div className="guide">
-                                <Link to="/beginners"><img src={TournamentPic} alt="tournaments" /></Link>
+                                <Link to="/Tournament"><img src={TournamentPic} alt="tournaments" /></Link>
                                 <div className="container">
                                     <h4><b>Upcoming Tournaments</b></h4>
                                 </div>
