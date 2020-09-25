@@ -165,8 +165,10 @@ class Community extends Component {
         // console.log('currentDay: ', currentDay);
         // console.log('getDay: ', getDay);
         // console.log('difference: ', dayDifference);
+
+        console.log('timestamp: ', timeStamp);
         
-        const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : ' Yesterday');
+        const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : 'Yesterday');
         // console.log('result: ', result);
         return result === 'Today' || result === 'Yesterday' ? result + ' ' + timeStamp : result;
     }

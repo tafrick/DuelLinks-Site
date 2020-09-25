@@ -98,6 +98,8 @@ class FullBox extends Component {
                     <span key={index}>
                         
                         {console.log("name of card: ", card)}
+                        
+                        
                         {undefined ? null : <FullCard cardName = {card} />}
                         {/* <Link to={this.props.match.params.url + '/' + card}><span style={{display: "inline-block"}}>{card}</span>,</Link> */}
                         {console.log(this.props.match.params.url + '/' + card)}

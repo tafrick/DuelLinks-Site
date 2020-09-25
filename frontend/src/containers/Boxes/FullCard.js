@@ -35,7 +35,7 @@ class FullCard extends Component {
     loadCard() {
         // axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' + this.props.cardName)
         const http = rateLimit(axios.create(), 
-            { maxRequests: 19, perMilliseconds: 1000, maxRPS: 18 })
+            { maxRequests: 1, perMilliseconds: 1500, maxRPS: 2 })
             http.getMaxRPS();
             http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + this.props.cardName)
             .then(response => {
