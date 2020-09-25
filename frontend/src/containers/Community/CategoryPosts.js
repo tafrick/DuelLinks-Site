@@ -50,10 +50,9 @@ class CategoryPosts extends Component {
                         <div className="post-title">
                             <img src={post.image_src} />
                             {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
-                            <span className="post-user">Posted by</span>
-                            <span className="post-user underline">{post.username}</span>
+                            <span className="post-user">Posted by {post.username}</span>
                             <div className="spacer"></div>
-                            <span>{post.category}</span>
+                            <span className="post-category">{post.category}</span>
 
                         </div>
                         <div className="post-body">

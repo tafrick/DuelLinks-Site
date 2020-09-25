@@ -24,13 +24,13 @@ h1 {
     text-decoration: none;
 }
 
-.DeckTypes a:hover,
+/* .DeckTypes a:hover,
 .DeckTypes a:active,
 .DeckTypes a:active {
     background-color: white;
     border-bottom: 4px solid #66FCF1;
     color: black;
-}
+} */
 
 .DeckTypes img {
     height: auto;

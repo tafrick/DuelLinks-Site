@@ -113,6 +113,14 @@ header {
     color: rgb(150, 150, 150);
 }
 
+
+.posts-wrapper .post .post-title>.post-category {
+    padding-left: 5px;
+    font-size: 12px;
+
+    color: rgb(150, 150, 150);
+}
+
 .posts-wrapper .post .post-title>.underline:hover {
     text-decoration: underline;
 }
