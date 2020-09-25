@@ -194,12 +194,12 @@ class Community extends Component {
                                 <img src={post.image_src} />
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
                                 <span className="post-user">Posted by {post.username}</span>
-                 
+                                <span className="Comment-user">{post.date} </span>
                                 <span className="post-category"><em>{post.category}</em></span>
                             </div>
-                            
+
                             <div className="spacer"></div>
-                            
+
                             <div className="post-body">
                                 <span className="title"><Link to={this.props.match.url + '/' + post._id}>{post.title}</Link></span>
                                 {post.image_src && <img src={post.image_src} />}
