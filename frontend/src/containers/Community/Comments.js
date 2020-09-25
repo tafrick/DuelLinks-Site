@@ -8,9 +8,11 @@ import './Comments.css';
 
 const formatDate = (dateTime) => {
     const time = dateTime;
+    console.log('dateTime' , dateTime);
     dateTime = dateTime.substring(0, dateTime.indexOf('T'));
     console.log('dateTime' , dateTime);
     const today = new Date();
+
     const currentYear = today.getFullYear();
     const currentMonth = '0'+ (today.getMonth()+1).toString().slice(-2);
     const currentDay = today.getDate().toString().slice(-2);
@@ -22,8 +24,9 @@ const formatDate = (dateTime) => {
     const yearDifference = (currentYear - getYear)*30;
     const monthDiffercence = (currentMonth - getMonth)*30;
     const dayDifference = Math.abs(currentDay - getDay);
+    
     const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : ' Yesterday');
-
+console.log('result: ', result);
     return result === 'Today' || result === 'Yesterday' ? result + ' ' + formatTime(time) : result;
 }
 
@@ -50,9 +53,10 @@ const Comment = (props) => {
                 <ArrowDownwardIcon className="downvote" onClick={props.clickedDown} />
             </div>
             <div className="Comment-title">
-                <span className="Comment-user">Posted by </span>
-                <span className="Comment-user underline">u/{props.username}</span>
                 <span className="Comment-user">{formatDate(props.time)} </span>
+                <span className="Comment-user">Posted by </span>
+                <span className="Comment-user underline">{props.username}</span>
+                
                 
                 <div className="spacer"></div>
             </div>

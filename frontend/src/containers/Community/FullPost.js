@@ -89,7 +89,7 @@ class FullPost extends Component {
         if (this.state.loadedPost) {
             post = (
                 <>
-                <h1 id="title"><u>{this.state.loadedPost.title}</u></h1>
+                <h1 id="title">{this.state.loadedPost.title}</h1>
                 <div className= "post-wrapper">
                     <div className = "post-sidebar">
                         <ArrowUpwardIcon className="upvote" onClick={this.props.clickedUp} />
@@ -99,7 +99,7 @@ class FullPost extends Component {
                 {/* <span className="Comment-user">Posted By {this.state.loadedPost.username}</span> */}
 
                     <div className="post-title">
-                            <span>Posted by u/</span>
+                            <span>Posted by </span>
                             {/* <span>Posted by </span> */}
                             <h2 className="post-user underline">{this.state.loadedPost.username}</h2>
                             <hr/>

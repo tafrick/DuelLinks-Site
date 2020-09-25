@@ -135,6 +135,43 @@ class Community extends Component {
         this.setState({ selectedPost: copyPost });
     }
 
+    formatTime = (dateTime) => {
+        let spam = (dateTime.substring(dateTime.lastIndexOf(':'), dateTime.length));
+        let timeOfDay = dateTime.substring(dateTime.lastIndexOf('T')+1, dateTime.lastIndexOf('T')+3);
+        console.log();
+        
+        timeOfDay = timeOfDay < 12 ? 'AM': 'PM';
+        dateTime = dateTime.replace(spam, timeOfDay).replace('T', ' ');
+        dateTime = dateTime.substring(dateTime.lastIndexOf(' ', dateTime.length));
+        dateTime = timeOfDay === 'PM' ? dateTime.replace(dateTime.substring(0, 3), dateTime.substring(0,3) - 12) : dateTime;
+        return dateTime;
+    }
+
+    formatDate = (dateTime) => {
+        const time = dateTime;
+        console.log('dateTime' , dateTime);
+        dateTime = dateTime.substring(0, dateTime.indexOf('T'));
+        console.log('dateTime' , dateTime);
+        const today = new Date();
+    
+        const currentYear = today.getFullYear();
+        const currentMonth = '0'+ (today.getMonth()+1).toString().slice(-2);
+        const currentDay = today.getDate().toString().slice(-2);
+    
+        const getYear = dateTime.substring(0, dateTime.indexOf('-'));
+        const getMonth = dateTime.substring(dateTime.indexOf('-')+1, dateTime.indexOf('-')+3);
+        const getDay = dateTime.substring(dateTime.lastIndexOf('-')+1, dateTime.length);
+        
+        const yearDifference = (currentYear - getYear)*30;
+        const monthDiffercence = (currentMonth - getMonth)*30;
+        const dayDifference = Math.abs(currentDay - getDay);
+        
+        const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : ' Yesterday');
+        console.log('result: ', result);
+        return result === 'Today' || result === 'Yesterday' ? result + ' ' + this.formatTime(time) : result;
+    }
+    
+
 
     render() {
         let selectedPost = null;
@@ -193,8 +230,7 @@ class Community extends Component {
                             <div className="post-title">
                                 <img src={post.image_src} />
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
-                                <span className="post-user">Posted by {post.username}</span>
-                                <span className="Comment-user">{post.date} </span>
+                                <span className="post-user">Posted by {post.username}<br></br>{this.formatDate(post.date)}</span>
                                 <span className="post-category"><em>{post.category}</em></span>
                             </div>
 
@@ -202,8 +238,8 @@ class Community extends Component {
 
                             <div className="post-body">
                                 <span className="title"><Link to={this.props.match.url + '/' + post._id}>{post.title}</Link></span>
-                                {post.image_src && <img src={post.image_src} />}
                                 {post.description.length < 50 ? <span className="description">{post.description}</span> : <span className="description">{post.description.substring(0, 50) + '...'}</span>}
+                                {post.image_src && <img src={post.image_src} style={{width: 200, height: 200}}/>}
                             </div>
                             <div className="post-footer">
                                 <div className="comments footer-action">
