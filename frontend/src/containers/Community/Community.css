@@ -7,11 +7,13 @@ header {
   text-align: center;
 }
 
-
+.post {
+  border: black solid 1px;
+}
 
 .posts-wrapper .post {
   display: grid;
-  width: 100%;
+
 
   grid-template-columns: 1fr 12fr;
   grid-template-rows: 1fr auto 1fr;
@@ -29,6 +31,31 @@ header {
 .posts-wrapper .post:hover {
   cursor: pointer;
 }
+
+.posts-wrapper .post .post-title {
+  
+  display: block;
+}
+
+.posts-wrapper .post .post-user {
+  text-align: left;
+  width: 50%;
+  float: left;
+}
+
+.posts-wrapper .post .post-category {
+  text-align: right;
+  padding-right: 10px;
+  width: 50%;
+  float: right;
+}
+
+/* .posts-wrapper .post-category {
+  float: right;
+  right: 1;
+  width: 50%;
+  padding-left: 10px;
+} */
 
 .posts-wrapper .post .post-sidebar {
   grid-area: post-sidebar;
@@ -163,6 +190,7 @@ header {
 }
 
 .posts-wrapper .post .post-footer .footer-action svg {
+  padding-left: 7px;
   margin-right: 5px;
 }
 

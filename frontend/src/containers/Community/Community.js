@@ -193,12 +193,13 @@ class Community extends Component {
                             <div className="post-title">
                                 <img src={post.image_src} />
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
-                                <span className="post-user">Posted by</span>
-                                <span className="post-user underline">{post.username}</span>
-                                <div className="spacer"></div>
-                                <span>{post.category}</span>
-
+                                <span className="post-user">Posted by {post.username}</span>
+                 
+                                <span className="post-category"><em>{post.category}</em></span>
                             </div>
+                            
+                            <div className="spacer"></div>
+                            
                             <div className="post-body">
                                 <span className="title"><Link to={this.props.match.url + '/' + post._id}>{post.title}</Link></span>
                                 {post.image_src && <img src={post.image_src} />}
@@ -207,9 +208,9 @@ class Community extends Component {
                             <div className="post-footer">
                                 <div className="comments footer-action">
                                     <ModeCommentIcon className="comment-icon" />
-                                    <span>{(post.comments.length === 0) ? (post.comments.length) : (post.comments.length + 1)} Comments</span>
+                                    <span>{(post.comments.length === 0) ? (post.comments.length) : (post.comments.length + 1)} Replies</span>
                                 </div>
-                                <div className="share footer-action">
+                                {/* <div className="share footer-action">
                                     <ShareIcon />
                                     <span>Share</span>
                                 </div>
@@ -217,7 +218,7 @@ class Community extends Component {
                                     <BookmarkIcon />
                                     <span>Save</span>
                                 </div>
-                                <MoreHorizIcon className="more-icon footer-action" />
+                                <MoreHorizIcon className="more-icon footer-action" /> */}
                             </div>
                         </div>
                     ))}
