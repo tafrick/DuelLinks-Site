@@ -85,10 +85,7 @@ class FullBox extends Component {
                     <img src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
                 </div>
             );
-            console.log('112sadasfadfassafa');
-            if(this.state.loadedCards) {
-                console.log('loadedCards: ' + this.state.loadedCards[0].data);
-            }
+
             displayCards = this.state.cardsArray.map((card, index) => {
 
                 // this.loadCardData(card);
@@ -97,12 +94,12 @@ class FullBox extends Component {
                     
                     <span key={index}>
                         
-                        {console.log("name of card: ", card)}
+                        {/* {console.log("name of card: ", card)} */}
                         
                         
                         {undefined ? null : <FullCard cardName = {card} />}
                         {/* <Link to={this.props.match.params.url + '/' + card}><span style={{display: "inline-block"}}>{card}</span>,</Link> */}
-                        {console.log(this.props.match.params.url + '/' + card)}
+                        {console.log('Link to: ' + this.props.match.params.url + '/' + card)}
                         {/* <FullCard box = {this.props.match.params.boxId} /> */}
                     </span>
                     // <table className={classes.cardlist}>
@@ -122,7 +119,6 @@ class FullBox extends Component {
         return (
             <div className="box-page">
                 {Box}
-                {console.log("completed cycle: ",this.state.cardsArray)}
                 <br></br>
                 <span className="cardlist">
                     {displayCards}

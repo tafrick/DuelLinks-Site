@@ -222,7 +222,9 @@ class Community extends Component {
                 {this.props.isAuth ? newPost : <p>Please login to post!</p>}
 
                 <div className="posts-wrapper">
+                    
                     {this.state.loadedPosts.map((post, index) => (
+                        
                         <div className="post" key={index * Math.random()}>
                             <div className="post-sidebar">
                                 <ArrowUpwardIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes) }} />
@@ -246,7 +248,7 @@ class Community extends Component {
                             <div className="post-footer">
                                 <div className="comments footer-action">
                                     <ModeCommentIcon className="comment-icon" />
-                                    <span>{(post.comments.length === 0) ? (post.comments.length) : (post.comments.length + 1)} Replies</span>
+                                    <span><Link to={this.props.match.url + '/' + post._id}>{(post.comments.length === 0) ? (post.comments.length) : (post.comments.length + 1)} Replies</Link></span>
                                 </div>
                                 {/* <div className="share footer-action">
                                     <ShareIcon />

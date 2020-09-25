@@ -51,21 +51,24 @@
     height: 187.5px;
     width: 400px;
     margin: auto 10px;
+    border-radius: 5px;
 }
 
 .guide:hover {
     box-shadow: 0 8px 16px 1px rgba(0, 0, 0, 0.2);
+    transform: scale(1.04);
 }
 
 .guide img {
     width: 100%;
     height: 80%;
+    border-radius: 5px;
 }
 
 .container {
     padding: 2px 2px;
     text-align: center;
-    line-height: 1;
+    line-height: 0;
 }
 
 .guide h4 {
@@ -96,4 +99,16 @@
 
 .articles li {
     padding: 10px 5px 10px;
+}
+
+.Homepage .articles .guide .container .test {
+
+    display: none;
+}
+
+.Homepage .articles .guide:hover .container .test {
+    text-align: center;
+    display: block;
+    margin-top: 14px;
+    font-size: 10px;
 }

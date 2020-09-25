@@ -54,6 +54,23 @@ class Homepage extends Component {
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <div className="guide">
+                                <Link to="/Community"><img src="https://media.giphy.com/media/xT9IgtMfKDZJbZ9QGs/giphy.gif" alt="tournaments" /></Link>
+                                <div className="container">
+                                    <h4><b>Enter the Shadow Realm<span className="test">[36 Chambers]</span></b></h4>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="guide">
+                                <Link to="/Community"><img src="https://i.pinimg.com/originals/c7/a2/fc/c7a2fcb38f8e997dc4cb32a9a5989b78.jpg" alt="tournaments" /></Link>
+                                <div className="container">
+                                    <h4><b>Duel Links Academy Certified</b></h4>
+                                </div>
+                            </div>
+                        </li>
+                        
                     </ul>
                 </div>
                 <div>
