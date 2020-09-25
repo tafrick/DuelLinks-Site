@@ -150,7 +150,7 @@ class Community extends Component {
         const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
         const timeStamp = getHour > 11 ? 
         (getHour-12).toString() + ':' + getMinute + 'pm' : 
-        getHour + ':' + getMinute;
+        getHour + ':' + getMinute + 'am';
 
         // console.log('getYear: ' , getYear);
         // console.log('getMonth: ' , getMonth);
