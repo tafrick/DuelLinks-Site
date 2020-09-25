@@ -8,6 +8,7 @@ import Decks from './containers/Decks/Decks';
 import Beginners from './components/Beginners/Beginners';
 import Community from './containers/Community/Community';
 import FullPost from './containers/Community/FullPost';
+import Boxes from './containers/Boxes/Boxes';
 import FullBox from './containers/Boxes/FullBox';
 import FullCard from './containers/Boxes/FullCard';
 import CategoryPosts from './containers/Community/CategoryPosts';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/beginners" exact render={Beginners} />
 
           <Route path="/" exact component={Homepage} />
+          <Route path="/boxes" exact component={Boxes} />
           <Route path="/boxes/:boxId" exact component={FullBox} />
           <Route path="/boxes/:boxId/:cardName" exact component={FullCard} />
           <Route path="/community/:postId" exact component={FullPost} />
