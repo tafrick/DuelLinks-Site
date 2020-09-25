@@ -51,10 +51,10 @@ const Comment = (props) => {
                 <ArrowDownwardIcon className="downvote" onClick={props.clickedDown} />
             </div>
             <div className="Comment-title">
-                <span className="Comment-user">{formatDateAndTime(props.time)} </span>
-                
-                <span className="Comment-user">Posted by </span>
-                <span className="Comment-user underline">{props.username}</span>
+            
+                <span className="Comment-user underline"><u>{props.username}</u></span>
+                <span className="Comment-time">{formatDateAndTime(props.time)} </span>
+                {/* <span className="Comment-user underline">{props.username}</span> */}
                 
                 
                 <div className="spacer"></div>

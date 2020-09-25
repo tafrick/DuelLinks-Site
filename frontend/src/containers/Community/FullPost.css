@@ -6,6 +6,7 @@
     padding-left: 10px;
     padding-bottom: 15px;
     width: 95%;
+    font-size: 14px;
 }
 
 .post-sidebar {
@@ -23,6 +24,7 @@
 .post-title {
     padding-left: 10px;
     grid-template-rows:  1fr;
+
 }
 
 .post-title span {

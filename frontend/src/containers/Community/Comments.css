@@ -60,25 +60,40 @@
 
 .Comment .Comment-title {
     grid-area: Comment-title;
+    padding: 5px 5px;
+    padding-left: 10px;
+    display: block;
 
-    display: flex;
 
-    align-items: center;
 }
 
 .Comment .Comment-body {
     grid-area: Comment-body;
-    padding-left: 6px;
+    font-size: 14px;
+    padding-left: 10px;
 
 }
 
-.Comment .Comment-title>.Comment-user {
-    padding-left: 5px;
-    font-size: 12px;
+.Comment .Comment-title .Comment-user {
+    width: 50%;
+    float: left;
+    
+}
 
+.Comment .Comment-title .Comment-time {
+    padding-right: 0px;
+    font-size: 12px;
+    text-align: right;
+    width: 50%;
+    float: right;
     color: rgb(150, 150, 150);
 }
 
+.Comment .Comment-title>.underline {
+    color: steelblue;
+    font-size: 18px;
+}
+
 .Comment .Comment-title>.underline:hover {
-    text-decoration: underline;
+    color: white;
 }

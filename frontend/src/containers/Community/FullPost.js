@@ -101,7 +101,7 @@ class FullPost extends Component {
                     <div className="post-title">
                             <span>Posted by </span>
                             {/* <span>Posted by </span> */}
-                            <h2 className="post-user underline">{this.state.loadedPost.username}</h2>
+                            <h2 className="post-user underline" style = {{color: "steelblue"}}>{this.state.loadedPost.username}</h2>
                             <hr/>
                             <div className="spacer"></div>
                     </div>
