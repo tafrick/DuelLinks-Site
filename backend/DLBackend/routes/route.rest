@@ -2,7 +2,16 @@ GET http://localhost:9000/boxes
 
 ###
 
-GET http://localhost:3000/boxes/22
+GET http://localhost:9000/boxes/5f519fc4a63160a558b2b8b3
+
+###
+
+PATCH http://localhost:9000/boxes/5f519fc4a63160a558b2b8b3
+Content-Type: application/json
+
+{
+    "img_src": "https://img.konami.com/yugioh/duel_links/en/box/power_of_bravery/images/banner.jpg?v=2"
+}
 
 ###
 
@@ -52,4 +61,4 @@ GET http://localhost:9000/comments/postId=/5f55cb8be945c1fd01aa6605
 
 ###
 
-GET http://localhost:9000/posts/category=/KC Cup
+GET http://localhost:9000/posts/category=/Gameplay_Tips
