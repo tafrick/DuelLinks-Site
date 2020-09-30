@@ -83,43 +83,74 @@ class FullPost extends Component {
         })
     }
 
+    upvoteHandler(commentID, oldUpvotes) {
+        const newUpvotes = oldUpvotes + 1;
+        const updatedComment = {
+            upvotes: newUpvotes
+        }
+        console.log(`new upvotes ${newUpvotes}`)
+        axios.patch('http://localhost:9000/comments/' + commentID, updatedComment)
+            .then(response => {
+                console.log("Update Successful!");
+                window.location.reload();
+            })
+            .catch(err => {
+                console.error(err.message);
+            })
+    }
+
+    downvoteHandler(commentID, oldUpvotes) {
+        const newVotes = oldUpvotes - 1;
+        const updatedComment = {
+            upvotes: newVotes
+        }
+        axios.patch('http://localhost:9000/comments/' + commentID, updatedComment)
+            .then(response => {
+                console.log("Update Successful!");
+                window.location.reload();
+            })
+            .catch(err => {
+                console.error(err.message);
+            })
+    }
+
     render() {
         let post = null;
         let postComments = null;
         if (this.state.loadedPost) {
             post = (
                 <>
-                <h1 id="title">{this.state.loadedPost.title}</h1>
-                <div className= "post-wrapper">
-                    <div className = "post-sidebar">
-                        <ArrowUpwardIcon className="upvote" onClick={this.props.clickedUp} />
-                        <p>{this.state.loadedPost.upvotes}</p>
-                        <ArrowDownwardIcon className="downvote" onClick={this.props.clickedDown} />
-                    </div>
-                {/* <span className="Comment-user">Posted By {this.state.loadedPost.username}</span> */}
+                    <h1 id="title">{this.state.loadedPost.title}</h1>
+                    <div className="post-wrapper">
+                        <div className="post-sidebar">
+                            <ArrowUpwardIcon className="upvote" onClick={this.props.clickedUp} />
+                            <p>{this.state.loadedPost.upvotes}</p>
+                            <ArrowDownwardIcon className="downvote" onClick={this.props.clickedDown} />
+                        </div>
+                        {/* <span className="Comment-user">Posted By {this.state.loadedPost.username}</span> */}
 
-                    <div className="post-title">
+                        <div className="post-title">
                             <span>Posted by </span>
                             {/* <span>Posted by </span> */}
-                            <h2 className="post-user underline" style = {{color: "steelblue"}}>{this.state.loadedPost.username}</h2>
-                            <hr/>
+                            <h2 className="post-user underline" style={{ color: "steelblue" }}>{this.state.loadedPost.username}</h2>
+                            <hr />
                             <div className="spacer"></div>
-                    </div>
-                    <div className="post-body">
-                        
-                        <p>{this.state.loadedPost.description}</p>
-                       {this.state.loadedPost.image_src === undefined ? null : <ModalImage
-                            small={this.state.loadedPost.image_src}
-                            large={this.state.loadedPost.image_src}
-                            alt={this.state.loadedPost.title}
-                            className="modal"
+                        </div>
+                        <div className="post-body">
+
+                            <p>{this.state.loadedPost.description}</p>
+                            {this.state.loadedPost.image_src === undefined ? null : <ModalImage
+                                small={this.state.loadedPost.image_src}
+                                large={this.state.loadedPost.image_src}
+                                alt={this.state.loadedPost.title}
+                                className="modal"
                             />}
-                        {/* <img src={this.state.loadedPost.image_src}/> */}
+                            {/* <img src={this.state.loadedPost.image_src}/> */}
+                        </div>
+
+
+                        {/* <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.title} /> */}
                     </div>
-                    
-                    
-                    {/* <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.title} /> */}
-                </div>
                 </>
             );
             postComments = this.state.loadedcomments.map((comment, index) => (
@@ -127,16 +158,18 @@ class FullPost extends Component {
                     upvotes={comment.upvotes}
                     username={comment.username}
                     body={comment.body}
-                    time={comment.date} />
+                    time={comment.date}
+                    clickedUp={() => { this.upvoteHandler(comment._id, comment.upvotes) }}
+                    clickedDown={() => { this.downvoteHandler(comment._id, comment.upvotes) }} />
             ))
         }
         return (
-            <div style= {{ textAlign: "center"}}>
+            <div style={{ textAlign: "center" }}>
                 {post}
                 {postComments}
-                <Button variant="contained" color="primary"onClick={this.toggleAddComment}>Add Comment</Button>
+                <Button variant="contained" color="primary" onClick={this.toggleAddComment}>Add Comment</Button>
                 {this.state.displayPost ? (<div className="NewComment">
-                <label>Username</label>
+                    <label>Username</label>
                     <select value={this.state.username} onChange={(event) => this.setState({ username: event.target.value })}>
                         <option value="Weevil">Weevil</option>
                         <option value="Rex">Rex</option>
@@ -149,7 +182,7 @@ class FullPost extends Component {
                     </select>
                     <label>Body</label>
                     <textarea rows="4" value={this.state.newCommentBody} onChange={(event) => this.setState({ newCommentBody: event.target.value })} />
-                    
+
                     <Button variant="contained" color="primary" onClick={this.postDataHandler}>Submit Comment </Button>
                 </div>) : null
                 }
