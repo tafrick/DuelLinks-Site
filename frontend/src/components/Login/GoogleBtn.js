@@ -13,7 +13,8 @@ class GoogleBtn extends Component {
         this.state = {
             isLogined: false,
             accessToken: '',
-            username: ''
+            username: '',
+            expirationTime: null
         };
 
         this.login = this.login.bind(this);
@@ -26,12 +27,13 @@ class GoogleBtn extends Component {
         if (response.accessToken) {
             this.setState({
                 isLogined: true,
-                accessToken: response.accessToken
+                accessToken: response.accessToken,
+                expirationTime: response.tokenObj.expires_in
             });
             axios.get('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + response.accessToken)
                 .then(response => {
                     console.log(response)
-                    this.props.onAuth(this.state.accessToken, response.data.email, response.data.given_name)
+                    this.props.onAuth(this.state.accessToken, response.data.email, response.data.given_name, this.state.expirationTime)
                     this.setState({ username: response.data.given_name })
                 })
                 .catch(error => {
@@ -45,6 +47,7 @@ class GoogleBtn extends Component {
             isLogined: false,
             accessToken: ''
         });
+        this.props.onLogout();
     }
 
     handleLoginFailure(response) {
@@ -58,7 +61,7 @@ class GoogleBtn extends Component {
     render() {
         return (
             <div>
-                {this.state.isLogined ?
+                {this.props.isAuth ?
                     <GoogleLogout
                         clientId={CLIENT_ID}
                         buttonText='Logout'
@@ -73,16 +76,26 @@ class GoogleBtn extends Component {
                         responseType='code,token'
                     />
                 }
-                {this.state.accessToken ? <h3>Welcome: {this.state.username}!</h3> : null}
+                {this.props.isAuth ? <h3>Welcome: {this.props.userName}!</h3> : null}
             </div>
         )
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+        userEmail: state.userEmail,
+        userName: state.userName,
+        isAuth: state.token !== null
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (token, email, uname) => dispatch(actions.auth(token, email, uname))
+        onAuth: (token, email, uname, expireTime) => dispatch(actions.auth(token, email, uname, expireTime)),
+        onLogout: () => dispatch(actions.logout())
     };
 };
 
-export default connect(null, mapDispatchToProps)(GoogleBtn);
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleBtn);
