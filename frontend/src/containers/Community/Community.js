@@ -87,14 +87,20 @@ class Community extends Component {
             })
     }
 
-    upvoteHandler(postId, oldUpvotes) {
-        if (this.props.isAuth) {
-            console.log(`upvoteHandler ${postId}`);
-            console.log(` old upvotes value ${oldUpvotes}`);
-            const newUpvotes = oldUpvotes + 1;
-            console.log(` new upvotes value ${newUpvotes}`);
-            const updatedPost = {
-                upvotes: newUpvotes
+    upvoteHandler(postId, oldUpvotes, likeList, dislikeList) {
+        let newUpvotes = 0;
+        let updatedPost = {};
+        let newLikedList = [];
+        //case 1: not in like or dislike
+        if (!dislikeList.includes(this.props.email) && !likeList.includes(this.props.email)) {
+            console.log("not in like or dislike");
+            newUpvotes = oldUpvotes + 1;
+            newLikedList = [...likeList];
+            newLikedList.push(this.props.email);
+            console.log(newLikedList);
+            updatedPost = {
+                upvotes: newUpvotes,
+                liked_by: newLikedList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
@@ -104,18 +110,61 @@ class Community extends Component {
                 .catch(err => {
                     console.error(err.message);
                 })
-        } else {
-            alert("You must be logged in to like/dislike posts");
+        } else if (likeList.includes(this.props.email)) {
+            console.log("in like not dislike");
+            newUpvotes = oldUpvotes - 1;
+            newLikedList = [...likeList];
+            newLikedList = newLikedList.filter(e => e !== this.props.email);
+            console.log(newLikedList);
+            updatedPost = {
+                upvotes: newUpvotes,
+                liked_by: newLikedList
+            }
+            axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
+                .then(response => {
+                    console.log("Update Successful!");
+                    this.props.history.go('/community');
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
+        } else if (dislikeList.includes(this.props.email)) {
+            console.log("in dilsikelike not like");
+            newUpvotes = oldUpvotes + 1;
+            let newDislikeList = [...dislikeList];
+            newDislikeList = newDislikeList.filter(e => e !== this.props.email);
+            newLikedList = [...likeList];
+            newLikedList.push(this.props.email);
+            updatedPost = {
+                upvotes: newUpvotes,
+                disliked_by: newDislikeList,
+                liked_by: newLikedList
+            }
+            axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
+                .then(response => {
+                    console.log("Update Successful!");
+                    this.props.history.go('/community');
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
         }
     }
 
-    downvoteHandler(postId, oldVotes) {
-        if (this.props.isAuth) {
-            console.log(` old upvotes value ${oldVotes}`);
-            const newVotes = oldVotes - 1;
-            console.log(` new upvotes value ${newVotes}`);
-            const updatedDownvotedPost = {
-                upvotes: newVotes
+    downvoteHandler(postId, oldVotes, likeList, dislikeList) {
+        let newDownvotes = 0;
+        let updatedDownvotedPost = {};
+        let newDislikeList = [];
+        //case 1
+        if (!dislikeList.includes(this.props.email) && !likeList.includes(this.props.email)) {
+            console.log("not on any list");
+            newDownvotes = oldVotes - 1;
+            newDislikeList = [...dislikeList];
+            newDislikeList.push(this.props.email);
+            console.log(newDislikeList);
+            updatedDownvotedPost = {
+                upvotes: newDownvotes,
+                disliked_by: newDislikeList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
@@ -125,8 +174,41 @@ class Community extends Component {
                 .catch(err => {
                     console.error(err.message);
                 })
-        } else {
-            alert("You must be logged in to like/dislike posts");
+        } else if (dislikeList.includes(this.props.email)) {
+            newDownvotes = oldVotes + 1;
+            newDislikeList = [...dislikeList];
+            newDislikeList = newDislikeList.filter(e => e !== this.props.email);
+            updatedDownvotedPost = {
+                upvotes: newDownvotes,
+                disliked_by: newDislikeList
+            }
+            axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
+                .then(response => {
+                    console.log("Update Successful!");
+                    this.props.history.go('/community');
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
+        } else if (likeList.includes(this.props.email)) {
+            newDownvotes = oldVotes - 1;
+            let newLikeList = [...likeList];
+            newLikeList = newLikeList.filter(e => e !== this.props.email);
+            newDislikeList = [...dislikeList];
+            newDislikeList.push(this.props.email);
+            updatedDownvotedPost = {
+                upvotes: newDownvotes,
+                disliked_by: newDislikeList,
+                liked_by: newLikeList
+            }
+            axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
+                .then(response => {
+                    console.log("Update Successful!");
+                    this.props.history.go('/community');
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
         }
     }
 
@@ -137,29 +219,29 @@ class Community extends Component {
 
     formatDateAndTime = (dateTime) => {
         dateTime = new Date(dateTime);
-        
+
         const today = new Date();
         const currentYear = today.getFullYear();
-        const currentMonth = '0'+ (today.getMonth()+1).toString().slice(-2);
+        const currentMonth = '0' + (today.getMonth() + 1).toString().slice(-2);
         const currentDay = today.getDate().toString().slice(-2);
-    
+
         const getYear = dateTime.getFullYear();
-        const getMonth = '0' + (dateTime.getMonth()+1).toString().slice(-2);
+        const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
         const getDay = dateTime.getDate().toString().slice(-2);
         const getHour = dateTime.getHours();
         const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
-        const timeStamp = getHour > 11 ? 
-        (getHour-12).toString() + ':' + getMinute + 'pm' : 
-        getHour + ':' + getMinute + 'am';
+        const timeStamp = getHour > 11 ?
+            (getHour - 12).toString() + ':' + getMinute + 'pm' :
+            getHour + ':' + getMinute + 'am';
 
         // console.log('getYear: ' , getYear);
         // console.log('getMonth: ' , getMonth);
         // console.log('getDay: ' , getDay);
         // console.log('getHour: ' , getHour);
         // console.log('getMinute: ' , getMinute);
-        
-        const yearDifference = (currentYear - getYear)*30;
-        const monthDiffercence = (currentMonth - getMonth)*30;
+
+        const yearDifference = (currentYear - getYear) * 30;
+        const monthDiffercence = (currentMonth - getMonth) * 30;
         const dayDifference = Math.abs(currentDay - getDay);
 
         // console.log('currentDay: ', currentDay);
@@ -167,12 +249,12 @@ class Community extends Component {
         // console.log('difference: ', dayDifference);
 
         console.log('timestamp: ', timeStamp);
-        
+
         const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : 'Yesterday');
         // console.log('result: ', result);
         return result === 'Today' || result === 'Yesterday' ? result + ' ' + timeStamp : result;
     }
-    
+
 
 
     render() {
@@ -209,6 +291,7 @@ class Community extends Component {
                 <button onClick={this.postDataHandler}>Add Post</button>
             </div>
         );
+
         return (
             <div className="Community">
 
@@ -222,14 +305,14 @@ class Community extends Component {
                 {this.props.isAuth ? newPost : <p>Please login to post!</p>}
 
                 <div className="posts-wrapper">
-                    
+
                     {this.state.loadedPosts.map((post, index) => (
-                        
+
                         <div className="post" key={index * Math.random()}>
                             <div className="post-sidebar">
-                                <ArrowUpwardIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes) }} />
+                                {this.props.isAuth ? <ArrowUpwardIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowUpwardIcon />}
                                 <span>{post.upvotes}</span>
-                                <ArrowDownwardIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes) }} />
+                                {this.props.isAuth ? <ArrowDownwardIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowDownwardIcon />}
                             </div>
                             <div className="post-title">
                                 <img src={post.image_src} />
@@ -243,7 +326,7 @@ class Community extends Component {
                             <div className="post-body">
                                 <span className="title"><Link to={this.props.match.url + '/' + post._id}>{post.title}</Link></span>
                                 {post.description.length < 50 ? <span className="description">{post.description}</span> : <span className="description">{post.description.substring(0, 50) + '...'}</span>}
-                                {post.image_src && <img src={post.image_src} style={{width: 200, height: 200}}/>}
+                                {post.image_src && <img src={post.image_src} style={{ width: 200, height: 200 }} />}
                             </div>
                             <div className="post-footer">
                                 <div className="comments footer-action">
