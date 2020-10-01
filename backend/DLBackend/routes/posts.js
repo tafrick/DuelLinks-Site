@@ -77,6 +77,12 @@ router.patch('/:id', getPost, async (req, res) => {
     if (req.body.category != null) {
         res.post.category = req.body.category
     }
+    if (req.body.liked_by != null) {
+        res.post.liked_by = req.body.liked_by
+    }
+    if (req.body.disliked_by != null) {
+        res.post.disliked_by = req.body.disliked_by
+    }
     try {
         const updatedPost = await res.post.save()
         res.json(updatedPost)
