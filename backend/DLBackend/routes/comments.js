@@ -58,6 +58,12 @@ router.patch('/:id', getComment, async (req, res) => {
     if (req.body.upvotes != null) {
         res.comment.upvotes = req.body.upvotes
     }
+    if (req.body.liked_by != null) {
+        res.comment.liked_by = req.body.liked_by
+    }
+    if (req.body.disliked_by != null) {
+        res.comment.disliked_by = req.body.disliked_by
+    }
     try {
         const updatedComment = await res.comment.save()
         res.json(updatedComment)

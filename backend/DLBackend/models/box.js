@@ -6,11 +6,21 @@ const boxSchema = new mongoose.Schema({
         required: true
     },
     cardsIn: [{
-        type: String,
+        id: String,
+        name: {
+            type: String,
+            required: true
+        },
+        img: {
+            type: String
+        },
+        description: {
+            type: String,
+            required: true
+        }
     }],
     img_src: {
-        type: String,
-        default: 'test',
+        type: String
     },
     id: {
         type: String,

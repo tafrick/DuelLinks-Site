@@ -24,6 +24,8 @@ router.post('/', async (req, res) => {
     const box = new Box({
         name: req.body.name,
         cardsIn: req.body.cardsIn,
+        releaseDate: req.body.releaseDate,
+        img_src: req.body.img_src
     })
     try {
         const newBox = await box.save()
