@@ -29,6 +29,7 @@ class FullBox extends Component {
         const boxID = this.props.match.params.boxId;
         axios.get('http://localhost:9000/boxes/' + boxID)
             .then(response => {
+                // console.log("sdasdas",response.data.cardsIn)
                 const box = { ...response.data };
                 const box_array = [...box.cardsIn];
                 this.setState({ loadedBox: box, cardsArray: box_array });
@@ -42,21 +43,7 @@ class FullBox extends Component {
     loadCardData(name) {
         if (name !== 'undefined') {
             console.log(name);
-            const http = rateLimit(axios.create(), 
-            { maxRequests: 19, perMilliseconds: 1000, maxRPS: 18 })
-            http.getMaxRPS();
-            http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + name)
-            .then(response => {
-                    console.log(response);
-                    let cards = [];
-                    cards.push(response.data);
-                    this.setState({
-                        loadedCards: cards
-                    });
-                })
-                .catch(error => {
-                    console.error(error.message);
-                })
+
         }
     }
 
@@ -64,13 +51,14 @@ class FullBox extends Component {
 
         let cards = "";
         if (this.state.loadedCards) {
-            cards = this.state.loadedCards[0].data.map(card => {
+            cards = this.state.box_array.map(card => {
+                console.log("cardData: " , card)
                 return (
                     <Cards
                         key={card.id}
                         title={card.name}
-                        effect={card.desc}
-                        image={card.card_images[0].image_url} />
+                        effect={card.description}
+                        image={card.img} />
                 );
             })
         }
@@ -91,15 +79,14 @@ class FullBox extends Component {
                 // this.loadCardData(card);
 
                 return (
-                    
                     <span key={index}>
                         
                         {/* {console.log("name of card: ", card)} */}
                         
                         
-                        {undefined ? null : <FullCard cardName = {card} />}
+                        {undefined ? null : <FullCard getCard = {card} />}
                         {/* <Link to={this.props.match.params.url + '/' + card}><span style={{display: "inline-block"}}>{card}</span>,</Link> */}
-                        {console.log('Link to: ' + this.props.match.params.url + '/' + card)}
+                        {/* {console.log('Link to: ' + this.props.match.params.url + '/' + card)} */}
                         {/* <FullCard box = {this.props.match.params.boxId} /> */}
                     </span>
                     // <table className={classes.cardlist}>

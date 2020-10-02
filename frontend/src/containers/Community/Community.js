@@ -219,15 +219,17 @@ class Community extends Component {
 
     formatDateAndTime = (dateTime) => {
         dateTime = new Date(dateTime);
-
+        console.log("dateTime: " , dateTime)
         const today = new Date();
         const currentYear = today.getFullYear();
         const currentMonth = '0' + (today.getMonth() + 1).toString().slice(-2);
         const currentDay = today.getDate().toString().slice(-2);
 
         const getYear = dateTime.getFullYear();
-        const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
+        
         const getDay = dateTime.getDate().toString().slice(-2);
+        
+
         const getHour = dateTime.getHours();
         const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
         const timeStamp = getHour > 11 ?
@@ -241,8 +243,10 @@ class Community extends Component {
         // console.log('getMinute: ' , getMinute);
 
         const yearDifference = (currentYear - getYear) * 30;
-        const monthDifference = (currentMonth - getMonth) * 30;
         const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) +  monthDifference:Math.abs(currentDay - getDay);
+        const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
+        const monthDifference = (currentMonth - getMonth) * 30;
+        
 
         // console.log('currentDay: ', currentDay);
         // console.log('getDay: ', getDay);
