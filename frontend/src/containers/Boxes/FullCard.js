@@ -36,10 +36,7 @@ class FullCard extends Component {
 
         return (
             <span>
-                {this.props.box}
-                {/* {<img src={this.props.getCard.img}/>} */}
                 <span style={{display: "inline-block"}}>
-                    {/* {ldcard} */}
                     {<ModalImage
                     small={this.props.getCard.img}
                     large={this.props.getCard.img}

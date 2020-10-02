@@ -47,6 +47,10 @@ class FullBox extends Component {
         }
     }
 
+    getDate(releaseDate) {
+        const format = new Date(releaseDate);
+        return(<div>Released: {format.toLocaleDateString()}</div>);
+    }
     render() {
 
         let cards = "";
@@ -69,8 +73,11 @@ class FullBox extends Component {
         if (this.state.loadedBox) {
             Box = (
                 <div>
-                    <h2>{this.state.loadedBox.name}</h2>
+                    <h2>{this.state.loadedBox.name} [{this.state.loadedBox.cardsIn.length}]</h2>
+                    <h4>{this.getDate(this.state.loadedBox.releaseDate)}</h4>
                     <img src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
+                    {console.log(new Date(this.state.loadedBox.releaseDate))}
+                    
                 </div>
             );
 
