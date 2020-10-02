@@ -241,8 +241,8 @@ class Community extends Component {
         // console.log('getMinute: ' , getMinute);
 
         const yearDifference = (currentYear - getYear) * 30;
-        const monthDiffercence = (currentMonth - getMonth) * 30;
-        const dayDifference = Math.abs(currentDay - getDay);
+        const monthDifference = (currentMonth - getMonth) * 30;
+        const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) +  monthDifference:Math.abs(currentDay - getDay);
 
         // console.log('currentDay: ', currentDay);
         // console.log('getDay: ', getDay);

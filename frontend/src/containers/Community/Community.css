@@ -9,6 +9,12 @@ header {
 
 .post {
   border: black solid 1px;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 1px rgba(0, 0, 0, 0.2);
+}
+
+.post:hover {
+  transform: scale(1.005);
 }
 
 .posts-wrapper .post {

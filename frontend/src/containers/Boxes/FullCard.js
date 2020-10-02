@@ -17,7 +17,7 @@ class FullCard extends Component {
     }
 
     componentDidMount() {
-        this.loadCard();
+        // setTimeout(() => this.loadCard(), 2000);
     }
 
     modalDescription(name, desc) {
@@ -40,18 +40,22 @@ class FullCard extends Component {
             http.getMaxRPS();
         */
 
-        const http = rateLimit(axios.create(), { maxRPS: 3 });
-        console.log("http get: ", http.getMaxRPS);
+        const http = rateLimit(axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + this.props.cardName, {
+            params: {
+                _limit: 10,
+                timeout: 1000
+               }
+        }, { maxRequests: 1, maxRPS: 1 , perMilliseconds: 2000})
+        .then(response => {
+            const card = { ...response.data };
+            this.setState({ loadedCard: card });
+        })
+        .catch(error => {
+            console.error(error.message);
+        })
+        )};
 
-            http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + this.props.cardName)
-            .then(response => {
-                const card = { ...response.data };
-                this.setState({ loadedCard: card });
-            })
-            .catch(error => {
-                console.error(error.message);
-            })
-    }
+
     render() {
         const cardName = this.props.cardName;
         // console.log('Fullcard data: ' + this.state.loadedCard);

@@ -20,10 +20,22 @@ class FullPost extends Component {
             username: 'Weevil',
             newCommentBody: '',
             postID: '',
-            displayPost: false
+            displayPost: false,
+            toggleFullPost: true,
+            displayButton: false
         }
     }
 
+    displayButton = () => {
+        this.setState({displayButton: !this.state.displayButton})
+    }
+    toggleFullPost = () =>{
+        this.setState({
+            // this.toggleFullPost: !this.state.toggleFullPost
+            toggleFullPost: !this.state.toggleFullPost
+        })
+        console.log(this.state.toggleFullPost)
+    }
     componentDidMount() {
         this.fetchData();
     }
@@ -133,18 +145,34 @@ class FullPost extends Component {
                             <span>Posted by </span>
                             {/* <span>Posted by </span> */}
                             <h2 className="post-user underline" style={{ color: "steelblue" }}>{this.state.loadedPost.username}</h2>
+                            
                             <hr />
                             <div className="spacer"></div>
                         </div>
                         <div className="post-body">
 
-                            <p>{this.state.loadedPost.description}</p>
-                            {this.state.loadedPost.image_src === undefined ? null : <ModalImage
-                                small={this.state.loadedPost.image_src}
-                                large={this.state.loadedPost.image_src}
-                                alt={this.state.loadedPost.title}
-                                className="modal"
-                            />}
+                            {this.state.loadedPost.description.length > 3000 && this.state.toggleFullPost ? (
+                                <div>
+                                    {this.state.loadedPost.description.substring(0, 3000)} ...
+                                    <br></br>
+                                    <br></br>
+                                    <span style={{display: 'flex', justifyContent:'center'}}><button onClick={this.toggleFullPost}>Show more</button></span>
+                                </div>
+                                ) : (
+                                <div>
+                                    {this.state.loadedPost.description}
+                                    {this.state.loadedPost.description.length < 2500 ? '' : <span style={{display: 'flex', justifyContent:'center'}}><button onClick={this.toggleFullPost}>Show less</button></span>}
+                                    {this.state.loadedPost.image_src === undefined ? '' 
+                                    : this.state.loadedPost.image_src === '' ? null 
+                                    :<ModalImage
+                                    small={this.state.loadedPost.image_src}
+                                    large={this.state.loadedPost.image_src}
+                                    alt={this.state.loadedPost.title}
+                                    className="modal"
+                            />}</div>
+                            )
+                            }
+                            
                             {/* <img src={this.state.loadedPost.image_src}/> */}
                         </div>
 

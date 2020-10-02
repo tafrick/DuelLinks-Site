@@ -30,8 +30,8 @@ const formatDateAndTime = (dateTime) => {
     // console.log('getMinute: ' , getMinute);
     
     const yearDifference = (currentYear - getYear)*30;
-    const monthDiffercence = (currentMonth - getMonth)*30;
-    const dayDifference = Math.abs(currentDay - getDay);
+    const monthDifference = (currentMonth - getMonth)*30;
+    const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) +  monthDifference:Math.abs(currentDay - getDay);
 
     // console.log('currentDay: ', currentDay);
     // console.log('getDay: ', getDay);
@@ -46,9 +46,10 @@ const Comment = (props) => {
     return (
         <div className="Comment">
             <div className="Comment-sidebar">
-                <ArrowUpwardIcon className="upvote" onClick={props.clickedUp} />
+
+                <div className="upvote" onClick={props.clickedUp}>&#128077;</div>
                 <span>{props.upvotes}</span>
-                <ArrowDownwardIcon className="downvote" onClick={props.clickedDown} />
+                <div className="downvote" onClick={props.clickedDown}>&#128078;</div>
             </div>
             <div className="Comment-title">
             

@@ -97,3 +97,11 @@
 .Comment .Comment-title>.underline:hover {
     color: white;
 }
+
+.upvote:hover {
+    background-color: cadetblue;
+}
+
+.downvote:hover {
+    background-color: cadetblue;
+}
