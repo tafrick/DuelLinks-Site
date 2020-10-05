@@ -79,14 +79,18 @@ class Community extends Component {
 
     componentDidUpdate(_prevProps, prevState) {
         if (this.state.filter !== prevState.filter) {
-            axios.get('http://localhost:9000/posts/category=/' + this.state.filter)
-                .then(response => {
-                    const posts = [...response.data];
-                    this.setState({ loadedPosts: posts })
-                })
-                .catch(error => {
-                    console.error(error.message);
-                })
+            if (this.state.filter == "0") {
+                this.fetchPosts();
+            } else {
+                axios.get('http://localhost:9000/posts/category=/' + this.state.filter)
+                    .then(response => {
+                        const posts = [...response.data];
+                        this.setState({ loadedPosts: posts })
+                    })
+                    .catch(error => {
+                        console.error(error.message);
+                    })
+            }
         }
     }
 
