@@ -19,9 +19,9 @@ class Homepage extends Component {
     render() {
         return (
             <div className="Homepage">
-                <div>
+                <div className="home-wrapper">
                     <h1 className="animate__animated animate__fadeIn animate__slower">Welcome to the Duel Links Academy!</h1>
-                    <p className="animate__animated animate__fadeInLeftBig animate__slow">A fansite for the popular mobile game, no affiliation with Konami</p>
+                    <h3 className="animate__animated animate__fadeInLeftBig animate__slow">A fansite for the popular mobile game, no affiliation with Konami</h3>
                     <Logo />
                     <ul className="articles">
                         <li>

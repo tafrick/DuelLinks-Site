@@ -4,8 +4,12 @@
     height: 100%;
 }
 
+.Homepage .home-wrapper {
+    margin-top: 150px;
+}
+
 .Homepage h1 {
-    font-size: 250%;
+    font-size: 300%;
 }
 
 .Homepage ul {
