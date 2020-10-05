@@ -76,7 +76,6 @@ class GoogleBtn extends Component {
                         responseType='code,token'
                     />
                 }
-                {this.props.isAuth ? <h3>Welcome: {this.props.userName}!</h3> : null}
             </div>
         )
     }
