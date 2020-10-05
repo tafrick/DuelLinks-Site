@@ -12,6 +12,8 @@ import TournamentPic from '../assets/images/tournaments.png';
 import TopTierPic from '../assets/images/top-tier-dekcs.png';
 import BeginnersPic from '../assets/images/beginners-guide.png';
 import KCPic from '../assets/images/kc-cup-things.png';
+import Black from '../assets/images/black.PNG';
+
 
 class Homepage extends Component {
     render() {
@@ -64,7 +66,7 @@ class Homepage extends Component {
                         </li>
                         <li>
                             <div className="guide">
-                                <Link to="/Community"><img src="https://i.pinimg.com/originals/c7/a2/fc/c7a2fcb38f8e997dc4cb32a9a5989b78.jpg" alt="tournaments" /></Link>
+                                <Link to="/Community"><img src={Black} alt="tournaments" /></Link>
                                 <div className="container">
                                     <h4><b>Duel Links Academy Certified</b></h4>
                                 </div>
@@ -81,6 +83,7 @@ class Homepage extends Component {
                         <li><a href="https://www.youtube.com/channel/UCGmqsD0yv9B3GGlhGcP5_xA" target="_blank">Playmaker Duel Links</a></li>
                     </ul>
                 </div>
+                
             </div>
         );
     }

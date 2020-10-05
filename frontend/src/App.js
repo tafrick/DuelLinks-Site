@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          <GoogleBtn />
+          
           <Switch>
             <Route path="/cardlookup" exact component={CardLookup} />
             <Route path="/decks" exact component={Decks} />

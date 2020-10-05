@@ -4,6 +4,7 @@ import Logo from '../../Logo/Logo';
 import DrawerToggle from '../DrawerToggle/DrawerToggle';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import styles from './Toolbar.module.css';
+import GoogleBtn from '../../../components/Login/GoogleBtn';
 
 const toolbar = (props) => {
 
@@ -11,7 +12,7 @@ const toolbar = (props) => {
         <header className={styles.Toolbar}>
             <DrawerToggle clicked={props.drawerToggleClicked} />
             <div className={styles.Logo}>
-                <Logo />
+                <GoogleBtn />
             </div>
             <nav className={styles.DesktopOnly}>
                 <NavigationItems />

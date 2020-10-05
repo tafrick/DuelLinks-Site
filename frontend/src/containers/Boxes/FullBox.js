@@ -56,7 +56,7 @@ class FullBox extends Component {
         let cards = "";
         if (this.state.loadedCards) {
             cards = this.state.box_array.map(card => {
-                console.log("cardData: " , card)
+                // console.log("cardData: " , card)
                 return (
                     <Cards
                         key={card.id}
@@ -76,7 +76,7 @@ class FullBox extends Component {
                     <h2>{this.state.loadedBox.name} [{this.state.loadedBox.cardsIn.length}]</h2>
                     <h4>{this.getDate(this.state.loadedBox.releaseDate)}</h4>
                     <img src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
-                    {console.log(new Date(this.state.loadedBox.releaseDate))}
+
                     
                 </div>
             );
