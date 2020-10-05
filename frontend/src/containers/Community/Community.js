@@ -27,7 +27,8 @@ class Community extends Component {
             imgURL: '',
             newPostDescription: '',
             selectedPost: null,
-            newPostCategory: 'Meme'
+            newPostCategory: 'Meme',
+            filter: '0',
         }
     }
 
@@ -73,6 +74,19 @@ class Community extends Component {
         this.fetchPosts();
         if (this.props.isAuth) {
             this.setState({ username: this.props.email })
+        }
+    }
+
+    componentDidUpdate(_prevProps, prevState) {
+        if (this.state.filter !== prevState.filter) {
+            axios.get('http://localhost:9000/posts/category=/' + this.state.filter)
+                .then(response => {
+                    const posts = [...response.data];
+                    this.setState({ loadedPosts: posts })
+                })
+                .catch(error => {
+                    console.error(error.message);
+                })
         }
     }
 
@@ -219,16 +233,16 @@ class Community extends Component {
 
     formatDateAndTime = (dateTime) => {
         dateTime = new Date(dateTime);
-        console.log("dateTime: " , dateTime)
+        console.log("dateTime: ", dateTime)
         const today = new Date();
         const currentYear = today.getFullYear();
         const currentMonth = '0' + (today.getMonth() + 1).toString().slice(-2);
         const currentDay = today.getDate().toString().slice(-2);
 
         const getYear = dateTime.getFullYear();
-        
+
         const getDay = dateTime.getDate().toString().slice(-2);
-        
+
 
         const getHour = dateTime.getHours();
         const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
@@ -243,10 +257,10 @@ class Community extends Component {
         // console.log('getMinute: ' , getMinute);
 
         const yearDifference = (currentYear - getYear) * 30;
-        const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) +  monthDifference:Math.abs(currentDay - getDay);
+        const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) + monthDifference : Math.abs(currentDay - getDay);
         const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
         const monthDifference = (currentMonth - getMonth) * 30;
-        
+
 
         // console.log('currentDay: ', currentDay);
         // console.log('getDay: ', getDay);
@@ -305,6 +319,21 @@ class Community extends Component {
                 </header>
 
                 {selectedPost}
+
+                <div>
+                    <select value={this.state.filter} onChange={(event) => this.setState({ filter: event.target.value })}>
+                        <option value="0">Select Category</option>
+                        <option value="KOG_Deck">KOG Deck</option>
+                        <option value="Meta_Deck">Meta Deck</option>
+                        <option value="Casual_Deck">Casual Deck</option>
+                        <option value="Tournament">Tournament</option>
+                        <option value="Meme">Meme</option>
+                        <option value="KC_Cup">KC Cup</option>
+                        <option value="Announcements">Announcements</option>
+                        <option value="Gameplay_Tips">Gameplay Tips</option>
+                        <option value="Farming_Deck">Farming Deck</option>
+                    </select>
+                </div>
 
                 {this.props.isAuth ? newPost : <p>Please login to post!</p>}
 
