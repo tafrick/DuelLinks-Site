@@ -69,43 +69,54 @@ class DeckBuilder extends Component {
         }
     }
 
-    addToDeck(text) {
-        let arr = [];
-        const newText = {
-            name: text.name,
-            img: text.card_images[0].image_url,
-            description: text.desc
-        }
-        arr.push(newText);
-        if (this.state.deck.length <= 30) {
-            let deckArray = [...this.state.deck];
-            deckArray.push(newText);
-            this.setState({
-                deck: deckArray
-            })
+    cardLimit(card, arr) {
+        let count = 0;
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i].name === card) {
+                count++;
+            }
         }
 
+        return count;
+    }
+
+    addToDeck(text) {
+        if(this.cardLimit(text.name, this.state.deck) < 3) {
+            let arr = [];
+            const newText = {
+                name: text.name,
+                img: text.card_images[0].image_url,
+                description: text.desc
+            }
+            arr.push(newText);
+            if (this.state.deck.length <= 30) {
+                let deckArray = [...this.state.deck];
+                deckArray.push(newText);
+                deckArray.sort(deckArray.name);
+                this.setState({
+                    deck: deckArray
+                })
+            }
+        }
     }
 
     addToExtra(text) {
-        console.log("addToExtra: ", text);
-        let arr = [];
-        const newText = {
-            name: text.name,
-            img: text.card_images[0].image_url,
-            description: text.desc
+        if(this.cardLimit(text.name, this.state.extra) < 3) {
+            let arr = [];
+            const newText = {
+                name: text.name,
+                img: text.card_images[0].image_url,
+                description: text.desc
+            }
+            arr.push(newText);
+            if (this.state.extra.length <= 6) {
+                let extraDeckArray = [...this.state.extra];
+                extraDeckArray.push(newText);
+                this.setState({
+                    extra: extraDeckArray
+                })
+            }
         }
-        arr.push(newText);
-        if (this.state.extra.length <= 6) {
-            let extraDeckArray = [...this.state.extra];
-            extraDeckArray.push(newText);
-            this.setState({
-                extra: extraDeckArray
-            })
-        } else {
-            return (<div>Exceeds max limit</div>) //change
-        }
-
     }
 
     removeCard(card, state) {
@@ -119,9 +130,7 @@ class DeckBuilder extends Component {
         let types = ["Fusion Monster", "Link Monster", "Pendulum Effect Fusion Monster"
             , "Synchro Monster", "Synchro Pendulum Effect Monster", "Synchro Tuner Monster"
             , "XYZ Monster", "XYZ Pendulum Effect Monster"];
-        console.log(card);
         const validate = types.some(type => card.type === type);
-        console.log(validate);
         validate ? this.addToExtra(card) : this.addToDeck(card);
     }
 
