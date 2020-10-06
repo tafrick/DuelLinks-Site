@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.react-tabs {
+    text-align: center;
+}
+
+
 .display-results {
     text-align: center;
     justify-content: center;
@@ -14,13 +19,12 @@
 
 
     
-.deck-wrapper {
-    text-align: center;
-    justify-content: center;
+.react-tabs .deck-wrapper {
+    width: 100%
 }
 
-.deck-wrapper .deck-list img{
-    width: 200px;
+.react-tabs .deck-wrapper img{
+    width: 125px;
     margin: 5px 5px;
     display: inline-block;
 }

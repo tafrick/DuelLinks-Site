@@ -10,6 +10,9 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import CardData from './Cards.json';
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 class DeckBuilder extends Component {
     constructor() {
         super();
@@ -89,7 +92,7 @@ class DeckBuilder extends Component {
                 description: text.desc
             }
             arr.push(newText);
-            if (this.state.deck.length <= 30) {
+            if (this.state.deck.length < 30) {
                 let deckArray = [...this.state.deck];
                 deckArray.push(newText);
                 deckArray.sort(deckArray.name);
@@ -109,7 +112,7 @@ class DeckBuilder extends Component {
                 description: text.desc
             }
             arr.push(newText);
-            if (this.state.extra.length <= 6) {
+            if (this.state.extra.length < 6) {
                 let extraDeckArray = [...this.state.extra];
                 extraDeckArray.push(newText);
                 this.setState({
@@ -124,7 +127,6 @@ class DeckBuilder extends Component {
         state === this.state.deck ? this.setState({ deck: filteredArray }) :
             this.setState({ extra: filteredArray });
     }
-
 
     validateType(card) {
         let types = ["Fusion Monster", "Link Monster", "Pendulum Effect Fusion Monster"
@@ -155,7 +157,6 @@ class DeckBuilder extends Component {
             alert("log in...bitch")
         }
     }
-
 
     render() {
         let searchResults = "";
@@ -210,13 +211,21 @@ class DeckBuilder extends Component {
 
 
         return (
-            <div className="page-wrapper">
+            <div className="page-wrapper"> 
                 <div className="title">
                     <h1>Still can't get past MAGAbond? Perhaps we could be of assistance...</h1>
                     <img src={CardTraderGold} width="250" />
                     <img src={VagaBond} width="250" height="375" />
                     <img src={CardTraderBlack} width="260" />
-                    <form onSubmit={this.handleClick}>
+                </div>
+                <Tabs>
+                    <TabList>
+                    <Tab>Search Card</Tab>
+                    <Tab>View Deck</Tab>
+                    </TabList>
+                    <TabPanel>
+                        <h2>Search for cards to build your deck!</h2>
+                        <form onSubmit={this.handleClick}>
                         <label>
                             <input
                                 type="text"
@@ -225,32 +234,36 @@ class DeckBuilder extends Component {
                                 placeholder="Enter card name..." />
                         </label>
                         <Button variant="contained" color="primary" onClick={this.handleClick}>Search</Button>
-                    </form>
-                </div>
-                <div className="deck-wrapper">
-                    <label>Deck Title</label>
-                    <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Every deck deserves a title..." />
-                    <label>Category</label>
-                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
-                        <option value="Competitive">Competitive Deck</option>
-                        <option value="Casual">Casual Deck</option>
-                        <option value="Farming">Farming Deck</option>
-                    </select>
-                    <h1>Deck: </h1>
-                    {deckList}
-                    <h1>Extra: </h1>
-                    {extraList}
-                </div>
-                <button disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</button>
-                <div className="cards-wrapper">
-                    {/* {console.log(res)} */}
-                    <div className="display-results" style={{ display: "inline-block" }}>
-                        {searchResults}
-                    </div>
-
-
-                </div>
-
+                        </form>
+                        <div className="cards-wrapper">
+                            <div className="display-results" style={{ display: "inline-block" }}>
+                                {searchResults}
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <h2>Build your deck</h2>
+                        <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Every deck deserves a title..." />
+                        <div className="deck-wrapper">
+                            
+                            
+            
+                            {deckList}
+                            <br></br>
+                            {extraList}
+                        </div>
+                        <br></br>
+                        <label>Category: </label>
+                            <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                                <option value="Competitive">Competitive Deck</option>
+                                <option value="Casual">Casual Deck</option>
+                                <option value="Farming">Farming Deck</option>
+                            </select>
+                            <br></br><br></br>
+                        <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                        
+                    </TabPanel>
+                </Tabs>
             </div>
         )
     }
