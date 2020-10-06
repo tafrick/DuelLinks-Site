@@ -32,7 +32,7 @@ class Decks extends Component {
         console.log(deckGrade);
         //only allow one grade for now
         if (!gradersList.includes(this.props.username)) {
-            const newPointTotal = totalPoints + deckGrade;
+            const newPointTotal = parseInt(totalPoints) + parseInt(deckGrade);
             const newVoterTotal = totalVotes + 1;
             const newGPA = newPointTotal / newVoterTotal;
             let newGradersList = [...gradersList];
