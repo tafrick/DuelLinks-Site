@@ -27,4 +27,7 @@ app.use('/posts', postsRouter)
 const commentRouter = require('./routes/comments')
 app.use('/comments', commentRouter)
 
+const decksRouter = require('./routes/decks')
+app.use('/decks', decksRouter)
+
 app.listen(9000, () => console.log('Server Started'))
