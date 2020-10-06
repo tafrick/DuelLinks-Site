@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const logo = props => (
     <div className={classes.Logo}>
         
-        <a href=""><img src={links} style={{width: 500}} alt="Duel Links Logo"/></a>
+        <a href=""><img src={links} style={{width: 600}} alt="Duel Links Logo"/></a>
     </div>
 );
 

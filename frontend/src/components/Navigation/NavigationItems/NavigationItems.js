@@ -10,6 +10,7 @@ const navigationItems = (props) => (
         <NavigationItem link="/" exact>Home</NavigationItem>
         <NavigationItem link="/boxes" exact>Boxes</NavigationItem>
         <NavigationItem link="/cardlookup" exact>Card Lookup</NavigationItem>
+        <NavigationItem link="/deckbuilder" exact>Deck Builder</NavigationItem>
         <NavigationItem link="/community" exact>Community</NavigationItem>
     </ul>
 
