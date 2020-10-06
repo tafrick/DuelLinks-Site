@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
 import CardTraderGold from '../../assets/images/CardTraderGold.png';
 import VagaBond from '../../assets/images/MagaBond.PNG';
 import CardTraderBlack from '../../assets/images/CardTraderBlack.png';
@@ -16,7 +18,9 @@ class DeckBuilder extends Component {
             text: '',
             cardResults: [],
             deck: [],
-            extra: []
+            extra: [],
+            newDeckTitle: '',
+            newDeckCategory: 'Competitive_Deck'
         }
     }
 
@@ -67,44 +71,80 @@ class DeckBuilder extends Component {
 
     addToDeck(text) {
         let arr = [];
-        arr.push(text);
-        if(this.state.deck.length <= 30) {
+        const newText = {
+            name: text.name,
+            img: text.card_images[0].image_url,
+            description: text.desc
+        }
+        arr.push(newText);
+        if (this.state.deck.length <= 30) {
+            let deckArray = [...this.state.deck];
+            deckArray.push(newText);
             this.setState({
-                deck: [...this.state.deck, text],
+                deck: deckArray
             })
         }
-        
+
     }
 
     addToExtra(text) {
-        console.log("addToExtra: " , text);
+        console.log("addToExtra: ", text);
         let arr = [];
-        arr.push(text);
-        if(this.state.extra.length <= 6) {
-            this.setState({
-                extra: [...this.state.extra, text],
-            })
-        } else{
-            return(<div>Exceeds max limit</div>) //change
+        const newText = {
+            name: text.name,
+            img: text.card_images[0].image_url,
+            description: text.desc
         }
-        
+        arr.push(newText);
+        if (this.state.extra.length <= 6) {
+            let extraDeckArray = [...this.state.extra];
+            extraDeckArray.push(newText);
+            this.setState({
+                extra: extraDeckArray
+            })
+        } else {
+            return (<div>Exceeds max limit</div>) //change
+        }
+
     }
 
     removeCard(card, state) {
         let filteredArray = state.filter(item => item !== card)
         state === this.state.deck ? this.setState({ deck: filteredArray }) :
-        this.setState({extra: filteredArray});
+            this.setState({ extra: filteredArray });
     }
 
 
     validateType(card) {
-        let types = ["Fusion Monster", "Link Monster" ,"Pendulum Effect Fusion Monster"
-        ,"Synchro Monster" ,"Synchro Pendulum Effect Monster" ,"Synchro Tuner Monster"
-        ,"XYZ Monster", "XYZ Pendulum Effect Monster"];
+        let types = ["Fusion Monster", "Link Monster", "Pendulum Effect Fusion Monster"
+            , "Synchro Monster", "Synchro Pendulum Effect Monster", "Synchro Tuner Monster"
+            , "XYZ Monster", "XYZ Pendulum Effect Monster"];
         console.log(card);
         const validate = types.some(type => card.type === type);
         console.log(validate);
-        validate ?  this.addToExtra(card) : this.addToDeck(card);
+        validate ? this.addToExtra(card) : this.addToDeck(card);
+    }
+
+    submitDeckHandler = () => {
+        console.log(this.state.deck)
+        if (this.props.isAuth) {
+            const newDeck = {
+                title: this.state.newDeckTitle,
+                category: this.state.newDeckCategory,
+                username: this.props.username,
+                mainDeck: this.state.deck,
+                extraDeck: this.state.extra
+            };
+            axios.post('http://localhost:9000/decks/', newDeck)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(err => {
+                    console.error({ message: err.message })
+                })
+        } else {
+            alert("log in...bitch")
+        }
     }
 
 
@@ -132,13 +172,12 @@ class DeckBuilder extends Component {
 
                 return (
                     <div className="img-container">
-                        <img src={result.card_images[0].image_url} alt={result.name} />
+                        <img src={result.img} alt={result.name} />
                         <a className="button"
                             style={{ cursor: "pointer" }}
                             onClick={() => this.removeCard(result, this.state.deck)}>
                             Remove Card
-                    </a>
-
+                        </a>
                     </div>
                 )
             })
@@ -148,7 +187,7 @@ class DeckBuilder extends Component {
             extraList = this.state.extra.map(result => {
                 return (
                     <div className="img-container">
-                        <img src={result.card_images[0].image_url} alt={result.name} />
+                        <img src={result.img} alt={result.name} />
                         <a className="button"
                             style={{ cursor: "pointer" }}
                             onClick={() => this.removeCard(result, this.state.extra)}>
@@ -180,12 +219,20 @@ class DeckBuilder extends Component {
                     </form>
                 </div>
                 <div className="deck-wrapper">
+                    <label>Deck Title</label>
+                    <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Every deck deserves a title..." />
+                    <label>Category</label>
+                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                        <option value="Competitive">Competitive Deck</option>
+                        <option value="Casual">Casual Deck</option>
+                        <option value="Farming">Farming Deck</option>
+                    </select>
                     <h1>Deck: </h1>
                     {deckList}
                     <h1>Extra: </h1>
                     {extraList}
-
                 </div>
+                <button disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</button>
                 <div className="cards-wrapper">
                     {/* {console.log(res)} */}
                     <div className="display-results" style={{ display: "inline-block" }}>
@@ -200,4 +247,12 @@ class DeckBuilder extends Component {
     }
 }
 
-export default DeckBuilder;
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+        isAuth: state.token !== null,
+        username: state.userEmail
+    }
+}
+
+export default connect(mapStateToProps, null)(DeckBuilder);

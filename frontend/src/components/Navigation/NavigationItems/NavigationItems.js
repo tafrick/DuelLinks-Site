@@ -11,6 +11,7 @@ const navigationItems = (props) => (
         <NavigationItem link="/boxes" exact>Boxes</NavigationItem>
         <NavigationItem link="/cardlookup" exact>Card Lookup</NavigationItem>
         <NavigationItem link="/deckbuilder" exact>Deck Builder</NavigationItem>
+        <NavigationItem link="/decks" exact>Decks</NavigationItem>
         <NavigationItem link="/community" exact>Community</NavigationItem>
     </ul>
 

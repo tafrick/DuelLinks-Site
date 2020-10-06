@@ -13,6 +13,7 @@ import FullBox from './containers/Boxes/FullBox';
 import FullCard from './containers/Boxes/FullCard';
 import CategoryPosts from './containers/Community/CategoryPosts';
 import DeckBuilder from './components/DeckBuilder/DeckBuilder';
+import Decks from './containers/Decks/Decks';
 import * as actions from './store/actions/index';
 
 import GoogleBtn from './components/Login/GoogleBtn';
@@ -36,7 +37,8 @@ class App extends Component {
 						<Route path="/boxes/:boxId" exact component={FullBox} />
 						<Route path="/boxes/:boxId/:cardName" exact component={FullCard} />
 						<Route path="/community/:postId" exact component={FullPost} />
-            <Route path="/deckbuilder" exact component={DeckBuilder} />
+						<Route path="/deckbuilder" exact component={DeckBuilder} />
+						<Route path="/decks" exact component={Decks} />
 						<Route path="/community" exact component={Community} />
 						<Route path="/:category" exact component={CategoryPosts} />
 						{/* <Redirect to="/" /> */}
