@@ -18,6 +18,22 @@ input[type="text"]
     text-align: center;
 }
 
+.builderComponent {
+    overflow-y: scroll;
+    height:50vh;
+}
+.searchWrapper {
+    text-align: left;
+}
+.searchComponent {
+    overflow-y: scroll;
+    height:50vh;
+}
+
+.submitWrapper {
+    text-align: right;
+    margin: 10px 95px;
+}
 
 .display-results {
     text-align: center;
