@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {BsFillPlusSquareFill} from 'react-icons/bs';
-import {RiZoomInFill} from 'react-icons/ri';
+import { BsFillPlusSquareFill } from 'react-icons/bs';
+import { RiZoomInFill } from 'react-icons/ri';
 import ModalImage from "react-modal-image";
 import CardTraderGold from '../../assets/images/CardTraderGold.png';
 import VagaBond from '../../assets/images/MagaBond.PNG';
@@ -43,7 +43,7 @@ class DeckBuilder extends Component {
         event.preventDefault();
         if (this.state.text !== "" && this.state.text !== " ") {
             this.loadData(this.state.text);
-            this.setState({ result: this.state.text});
+            this.setState({ result: this.state.text });
             // this.setState({
             //     text: ''
             // });
@@ -80,8 +80,8 @@ class DeckBuilder extends Component {
 
     cardLimit(card, arr) {
         let count = 0;
-        for(let i = 0; i < arr.length; i++){
-            if(arr[i].name === card) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].name === card) {
                 count++;
             }
         }
@@ -90,7 +90,7 @@ class DeckBuilder extends Component {
     }
 
     addToDeck(text) {
-        if(this.cardLimit(text.name, this.state.deck) < 3) {
+        if (this.cardLimit(text.name, this.state.deck) < 3) {
             let arr = [];
             const newText = {
                 name: text.name,
@@ -104,14 +104,14 @@ class DeckBuilder extends Component {
                 deckArray.sort(deckArray.name);
                 this.setState({
                     deck: deckArray,
-                    
+
                 })
             }
         }
     }
 
     addToExtra(text) {
-        if(this.cardLimit(text.name, this.state.extra) < 3) {
+        if (this.cardLimit(text.name, this.state.extra) < 3) {
             let arr = [];
             const newText = {
                 name: text.name,
@@ -141,7 +141,7 @@ class DeckBuilder extends Component {
             , "XYZ Monster", "XYZ Pendulum Effect Monster"];
         const validate = types.some(type => card.type === type);
         validate ? this.addToExtra(card) : this.addToDeck(card);
-        this.setState({displayDeck: true, displayTitle: false })
+        this.setState({ displayDeck: true, displayTitle: false })
     }
 
     submitDeckHandler = () => {
@@ -175,15 +175,15 @@ class DeckBuilder extends Component {
                 return (
                     <div className="img-container">
                         <ModalImage
-                                    small={card.card_images[0].image_url}
-                                    large={card.card_images[0].image_url}
-                                    alt={card.name} 
-                                    className="modal"
+                            small={card.card_images[0].image_url}
+                            large={card.card_images[0].image_url}
+                            alt={card.name}
+                            className="modal"
 
-                                />
+                        />
                         <div class="overlay">
-                            <a className= "icon">
-                            {/* <RiZoomInFill
+                            <a className="icon">
+                                {/* <RiZoomInFill
                                 className="icon-img"
                                 size= "35px"
                                 color="white"
@@ -191,15 +191,15 @@ class DeckBuilder extends Component {
                                 top="0"
                         
                             /> */}
-                            <BsFillPlusSquareFill 
-                                className="icon-img"
-                                size= "35px"
-                                color="white"
-                                right="0"
-                                top="0"
-                                onClick={() => this.validateType(card)}
-                                style={{ cursor: "pointer" }}
-                            />
+                                <BsFillPlusSquareFill
+                                    className="icon-img"
+                                    size="35px"
+                                    color="white"
+                                    right="0"
+                                    top="0"
+                                    onClick={() => this.validateType(card)}
+                                    style={{ cursor: "pointer" }}
+                                />
                             </a>
                         </div>
                     </div>
@@ -241,7 +241,7 @@ class DeckBuilder extends Component {
 
 
         return (
-            <div className="page-wrapper"> 
+            <div className="page-wrapper">
                 {this.state.displayTitle ? <div className="title">
                     <h1>Still can't get past MAGAbond? Perhaps we could be of assistance...</h1>
                     <img src={CardTraderGold} width="250" />
@@ -249,32 +249,8 @@ class DeckBuilder extends Component {
                     <img src={CardTraderBlack} width="260" />
                 </div> : <br></br>}
 
-                {this.state.displayDeck ? <div className="build-wrapper">
-                            <div className="builderComponent">
-                                <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Every deck deserves a title..." />
-                                <div className="deck-wrapper">
-                                    {deckList}
-                                    <br></br>
-                                    {extraList}
-                                </div>
-                                </div>
-                            <br></br>
-                            
-                                {this.state.deck.length >= 20 ?<div className= "submitWrapper"> <label>Category: </label>
-                                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
-                                        <option value="Competitive">Competitive Deck</option>
-                                        <option value="Casual">Casual Deck</option>
-                                        <option value="Farming">Farming Deck</option>
-                                    </select>
-                                    <br></br><br></br>
-                                <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
-                            </div>: ""}
-                            
-                </div> : ''}
                 <div className="searchWrapper">
-                    <h2>Search for cards to build your deck!</h2>
-                        
-                        <form onSubmit={this.handleClick}>
+                    <form onSubmit={this.handleClick}>
                         <label>
                             <input
                                 type="text"
@@ -283,18 +259,42 @@ class DeckBuilder extends Component {
                                 placeholder="Enter card name..." />
                         </label>
                         <Button variant="contained" color="primary" onClick={this.handleClick}>Search</Button>
-                        </form>
-                        <div className="searchComponent">
-                            <div className="cards-wrapper">
-                                <div className="display-results" style={{ display: "inline-block" }}>
-                                    {searchResults}
-                                </div>
+                        <h2>Search for cards to build your deck!</h2>
+                    </form>
+                    <div className="searchComponent">
+                        <div className="cards-wrapper">
+                            <div className="display-results" style={{ display: "inline-block" }}>
+                                {searchResults}
                             </div>
                         </div>
+                    </div>
 
                 </div>
-                        
-                        
+
+                <div className="build-wrapper">
+                    <div className="builderComponent">
+                        <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
+                        <div className="deck-wrapper">
+                            {deckList}
+                            <br></br>
+                            {extraList}
+                        </div>
+                    </div>
+                    <br></br>
+
+                    {this.state.deck.length >= 20 ? <div className="submitWrapper"> <label>Category: </label>
+                        <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                            <option value="Competitive">Competitive Deck</option>
+                            <option value="Casual">Casual Deck</option>
+                            <option value="Farming">Farming Deck</option>
+                        </select>
+                        <br></br><br></br>
+                        <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                    </div> : ""}
+
+                </div>
+
+
             </div>
         )
     }

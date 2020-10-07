@@ -1,15 +1,18 @@
 .page-wrapper {
     margin: auto 250px;
+    height: 100%;
+    overflow: auto;
 }
-input[type="text"]
-{
+
+input[type="text"] {
     background: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
     color: white;
     font-size: 28px;
-    width: 600px;
+    width: auto;
 }
+
 .page-wrapper .title {
     text-align: center;
 }
@@ -18,16 +21,26 @@ input[type="text"]
     text-align: center;
 }
 
-.builderComponent {
-    overflow-y: scroll;
-    height:50vh;
+.build-wrapper {
+    float: left;
+    width: 50%;
+    background: blue;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5em;
+    overflow: auto;
+    min-height: 200px;
 }
+
 .searchWrapper {
-    text-align: center;
-}
-.searchComponent {
-    overflow-y: scroll;
-    height:50vh;
+    float: left;
+    width: 50%;
+    background: red;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5em;
+    overflow: auto;
+    min-height: 200px;
 }
 
 .submitWrapper {
@@ -42,12 +55,12 @@ input[type="text"]
 }
 
 
-    
+
 .react-tabs .deck-wrapper {
     width: 100%
 }
 
-.react-tabs .deck-wrapper img{
+.react-tabs .deck-wrapper img {
     width: 125px;
     margin: 5px 5px;
     display: inline-block;
@@ -60,65 +73,65 @@ input[type="text"]
 
 
 .img-container {
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
     width: 125px;
     margin: 3px 3px;
     display: inline-block;
     position: relative;
-  }
-  
-  .deck-container img{
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
-    width: 125px;
-    margin: 3px 3px;
-    display: inline-block;
-    position: relative;
-    
-  }
+}
 
-  .deck-container {
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
+.deck-container img {
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
     width: 125px;
     margin: 3px 3px;
     display: inline-block;
     position: relative;
-    
-  }
 
-  .extra-container {
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
+}
+
+.deck-container {
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
     width: 125px;
     margin: 3px 3px;
     display: inline-block;
     position: relative;
-  }
-  
-  .button {
-      display: none;
-      color: white;
-      background-color: black;
-      width: 100px;
-      height: 35px;
-      line-height: 30px;
-  }
 
-  /* .img-container .overlay {
+}
+
+.extra-container {
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    width: 125px;
+    margin: 3px 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.button {
+    display: none;
+    color: white;
+    background-color: black;
+    width: 100px;
+    height: 35px;
+    line-height: 30px;
+}
+
+/* .img-container .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -131,17 +144,17 @@ input[type="text"]
     background-color: black;
   } */
 
- .overlay .icon .icon-img{
-      text-align: right !important;
-      justify-content: right !important;
-      top: 0 !important;
-      right: 0 !important;
-      transform: translate(170%, -780%);
-      display: none;
-  }
+.overlay .icon .icon-img {
+    text-align: right !important;
+    justify-content: right !important;
+    top: 0 !important;
+    right: 0 !important;
+    transform: translate(170%, -780%);
+    display: none;
+}
 
 
-  .img-container:hover .icon-img{
+.img-container:hover .icon-img {
     text-align: right !important;
     justify-content: right !important;
     top: 0 !important;
@@ -151,25 +164,25 @@ input[type="text"]
     display: inline-block;
 }
 
-  .img-container:hover .overlay {
-      opacity: 0.5;
-    }
-  
-  .deck-container:hover .button {
-      display: block;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      width: 100%;
-      text-align: center;
-  }
+.img-container:hover .overlay {
+    opacity: 0.5;
+}
 
-  /* .img-container .icon-img:hover {
+.deck-container:hover .button {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+/* .img-container .icon-img:hover {
       color: #eeeeee;
 
   } */
-  
-  .img-container:hover img {
-      transform: scale(1.01);
-  }
+
+.img-container:hover img {
+    transform: scale(1.01);
+}
