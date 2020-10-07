@@ -11,6 +11,7 @@ import './DeckBuilder.css'
 import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import CardData from './Cards.json';
+import { Resizable, ResizableBox } from 'react-resizable';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
