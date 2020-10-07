@@ -1,7 +1,15 @@
 .page-wrapper {
     margin: auto 250px;
 }
-
+input[type="text"]
+{
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 28px;
+    width: 600px;
+}
 .page-wrapper .title {
     text-align: center;
 }
@@ -34,20 +42,55 @@
     position: relative;
 }
 
-.img-container img {
+
+.img-container {
     -o-transition:.5s;
     -ms-transition:.5s;
     -moz-transition:.5s;
     -webkit-transition:.5s;
     transition:.5s;
-    width: 175px;
-    margin: 5px 6px;
+    width: 125px;
+    margin: 3px 3px;
+    display: inline-block;
+    position: relative;
   }
   
-  .img-container {
+  .deck-container img{
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    width: 125px;
+    margin: 3px 3px;
     display: inline-block;
     position: relative;
     
+  }
+
+  .deck-container {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    width: 125px;
+    margin: 3px 3px;
+    display: inline-block;
+    position: relative;
+    
+  }
+
+  .extra-container {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    width: 125px;
+    margin: 3px 3px;
+    display: inline-block;
+    position: relative;
   }
   
   .button {
@@ -58,8 +101,45 @@
       height: 35px;
       line-height: 30px;
   }
+
+  /* .img-container .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: black;
+  } */
+
+ .overlay .icon .icon-img{
+      text-align: right !important;
+      justify-content: right !important;
+      top: 0 !important;
+      right: 0 !important;
+      transform: translate(170%, -780%);
+      display: none;
+  }
+
+
+  .img-container:hover .icon-img{
+    text-align: right !important;
+    justify-content: right !important;
+    top: 0 !important;
+    right: 0 !important;
+    transform: translate(130%, -540%);
+    /* transform: translate(200%, -750%); */
+    display: inline-block;
+}
+
+  .img-container:hover .overlay {
+      opacity: 0.5;
+    }
   
-  .img-container:hover .button {
+  .deck-container:hover .button {
       display: block;
       position: absolute;
       left: 0;
@@ -68,7 +148,12 @@
       width: 100%;
       text-align: center;
   }
+
+  /* .img-container .icon-img:hover {
+      color: #eeeeee;
+
+  } */
   
   .img-container:hover img {
-      filter: none;
+      transform: scale(1.01);
   }

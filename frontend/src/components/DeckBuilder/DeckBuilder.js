@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
+import {BsFillPlusSquareFill} from 'react-icons/bs';
+import {RiZoomInFill} from 'react-icons/ri';
+import ModalImage from "react-modal-image";
 import CardTraderGold from '../../assets/images/CardTraderGold.png';
 import VagaBond from '../../assets/images/MagaBond.PNG';
 import CardTraderBlack from '../../assets/images/CardTraderBlack.png';
@@ -166,12 +168,34 @@ class DeckBuilder extends Component {
             searchResults = this.state.loadedCards[0].data.map(card => {
                 return (
                     <div className="img-container">
-                        <img src={card.card_images[0].image_url} alt={card.name} />
-                        <a className="button"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => this.validateType(card)}>
-                            Click to Add to Deck
-                        </a>
+                        <ModalImage
+                                    small={card.card_images[0].image_url}
+                                    large={card.card_images[0].image_url}
+                                    alt={card.name} 
+                                    className="modal"
+
+                                />
+                        <div class="overlay">
+                            <a className= "icon">
+                            {/* <RiZoomInFill
+                                className="icon-img"
+                                size= "35px"
+                                color="white"
+                                right="0"
+                                top="0"
+                        
+                            /> */}
+                            <BsFillPlusSquareFill 
+                                className="icon-img"
+                                size= "35px"
+                                color="white"
+                                right="0"
+                                top="0"
+                                onClick={() => this.validateType(card)}
+                                style={{ cursor: "pointer" }}
+                            />
+                            </a>
+                        </div>
                     </div>
                 )
             })
@@ -181,7 +205,7 @@ class DeckBuilder extends Component {
             deckList = this.state.deck.map(result => {
 
                 return (
-                    <div className="img-container">
+                    <div className="deck-container">
                         <img src={result.img} alt={result.name} />
                         <a className="button"
                             style={{ cursor: "pointer" }}
@@ -196,7 +220,7 @@ class DeckBuilder extends Component {
         if (this.state.extra) {
             extraList = this.state.extra.map(result => {
                 return (
-                    <div className="img-container">
+                    <div className="deck-container">
                         <img src={result.img} alt={result.name} />
                         <a className="button"
                             style={{ cursor: "pointer" }}
@@ -213,10 +237,13 @@ class DeckBuilder extends Component {
         return (
             <div className="page-wrapper"> 
                 <div className="title">
+                
                     <h1>Still can't get past MAGAbond? Perhaps we could be of assistance...</h1>
                     <img src={CardTraderGold} width="250" />
                     <img src={VagaBond} width="250" height="375" />
                     <img src={CardTraderBlack} width="260" />
+                    
+
                 </div>
                 <Tabs>
                     <TabList>
@@ -225,6 +252,7 @@ class DeckBuilder extends Component {
                     </TabList>
                     <TabPanel>
                         <h2>Search for cards to build your deck!</h2>
+                        
                         <form onSubmit={this.handleClick}>
                         <label>
                             <input
@@ -245,9 +273,6 @@ class DeckBuilder extends Component {
                         <h2>Build your deck</h2>
                         <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Every deck deserves a title..." />
                         <div className="deck-wrapper">
-                            
-                            
-            
                             {deckList}
                             <br></br>
                             {extraList}
