@@ -326,7 +326,7 @@ class Community extends Component {
 
                 <div>
                     <select value={this.state.filter} onChange={(event) => this.setState({ filter: event.target.value })}>
-                        <option value="0">Select Category</option>
+                        <option value="0">Toggle All</option>
                         <option value="KOG_Deck">KOG Deck</option>
                         <option value="Meta_Deck">Meta Deck</option>
                         <option value="Casual_Deck">Casual Deck</option>
