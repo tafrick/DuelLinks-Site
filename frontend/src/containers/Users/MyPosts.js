@@ -7,6 +7,7 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from '@material-ui/core/Button';
 import ModeCommentIcon from "@material-ui/icons/ModeComment";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class MyPosts extends Component {
     constructor(props) {
@@ -115,7 +116,7 @@ class MyPosts extends Component {
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     console.log("Update Successful!");
-                    this.props.history.go('/community');
+                    this.props.history.go('/my_posts');
                 })
                 .catch(err => {
                     console.error(err.message);
@@ -131,7 +132,7 @@ class MyPosts extends Component {
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     console.log("Update Successful!");
-                    this.props.history.go('/community');
+                    this.props.history.go('/my_posts');
                 })
                 .catch(err => {
                     console.error(err.message);
@@ -150,7 +151,7 @@ class MyPosts extends Component {
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     console.log("Update Successful!");
-                    this.props.history.go('/community');
+                    this.props.history.go('/my_posts');
                 })
                 .catch(err => {
                     console.error(err.message);
@@ -200,6 +201,17 @@ class MyPosts extends Component {
         return result === 'Today' || result === 'Yesterday' ? result + ' ' + timeStamp : result;
     }
 
+    deletePostHandler(postId) {
+        axios.delete('http://localhost:9000/posts/' + postId)
+            .then(response => {
+                console.log(response);
+                this.props.history.go('/my_posts');
+            })
+            .catch(error => {
+                console.error(error.message);
+            })
+    }
+
     render() {
         let posts = <p>no posts</p>;
         if (this.state.loadedPosts) {
@@ -219,6 +231,8 @@ class MyPosts extends Component {
                         </div>
 
                         <div className="spacer"></div>
+
+                        <DeleteIcon onClick={() => { this.deletePostHandler(post._id) }} />
 
                         <div className="post-body">
                             <span className="title"><Link to={'/community/' + post._id}>{post.title}</Link></span>
