@@ -354,7 +354,7 @@ class Community extends Component {
                             <div className="post-title">
                                 <img src={post.image_src} />
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
-                                <span className="post-user">Posted by {post.username}<br></br>{this.formatDateAndTime(post.date)}</span>
+                                <span className="post-user">Posted by <Link to={"/users/" + post.username}>{post.username}</Link><br></br>{this.formatDateAndTime(post.date)}</span>
                                 <span className="post-category"><em>{post.category}</em></span>
                             </div>
 

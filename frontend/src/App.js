@@ -15,6 +15,8 @@ import CategoryPosts from './containers/Community/CategoryPosts';
 import DeckBuilder from './components/DeckBuilder/DeckBuilder';
 import Decks from './containers/Decks/Decks';
 import * as actions from './store/actions/index';
+import Users from './containers/Users/Users';
+import MyPosts from './containers/Users/MyPosts';
 
 import GoogleBtn from './components/Login/GoogleBtn';
 
@@ -31,7 +33,7 @@ class App extends Component {
 					<Switch>
 						<Route path="/cardlookup" exact component={CardLookup} />
 						<Route path="/beginners" exact render={Beginners} />
-
+						{this.props.isAuth ? <Route path="/my_posts/:user" exact component={MyPosts} /> : null}
 						<Route path="/" exact component={Homepage} />
 						<Route path="/boxes" exact component={Boxes} />
 						<Route path="/boxes/:boxId" exact component={FullBox} />
@@ -41,6 +43,7 @@ class App extends Component {
 						<Route path="/decks" exact component={Decks} />
 						<Route path="/community" exact component={Community} />
 						<Route path="/:category" exact component={CategoryPosts} />
+						<Route path="/users/:user" exact component={Users} />
 						{/* <Redirect to="/" /> */}
 					</Switch>
 				</Layout>

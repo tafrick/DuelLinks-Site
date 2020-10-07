@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import DeckTypes from '../../components/DeckTypes/DeckTypes';
+import './Decks.css';
 
 class Decks extends Component {
     constructor(props) {
@@ -63,17 +64,17 @@ class Decks extends Component {
             return <p>Not Graded</p>
         }
         if (GPA >= 90) {
-            return <p>S</p>
+            return <h2>GRADE: S</h2>
         } else if (GPA >= 80 && GPA < 90) {
-            return <p>A</p>
+            return <h2>GRADE: A</h2>
         } else if (GPA >= 70 && GPA < 80) {
-            return <p>B</p>
+            return <h2>GRADE: B</h2>
         } else if (GPA >= 60 && GPA < 70) {
-            return <p>C</p>
+            return <h2>GRADE: C</h2>
         } else if (GPA >= 50 && GPA < 60) {
-            return <p>D</p>
+            return <h2 className="letterCircle" style={{ "color": "red" }}>D+</h2>
         } else {
-            return <p>F</p>
+            return <h2>GRADE: F</h2>
         }
     }
 
@@ -86,7 +87,7 @@ class Decks extends Component {
                 let extraCards = deck.extraDeck.map(xcard => { return <img key={xcard.name + Math.random()} src={xcard.img} alt={xcard.name} /> })
                 return (
                     <div key={deck._id}>
-                        <h1>{deck.title}</h1>
+                        <h2>{deck.title}</h2>
                         <div>
                             <p>Main:</p>
                             {mainCards}
@@ -94,8 +95,7 @@ class Decks extends Component {
                             {extraCards}
                         </div>
                         <p>{deck.category}</p>
-                        <p>deck grade: {deck.deckGPA}</p>
-                        {this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}
+                        <div>deck grade: {this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}</div>
                         <p>deck total: {deck.totalPoints}</p>
                         <p>deck votes: {deck.totalVotes}</p>
                         <p>posted by: {deck.username}</p>
