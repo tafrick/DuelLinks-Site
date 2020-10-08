@@ -23,11 +23,33 @@
     border: 2px solid #66FCF1;
     padding: 15px;
     margin: 1% 1%;
+    background-color: blue;
     top: 0;
     display: inline-block;
     position: relative;
     vertical-align: top;
 }
+
+.Obelisk {
+    background-color: #2425A2;
+    background-image: linear-gradient(#2425A2, lightblue);
+    border: 2px solid #ffffff;
+}
+
+.Ra {
+    /* background-color: rgb(255, 221, 2); */
+    background-image: linear-gradient(rgb(255, 221, 2), orange);
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+.Slifer {
+    background-color: #B70000;
+    background-image: linear-gradient(#B70000, maroon);
+    border: 2px solid #ffffff;
+}
+
+
 
 .DeckWrapper img {
     -o-transition: .5s;
@@ -49,6 +71,21 @@
     background-color: gray;
 }
 
+.Ra .DeckInfo {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.Slifer .DeckInfo {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.Obelisk .DeckInfo {
+    color: #000000;
+    background-color: #ffffff;
+}
+
 th,
 td {
     padding: 8px;
@@ -64,7 +101,7 @@ td {
     display: block;
     margin-top: 5px;
     font-weight: bold;
-    color: #66FCF1;
+    color: #000000;
 }
 
 .GradeSelector select {
@@ -75,8 +112,8 @@ td {
     margin: 15px 10px;
     padding: 10px;
     font: inherit;
-    border: 1px solid #66FCF1;
+    border: 1px solid #000000;
     background-color: transparent;
-    color: #66FCF1;
+    color: #000000;
     cursor: pointer;
 }

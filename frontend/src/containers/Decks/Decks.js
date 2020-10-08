@@ -78,6 +78,26 @@ class Decks extends Component {
         }
     }
 
+    classSelectHandler(category) {
+        if (category === "Competitive" || category === "Competitive_Deck") {
+            return classes.Obelisk
+        } else if (category === "Casual") {
+            return classes.Ra
+        } else if (category === "Farming") {
+            return classes.Slifer
+        }
+    }
+
+    pictSelectHandler(category) {
+        if (category === "Competitive" || category === "Competitive_Deck") {
+            return <p>Oblisk Blue Dorm</p>
+        } else if (category === "Casual") {
+            return <p>Ra Yellow Dorm</p>
+        } else if (category === "Farming") {
+            return <p>Slifer Red Dorm</p>
+        }
+    }
+
     render() {
         let decks = [];
         if (this.state.loadedDecks) {
@@ -86,10 +106,11 @@ class Decks extends Component {
                 let mainCards = deck.mainDeck.map(card => { return <img key={card.name + Math.random()} src={card.img} alt={card.name} /> })
                 let extraCards = deck.extraDeck.map(xcard => { return <img key={xcard.name + Math.random()} src={xcard.img} alt={xcard.name} /> })
                 return (
-                    <div className={classes.DeckWrapper} key={deck._id}>
+                    <div className={[classes.DeckWrapper, this.classSelectHandler(deck.category)].join(' ')} key={deck._id}>
                         <h1>{deck.title}</h1>
                         <p>Submitted by: {deck.username}</p>
                         <h2>{deck.category}</h2>
+                        {this.pictSelectHandler(deck.category)}
                         <table className={classes.DeckInfo}>
                             <tr>
                                 <th>Deck Grade</th>
