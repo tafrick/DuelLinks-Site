@@ -47,6 +47,25 @@ class FullBox extends Component {
         }
     }
 
+    handleChange = (event) => {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    handleClick = (event) => {
+        event.preventDefault();
+        if (this.state.text !== "" && this.state.text !== " ") {
+            // this.loadData(this.state.text);
+            this.setState({
+                searchResult: [],
+                displaySearch: true,
+                displaySearch: false
+            });
+            this.loadResult(this.state.text);
+        }
+    }
+
     getDate(releaseDate) {
         const format = new Date(releaseDate);
         return(<div>Released: {format.toLocaleDateString()}</div>);

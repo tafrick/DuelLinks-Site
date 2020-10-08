@@ -42,8 +42,7 @@ class Boxes extends Component {
             // this.loadData(this.state.text);
             this.setState({
                 searchResult: [],
-                displaySearch: true,
-                displaySearch: false
+                displaySearch: true
             });
             this.loadResult(this.state.text);
         }
@@ -86,26 +85,28 @@ class Boxes extends Component {
         let main = "";
         let mini = "";
         let sd = "";
-        if (this.state.loadedBoxes) {
-            search = (
-                <div className="search-container">
-                    <form onSubmit={this.handleClick}>
-                        <label>
-                            <input
-                                type="text"
-                                value={this.state.text}
-                                onChange={this.handleChange}
-                                placeholder="Search box name..." />
-                            <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
-                        </label>
-                    </form>
-                    <br></br>
+        search = (
+            <div className="search-container">
+                <form onSubmit={this.handleClick}>
+                    <label>
+                        <input
+                            type="text"
+                            value={this.state.text}
+                            onChange={this.handleChange}
+                            placeholder="Search box name..." />
+                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
+                    </label>
+                </form>
+                <br></br>
+                <div className="search-results">
                     {this.state.searchResult.map(row => {
                         return (<Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link>)
                     }
                     )}
                 </div>
-            );
+            </div>
+        );
+        if (this.state.loadedBoxes && this.state.displayDefault) {
             main = (
                 <div className="main-format">
                     <h2>Main Boxes</h2>
