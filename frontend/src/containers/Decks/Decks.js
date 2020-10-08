@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import DeckTypes from '../../components/DeckTypes/DeckTypes';
-import './Decks.css';
+import classes from './Decks.module.css';
 
 class Decks extends Component {
     constructor(props) {
@@ -64,17 +64,17 @@ class Decks extends Component {
             return <p>Not Graded</p>
         }
         if (GPA >= 90) {
-            return <h2>GRADE: S</h2>
+            return <h2 className="letterCircle" style={{ "color": "red" }}>S+</h2>
         } else if (GPA >= 80 && GPA < 90) {
-            return <h2>GRADE: A</h2>
+            return <h2 className="letterCircle" style={{ "color": "red" }}>A+</h2>
         } else if (GPA >= 70 && GPA < 80) {
-            return <h2>GRADE: B</h2>
+            return <h2 className="letterCircle" style={{ "color": "red" }}>B+</h2>
         } else if (GPA >= 60 && GPA < 70) {
-            return <h2>GRADE: C</h2>
+            return <h2 className="letterCircle" style={{ "color": "red" }}>C+</h2>
         } else if (GPA >= 50 && GPA < 60) {
             return <h2 className="letterCircle" style={{ "color": "red" }}>D+</h2>
         } else {
-            return <h2>GRADE: F</h2>
+            return <h2 className="letterCircle" style={{ "color": "red" }}>F</h2>
         }
     }
 
@@ -86,36 +86,40 @@ class Decks extends Component {
                 let mainCards = deck.mainDeck.map(card => { return <img key={card.name + Math.random()} src={card.img} alt={card.name} /> })
                 let extraCards = deck.extraDeck.map(xcard => { return <img key={xcard.name + Math.random()} src={xcard.img} alt={xcard.name} /> })
                 return (
-                    <div key={deck._id}>
-                        <h2>{deck.title}</h2>
-                        <div>
-                            <p>Main:</p>
-                            {mainCards}
-                            <p>Extra:</p>
-                            {extraCards}
+                    <div className={classes.DeckWrapper} key={deck._id}>
+                        <h1>{deck.title}</h1>
+                        <h2>{deck.category}</h2>
+                        <table className={classes.DeckInfo}>
+                            <tr>
+                                <th>Deck Grade</th>
+                                <th>Total Votes</th>
+                            </tr>
+                            <tr>
+                                <td>{this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}</td>
+                                {deck.totalVotes == 1 ? <td>1 Vote</td> : <td>{deck.totalVotes} Votes</td>}
+                            </tr>
+                        </table>
+                        <div className={classes.GradeSelector}>
+                            <label>Grade Deck</label>
+                            <select value={this.state.newDeckGrade} disabled={!this.props.isAuth} onChange={(event) => this.setState({ newDeckGrade: event.target.value })}>
+                                <option value="100">S</option>
+                                <option value="89">A</option>
+                                <option value="79">B</option>
+                                <option value="69">C</option>
+                                <option value="59">D</option>
+                                <option value="49">F</option>
+                            </select>
+                            <button disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</button>
                         </div>
-                        <p>{deck.category}</p>
-                        <div>deck grade: {this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}</div>
-                        <p>deck total: {deck.totalPoints}</p>
-                        <p>deck votes: {deck.totalVotes}</p>
-                        <p>posted by: {deck.username}</p>
-                        <label>Grade Deck</label>
-                        <select value={this.state.newDeckGrade} disabled={!this.props.isAuth} onChange={(event) => this.setState({ newDeckGrade: event.target.value })}>
-                            <option value="100">S</option>
-                            <option value="89">A</option>
-                            <option value="79">B</option>
-                            <option value="69">C</option>
-                            <option value="59">D</option>
-                            <option value="49">F</option>
-                        </select>
-                        <button disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</button>
-                    </div >
+                        {mainCards}
+                        <br></br>
+                        {extraCards}
+                    </div>
                 )
             })
         }
         return (
-            <div>
-                {/* <DeckTypes /> */}
+            <div className="pageWrapper">
                 {decks}
             </div >
         );

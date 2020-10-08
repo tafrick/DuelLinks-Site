@@ -1,0 +1,82 @@
+.letterCircle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+
+    background: #fff;
+    border: 2px solid red;
+    color: #666;
+    text-align: center;
+
+    font: 32px Arial, sans-serif;
+    font-weight: 900;
+}
+
+.pageWrapper {
+    padding: auto 10%;
+}
+
+.DeckWrapper {
+    height: 50%;
+    width: 40%;
+    border: 2px solid #66FCF1;
+    padding: 15px;
+    margin: 1% 1%;
+    top: 0;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.DeckWrapper img {
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    width: 125px;
+    margin: 3px 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.DeckWrapper .DeckInfo {
+    color: black;
+    width: 100%;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: gray;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+.GradeSelector {
+    text-align: left;
+}
+
+.GradeSelector label {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #66FCF1;
+}
+
+.GradeSelector select {
+    margin: 0px 10px;
+}
+
+.GradeSelector button {
+    margin: 15px 10px;
+    padding: 10px;
+    font: inherit;
+    border: 1px solid #66FCF1;
+    background-color: transparent;
+    color: #66FCF1;
+    cursor: pointer;
+}
