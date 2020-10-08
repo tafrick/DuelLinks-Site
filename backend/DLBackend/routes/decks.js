@@ -6,7 +6,7 @@ const Deck = require('../models/deck')
 router.get('/', async (req, res) => {
     try {
         const decks = await Deck.find().sort({
-            date: -1
+            datePosted: -1
         }).limit(50)
         res.json(decks)
     } catch (err) {
