@@ -62,10 +62,10 @@ class Boxes extends Component {
     }
 
     loadResult(text) {
-        this.setState({searchResult: [] });
+        this.setState({ searchResult: [] });
         let searchResultArr = [];
-        for(let i = 0; i < this.state.loadedBoxes.length; i++){
-            if(this.state.loadedBoxes[i].name.toLowerCase().includes(text.toLowerCase())){
+        for (let i = 0; i < this.state.loadedBoxes.length; i++) {
+            if (this.state.loadedBoxes[i].name.toLowerCase().includes(text.toLowerCase())) {
                 searchResultArr.push(this.state.loadedBoxes[i]);
             }
         }
@@ -76,7 +76,7 @@ class Boxes extends Component {
         })
     }
     validate(text) {
-        let box = ["Arena of Sanctuary", "Fortress of Gears","Spirit Of The Beast","Soul Of Resurrection","Chronicle of Glory","Flames of the Heart","Lords Of Shining","Secrets Of The Ancients","Masters of Shadow","Clash Of Wings","Curse Of Dread","Dimension Of The Wizards","Power Of Bravery","Guardians Of Rock","Visions Of Ice","Resonance Of Contrast","Servants Of Kings","Empire Of Scarlet","Blades Of Spirits","Tornado Of Phantoms","Rampage Of The Forest","Dawn Of Destiny","Flame Of The Tyrant","Echoes Of Silence","Wonders Of The Sky","Age Of Discovery","Land of the Titans"]
+        let box = ["Arena of Sanctuary", "Fortress of Gears", "Spirit Of The Beast", "Soul Of Resurrection", "Chronicle of Glory", "Flames of the Heart", "Lords Of Shining", "Secrets Of The Ancients", "Masters of Shadow", "Clash Of Wings", "Curse Of Dread", "Dimension Of The Wizards", "Power Of Bravery", "Guardians Of Rock", "Visions Of Ice", "Resonance Of Contrast", "Servants Of Kings", "Empire Of Scarlet", "Blades Of Spirits", "Tornado Of Phantoms", "Rampage Of The Forest", "Dawn Of Destiny", "Flame Of The Tyrant", "Echoes Of Silence", "Wonders Of The Sky", "Age Of Discovery", "Land of the Titans"]
         const mini = box.some(name => text.toLowerCase() === name.toLowerCase());
         return mini;
     }
@@ -89,37 +89,38 @@ class Boxes extends Component {
         if (this.state.loadedBoxes) {
             search = (
                 <div className="search-container">
-                        <form onSubmit={this.handleClick}>
-                            <label>
-                                <input
-                                    type="text"
-                                    value={this.state.text}
-                                    onChange={this.handleChange}
-                                    placeholder="Search box name..." />
-                            </label>
-                        </form>
-                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
-                        <br></br> 
-                        {this.state.searchResult.map(row => {
-                            return(<Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link>)}
-                        )}
+                    <form onSubmit={this.handleClick}>
+                        <label>
+                            <input
+                                type="text"
+                                value={this.state.text}
+                                onChange={this.handleChange}
+                                placeholder="Search box name..." />
+                            <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
+                        </label>
+                    </form>
+                    <br></br>
+                    {this.state.searchResult.map(row => {
+                        return (<Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link>)
+                    }
+                    )}
                 </div>
             );
             main = (
-                    <div className="main-format">
-                        <h2>Main Boxes</h2>
-                        <hr />
-                        {this.state.loadedBoxes.map(row => {
-                            return(row.name.includes("SD") ? "" : this.validate(row.name) ? "" : <Link to={'/boxes/' + row._id}> <img src={row.img_src} alt = {row.name}/></Link>)
-                        })}
-                    </div>
+                <div className="main-format">
+                    <h2>Main Boxes</h2>
+                    <hr />
+                    {this.state.loadedBoxes.map(row => {
+                        return (row.name.includes("SD") ? "" : this.validate(row.name) ? "" : <li><Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /></Link></li>)
+                    })}
+                </div>
             );
             mini = (
                 <div className="main-format">
                     <h2>Mini Boxes</h2>
                     <hr />
                     {this.state.loadedBoxes.map(row => {
-                        return(this.validate(row.name) ? <Link to={'/boxes/' + row._id}> <img src={row.img_src} alt = {row.name}/> </Link> : '')
+                        return (this.validate(row.name) ? <li><Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link></li> : '')
                     })}
                 </div>
             );
@@ -127,18 +128,24 @@ class Boxes extends Component {
                 <div className="sd-format">
                     <h2>Structure Decks</h2>
                     <hr />
-                        {this.state.loadedBoxes.map(row => {
-                            return(row.name.includes("SD") ? <Link to={'/boxes/' + row._id}><img src={row.img_src} alt = {row.name}/> </Link>: '');
-                        })}
+                    {this.state.loadedBoxes.map(row => {
+                        return (row.name.includes("SD") ? <li><Link to={'/boxes/' + row._id}><img src={row.img_src} alt={row.name} /> </Link></li> : '');
+                    })}
                 </div>
             )
         }
         return (
             <div className="boxes-container">
                 {search}
-                {main}
-                {mini}
-                {sd}
+                <section className="box-list">
+                    <ul>{main}</ul>
+                </section>
+                <section className="box-list">
+                    <ul>{mini}</ul>
+                </section>
+                <section className="box-list">
+                    <ul>{sd}</ul>
+                </section>
             </div>
         );
     }

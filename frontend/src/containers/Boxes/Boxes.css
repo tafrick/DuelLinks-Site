@@ -1,4 +1,4 @@
-h2{
+h2 {
     margin: 0px 0px;
     margin-top: 50px;
 }
@@ -16,10 +16,13 @@ h2{
 .main-format {
     line-height: 1;
 }
+
 .main-format img {
     margin: 5px 5px;
     border: white solid 1px;
     border-radius: 7px;
+    width: 472px;
+    height: 75.72px;
 }
 
 .main-format img:hover {
@@ -27,9 +30,9 @@ h2{
     opacity: 0.7;
     transition: 0.5s;
     transform: scale(1.04);
-    -webkit-box-shadow: 5px 7px 4px 3px rgba(70,174,219,1);
-    -moz-box-shadow: 5px 7px 4px 3px rgba(70,174,219,1);
-    box-shadow: 3px 2px 4px 3px rgba(70,174,219,1);
+    -webkit-box-shadow: 5px 7px 4px 3px rgba(70, 174, 219, 1);
+    -moz-box-shadow: 5px 7px 4px 3px rgba(70, 174, 219, 1);
+    box-shadow: 3px 2px 4px 3px rgba(70, 174, 219, 1);
 }
 
 
@@ -37,6 +40,8 @@ h2{
     margin: 5px 5px;
     border: white solid 1px;
     border-radius: 7px;
+    width: 472px;
+    height: 75.72px;
 }
 
 .sd-format img:hover {
@@ -44,7 +49,15 @@ h2{
     opacity: 0.7;
     transition: 0.5s;
     transform: scale(1.04);
-    -webkit-box-shadow: 5px 7px 4px 3px rgba(70,174,219,1);
-    -moz-box-shadow: 5px 7px 4px 3px rgba(70,174,219,1);
-    box-shadow: 5px 4px 4px 3px rgba(70,174,219,1);
+    -webkit-box-shadow: 5px 7px 4px 3px rgba(70, 174, 219, 1);
+    -moz-box-shadow: 5px 7px 4px 3px rgba(70, 174, 219, 1);
+    box-shadow: 5px 4px 4px 3px rgba(70, 174, 219, 1);
+}
+
+.box-list ul {
+    list-style: none;
+}
+
+.box-list li {
+    display: inline-block;
 }
