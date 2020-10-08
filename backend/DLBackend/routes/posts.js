@@ -35,6 +35,20 @@ router.get('/category=/:category', async (req, res) => {
     }
 })
 
+//getting posts for a specific category
+router.get('/username=/:username', async (req, res) => {
+    try {
+        const posts = await Post.find({
+            username: req.params.username
+        })
+        res.json(posts)
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
 //creating a post
 router.post('/', async (req, res) => {
     const post = new Post({
