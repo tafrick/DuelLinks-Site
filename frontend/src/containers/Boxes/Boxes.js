@@ -11,12 +11,18 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import '../../components/DeckTypes/Table.css';
+import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
+import './Boxes.css';
 
 class Boxes extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadedBoxes: []
+            loadedBoxes: [],
+            searchResult: [],
+            displaySearch: false,
+            displayDefault: true
         };
     }
 
@@ -24,59 +30,119 @@ class Boxes extends Component {
         this.loadData();
     }
 
+    handleChange = (event) => {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    handleClick = (event) => {
+        event.preventDefault();
+        if (this.state.text !== "" && this.state.text !== " ") {
+            // this.loadData(this.state.text);
+            this.setState({
+                searchResult: [],
+                displaySearch: true,
+                displaySearch: false
+            });
+            this.loadResult(this.state.text);
+        }
+    }
+
     loadData() {
         axios.get('http://localhost:9000/boxes')
             .then(response => {
                 let boxes = [...response.data];
                 this.setState({ loadedBoxes: boxes })
-                //console.log(boxes);
+                // console.log(boxes[0].name)
             })
             .catch(error => {
                 console.error(error.message);
             })
     }
 
-    useStyles = () => makeStyles({
-        table: {
-            minWidth: 650
+    loadResult(text) {
+        this.setState({searchResult: [] });
+        let searchResultArr = [];
+        for(let i = 0; i < this.state.loadedBoxes.length; i++){
+            if(this.state.loadedBoxes[i].name.toLowerCase().includes(text.toLowerCase())){
+                searchResultArr.push(this.state.loadedBoxes[i]);
+            }
         }
-    });
+        this.setState({
+            searchResult: searchResultArr,
+            displaySearch: true,
+            displayDefault: false
+        })
+    }
+    validate(text) {
+        let box = ["Arena of Sanctuary", "Fortress of Gears","Spirit Of The Beast","Soul Of Resurrection","Chronicle of Glory","Flames of the Heart","Lords Of Shining","Secrets Of The Ancients","Masters of Shadow","Clash Of Wings","Curse Of Dread","Dimension Of The Wizards","Power Of Bravery","Guardians Of Rock","Visions Of Ice","Resonance Of Contrast","Servants Of Kings","Empire Of Scarlet","Blades Of Spirits","Tornado Of Phantoms","Rampage Of The Forest","Dawn Of Destiny","Flame Of The Tyrant","Echoes Of Silence","Wonders Of The Sky","Age Of Discovery","Land of the Titans"]
+        const mini = box.some(name => text.toLowerCase() === name.toLowerCase());
+        return mini;
+    }
 
     render() {
-        let boxes = null;
-        const classes = this.useStyles();
+        let search = "";
+        let main = "";
+        let mini = "";
+        let sd = "";
         if (this.state.loadedBoxes) {
-            boxes = (
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} size="small" aria-label="a dense table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell style={{ fontSize: '18px', backgroundColor: '#0B0C10', color: '#66FCF1', }} align="center">Name</TableCell>
-                                <TableCell style={{ fontSize: '18px', backgroundColor: '#0B0C10', color: '#66FCF1', }} align="center">Box</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody style={{ backgroundColor: '#0B0C10', color: '66FCF1', }}>
-                            {this.state.loadedBoxes.map((row) => (
-                                <TableRow key={row._id}>
-                                    <TableCell className="table" component="th" scope="row" align="center" style={{ fontSize: '23px', color: 'black', textTransform: "uppercase" }}>
-                                        <Link to={'/boxes/' + row._id}>
-                                            {row.name}
-                                        </Link>
-                                    </TableCell>
-                                    <TableCell align="center">{<img src={row.img_src} />}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+            search = (
+                <div className="search-container">
+                        <form onSubmit={this.handleClick}>
+                            <label>
+                                <input
+                                    type="text"
+                                    value={this.state.text}
+                                    onChange={this.handleChange}
+                                    placeholder="Search box name..." />
+                            </label>
+                        </form>
+                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
+                        <br></br> 
+                        {this.state.searchResult.map(row => {
+                            return(<Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link>)}
+                        )}
+                </div>
             );
+            main = (
+                    <div className="main-format">
+                        <h2>Main Boxes</h2>
+                        <hr />
+                        {this.state.loadedBoxes.map(row => {
+                            return(row.name.includes("SD") ? "" : this.validate(row.name) ? "" : <Link to={'/boxes/' + row._id}> <img src={row.img_src} alt = {row.name}/></Link>)
+                        })}
+                    </div>
+            );
+            mini = (
+                <div className="main-format">
+                    <h2>Mini Boxes</h2>
+                    <hr />
+                    {this.state.loadedBoxes.map(row => {
+                        return(this.validate(row.name) ? <Link to={'/boxes/' + row._id}> <img src={row.img_src} alt = {row.name}/> </Link> : '')
+                    })}
+                </div>
+            );
+            sd = (
+                <div className="sd-format">
+                    <h2>Structure Decks</h2>
+                    <hr />
+                        {this.state.loadedBoxes.map(row => {
+                            return(row.name.includes("SD") ? <Link to={'/boxes/' + row._id}><img src={row.img_src} alt = {row.name}/> </Link>: '');
+                        })}
+                </div>
+            )
         }
         return (
-            <div className="Boxes">
-                {boxes}
+            <div className="boxes-container">
+                {search}
+                {main}
+                {mini}
+                {sd}
             </div>
         );
     }
 }
 
 export default Boxes;
+
