@@ -1,13 +1,13 @@
 .Comment {
     text-align: left !important;
-    
+
     display: grid;
-    width: 85%;
+    width: 90%;
 
     grid-template-columns: 1fr 12fr;
     grid-template-rows: 1fr auto 1fr;
 
-    margin: 10px auto;
+    margin: 10px 0;
 
     grid-template-areas:
         "Comment-sidebar Comment-title"
@@ -77,7 +77,7 @@
 .Comment .Comment-title .Comment-user {
     width: 50%;
     float: left;
-    
+
 }
 
 .Comment .Comment-title .Comment-time {
