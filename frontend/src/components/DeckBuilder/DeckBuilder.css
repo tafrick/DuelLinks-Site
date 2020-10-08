@@ -22,25 +22,37 @@ input[type="text"] {
 }
 
 .build-wrapper {
-    float: left;
+    float: right;
     width: 50%;
-    background: blue;
+    background: transparent;
     height: 100%;
     box-sizing: border-box;
     padding: 0.5em;
     overflow: auto;
     min-height: 200px;
+    overflow: auto;
+
+
+}
+
+.build-wrapper .builderComponent {
+    position: sticky;
+
+    overflow-y: auto;
 }
 
 .searchWrapper {
     float: left;
-    width: 50%;
-    background: red;
+    width: 37%;
+    background: transparent;
     height: 100%;
     box-sizing: border-box;
     padding: 0.5em;
     overflow: auto;
-    min-height: 200px;
+
+    border: solid 2px white;
+    position: fixed;
+    
 }
 
 .submitWrapper {
@@ -185,4 +197,21 @@ input[type="text"] {
 
 .img-container:hover img {
     transform: scale(1.01);
+}
+
+.__react_modal_image__medium_img {
+    left: 25% !important;
+}
+
+.__react_modal_image__large_img {
+    left: 15% !important;
+}
+.__react_modal_image__icon_menu {
+    float: left !important;
+}
+
+.__react_modal_image__caption {
+    margin-left: -46% !important;
+    margin-top: 0% !important;
+    font-size: 30px !important;
 }

@@ -145,7 +145,7 @@ class DeckBuilder extends Component {
     }
 
     submitDeckHandler = () => {
-        console.log(this.state.deck)
+
         if (this.props.isAuth) {
             const newDeck = {
                 title: this.state.newDeckTitle,
@@ -181,7 +181,7 @@ class DeckBuilder extends Component {
                             className="modal"
 
                         />
-                        <div class="overlay">
+                        <div className="overlay">
                             <a className="icon">
                                 {/* <RiZoomInFill
                                 className="icon-img"
@@ -247,7 +247,7 @@ class DeckBuilder extends Component {
                     <img src={CardTraderGold} width="250" />
                     <img src={VagaBond} width="250" height="375" />
                     <img src={CardTraderBlack} width="260" />
-                </div> : <br></br>}
+                </div> : ""}
 
                 <div className="searchWrapper">
                     <form onSubmit={this.handleClick}>
@@ -272,6 +272,15 @@ class DeckBuilder extends Component {
                 </div>
 
                 <div className="build-wrapper">
+                {this.state.deck.length >= 20 ? <div className="submitWrapper"> <label>Category: </label>
+                        <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                            <option value="Competitive">Competitive Deck</option>
+                            <option value="Casual">Casual Deck</option>
+                            <option value="Farming">Farming Deck</option>
+                        </select>
+                        <br></br><br></br>
+                        <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                    </div> : ""}
                     <div className="builderComponent">
                         <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
                         <div className="deck-wrapper">
@@ -281,16 +290,6 @@ class DeckBuilder extends Component {
                         </div>
                     </div>
                     <br></br>
-
-                    {this.state.deck.length >= 20 ? <div className="submitWrapper"> <label>Category: </label>
-                        <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
-                            <option value="Competitive">Competitive Deck</option>
-                            <option value="Casual">Casual Deck</option>
-                            <option value="Farming">Farming Deck</option>
-                        </select>
-                        <br></br><br></br>
-                        <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
-                    </div> : ""}
 
                 </div>
 
