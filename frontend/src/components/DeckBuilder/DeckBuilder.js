@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import CardData from './Cards.json';
 import { Resizable, ResizableBox } from 'react-resizable';
+import SearchIcon from '@material-ui/icons/Search';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -258,8 +259,7 @@ class DeckBuilder extends Component {
                                 onChange={this.handleChange}
                                 placeholder="Enter card name..." />
                         </label>
-                        <Button variant="contained" color="primary" onClick={this.handleClick}>Search</Button>
-                        <h2>Search for cards to build your deck!</h2>
+                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
                     </form>
                     <div className="searchComponent">
                         <div className="cards-wrapper">
@@ -272,7 +272,7 @@ class DeckBuilder extends Component {
                 </div>
 
                 <div className="build-wrapper">
-                {this.state.deck.length >= 20 ? <div className="submitWrapper"> <label>Category: </label>
+                    {this.state.deck.length >= 20 ? <div className="submitWrapper"> <label>Category: </label>
                         <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
                             <option value="Competitive">Competitive Deck</option>
                             <option value="Casual">Casual Deck</option>

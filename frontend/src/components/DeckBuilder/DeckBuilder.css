@@ -1,5 +1,5 @@
 .page-wrapper {
-    margin: auto 250px;
+    margin: auto 7.5%;
     height: 100%;
     overflow: auto;
 }
@@ -8,7 +8,7 @@ input[type="text"] {
     background: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
-    color: white;
+    color: #66FCF1;
     font-size: 28px;
     width: auto;
 }
@@ -17,42 +17,41 @@ input[type="text"] {
     text-align: center;
 }
 
-.react-tabs {
-    text-align: center;
+.build-wrapper {
+    float: left;
+    width: 48%;
+    background: #0B0C10;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5em;
+    min-height: 200px;
+    margin: 5% 1%;
+    border: 2px solid #66FCF1;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
-.build-wrapper {
-    float: right;
-    width: 50%;
+.build-wrapper:hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.searchWrapper {
+    float: left;
+    width: 48%;
     background: transparent;
+    color: #0B0C10;
     height: 100%;
     box-sizing: border-box;
     padding: 0.5em;
     overflow: auto;
     min-height: 200px;
-    overflow: auto;
-
-
+    margin: 5% 1%;
+    border: 2px solid #66FCF1;
 }
 
-.build-wrapper .builderComponent {
-    position: sticky;
-
-    overflow-y: auto;
-}
-
-.searchWrapper {
-    float: left;
-    width: 37%;
-    background: transparent;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 0.5em;
-    overflow: auto;
-
-    border: solid 2px white;
-    position: fixed;
-    
+.searchWrapper:hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .submitWrapper {
@@ -66,21 +65,10 @@ input[type="text"] {
     margin-top: 50px;
 }
 
-
-
-.react-tabs .deck-wrapper {
-    width: 100%
-}
-
-.react-tabs .deck-wrapper img {
-    width: 125px;
-    margin: 5px 5px;
-    display: inline-block;
-}
-
 .deck-list {
     display: inline-block;
-    position: relative;
+    /* position: relative; */
+    position: sticky;
 }
 
 
@@ -192,26 +180,8 @@ input[type="text"] {
 
 /* .img-container .icon-img:hover {
       color: #eeeeee;
-
   } */
 
 .img-container:hover img {
     transform: scale(1.01);
-}
-
-.__react_modal_image__medium_img {
-    left: 25% !important;
-}
-
-.__react_modal_image__large_img {
-    left: 15% !important;
-}
-.__react_modal_image__icon_menu {
-    float: left !important;
-}
-
-.__react_modal_image__caption {
-    margin-left: -46% !important;
-    margin-top: 0% !important;
-    font-size: 30px !important;
 }
