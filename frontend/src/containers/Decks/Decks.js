@@ -88,6 +88,7 @@ class Decks extends Component {
                 return (
                     <div className={classes.DeckWrapper} key={deck._id}>
                         <h1>{deck.title}</h1>
+                        <p>Submitted by: {deck.username}</p>
                         <h2>{deck.category}</h2>
                         <table className={classes.DeckInfo}>
                             <tr>
