@@ -10,6 +10,9 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from '@material-ui/core/Button';
 import ModalImage from "react-modal-image";
 
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
 class FullPost extends Component {
 
     constructor(props) {
@@ -229,9 +232,9 @@ class FullPost extends Component {
                     <h1 id="title">{this.state.loadedPost.title}</h1>
                     <div className="post-wrapper">
                         <div className="post-sidebar">
-                            <ArrowUpwardIcon className="upvote" onClick={this.props.clickedUp} />
-                            <p>{this.state.loadedPost.upvotes}</p>
-                            <ArrowDownwardIcon className="downvote" onClick={this.props.clickedDown} />
+                            <KeyboardArrowUpIcon className="upvote" onClick={this.props.clickedUp} />
+                            <span>{this.state.loadedPost.upvotes}</span>
+                            <KeyboardArrowDownIcon className="downvote" onClick={this.props.clickedDown} />
                         </div>
                         {/* <span className="Comment-user">Posted By {this.state.loadedPost.username}</span> */}
 

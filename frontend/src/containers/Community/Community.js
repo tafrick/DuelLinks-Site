@@ -13,6 +13,9 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 //import FullPost from './FullPost';
 
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
 
 class Community extends Component {
     constructor(props) {
@@ -347,9 +350,9 @@ class Community extends Component {
 
                         <div className="post" key={index * Math.random()}>
                             <div className="post-sidebar">
-                                {this.props.isAuth ? <ArrowUpwardIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowUpwardIcon />}
+                                {this.props.isAuth ? <KeyboardArrowUpIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <KeyboardArrowUpIcon />}
                                 <span>{post.upvotes}</span>
-                                {this.props.isAuth ? <ArrowDownwardIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowDownwardIcon />}
+                                {this.props.isAuth ? <KeyboardArrowDownIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <KeyboardArrowDownIcon />}
                             </div>
                             <div className="post-title">
                                 <img src={post.image_src} />

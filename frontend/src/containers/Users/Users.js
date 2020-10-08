@@ -8,6 +8,9 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from '@material-ui/core/Button';
 import ModeCommentIcon from "@material-ui/icons/ModeComment";
 
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
 class Users extends Component {
     constructor(props) {
         super(props);
@@ -206,9 +209,9 @@ class Users extends Component {
                 <div className="posts-wrapper">
                     <div className="post" key={index * Math.random()}>
                         <div className="post-sidebar">
-                            {this.props.isAuth ? <ArrowUpwardIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowUpwardIcon />}
+                            {this.props.isAuth ? <KeyboardArrowUpIcon className="upvote" onClick={() => { this.upvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <KeyboardArrowUpIcon />}
                             <span>{post.upvotes}</span>
-                            {this.props.isAuth ? <ArrowDownwardIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowDownwardIcon />}
+                            {this.props.isAuth ? <KeyboardArrowDownIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <KeyboardArrowDownIcon />}
                         </div>
                         <div className="post-title">
                             <img src={post.image_src} />
