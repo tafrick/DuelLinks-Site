@@ -158,6 +158,7 @@ class DeckBuilder extends Component {
             axios.post('http://localhost:9000/decks/', newDeck)
                 .then(response => {
                     console.log(response);
+                    this.props.history.go('/decks/');
                 })
                 .catch(err => {
                     console.error({ message: err.message })
