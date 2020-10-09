@@ -27,7 +27,7 @@ class DeckBuilder extends Component {
             deck: [],
             extra: [],
             newDeckTitle: '',
-            newDeckCategory: 'Competitive_Deck',
+            newDeckCategory: 'Competitive',
             displayTitle: true,
             displayDeck: false,
             displaySubmit: false
@@ -268,7 +268,7 @@ class DeckBuilder extends Component {
                     </select>
                 </div>
                 <div className="searchWrapper">
-                    
+
                     <div className="searchComponent">
                         <div className="cards-wrapper">
                             <div className="display-results" style={{ display: "inline-block" }}>
@@ -281,19 +281,19 @@ class DeckBuilder extends Component {
 
                 <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
                 <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" />
-                
+
                 <div className="build-wrapper">
-                    {this.state.deck.length >= 20 ? <div className="submitWrapper"> 
-                        
+                    {this.state.deck.length >= 20 ? <div className="submitWrapper">
+
                         <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
                             <option value="Competitive">Competitive Deck</option>
                             <option value="Casual">Casual Deck</option>
                             <option value="Farming">Farming Deck</option>
                         </select>
-                        
+
                         <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
                     </div> : ""}
-                    
+
                     <div className="builderComponent">
                         <div className="deck-wrapper">
                             {deckList}
