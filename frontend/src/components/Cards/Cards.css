@@ -7,50 +7,44 @@
     width: 50%;
 } */
 
-.cardWrapper {
+.card-wrapper {
     display: flex;
     width: 90%;
     margin: 50px 150px;
-    text-align: left;
 }
 
-.colImg {
+.col-img {
     margin-left: 100px;
     padding-top: 25px;
 }
 
-.colText {
+.col-text {
     flex: 20%;
     text-align: left;
     padding: 25px;
     position: relative;
     margin-left: 50px;
-    display: table;
-    padding: auto;
 }
 
-.colText p {
-    text-align: left;
-}
-
-#cardName {
+#card-name {
     font-size: 36px;
+
 }
 
-#cardType {
+#card-type {
     color: rgb(100, 172, 255);
     font-size: 24px;
     line-height: 0;
 }
 
-#cardDescription {
+#card-description {
     position: absolute;
     /* bottom: 0; */
     width: 85%;
     font-size: 17px;
 }
 
-#whereToget {
+#where-to-get {
     line-height: 1;
 }
 
@@ -85,4 +79,7 @@
     margin-left: 65% !important;
     text-align: left;
     background-color: rgba(0, 0, 0, 0.8) !important;
+
+
+
 }

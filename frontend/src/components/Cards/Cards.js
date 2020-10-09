@@ -1,6 +1,6 @@
 import React from 'react';
 import ModalImage from "react-modal-image";
-import classes from './Cards.module.css';
+import './Cards.css';
 
 const filterDetails = (card) => {
 
@@ -38,8 +38,8 @@ const showAtkDef = (card) => {
 }
 
 const cards = props => (
-    <div className={classes.cardWrapper}>
-        <div className={classes.colImg}>
+    <div className="card-wrapper">
+        <div className="col-img">
             <ModalImage
                 small={props.image}
                 large={props.image}
@@ -50,16 +50,16 @@ const cards = props => (
 
             {/* <img src={props.image} alt={props.source} /> */}
         </div>
-        <div className={classes.colText}>
-            <span id={classes.cardName}>{props.title}</span>
+        <div className="col-text">
+            <span id="card-name">{props.title}</span>
             <br></br>
             <br></br>
-            <span id={classes.cardType}>{filterDetails(props)}{props.race} / {props.type}{showLevel(props)}</span>
+            <span id="card-type">{filterDetails(props)}{props.race} / {props.type}{showLevel(props)}</span>
             <br></br>
-            <br></br>
-            <p id={classes.atkDef}>{showAtkDef(props)}</p>
-            <p id={classes.whereToget}>{props.box}</p>
-            <p id={classes.cardDescription}>{props.effect}</p>
+            <p id="atkDef">{showAtkDef(props)}</p>
+            <p id="where-to-get">{props.box}</p>
+            <p id="card-description">{props.effect}</p>
+
         </div>
 
     </div>
