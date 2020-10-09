@@ -97,7 +97,7 @@ td {
     padding: 10px;
     font: inherit;
     border: 1px solid #000000;
-    background-color: transparent;
+    background-color: white;
     color: #000000;
     cursor: pointer;
 }
@@ -116,7 +116,7 @@ td {
     text-decoration: none;
 }
 
-p {
+.DeckWrapper .DeckInfoWrapper p {
     text-align: center;
 }
 
