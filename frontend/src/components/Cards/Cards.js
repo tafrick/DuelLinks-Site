@@ -1,6 +1,6 @@
 import React from 'react';
 import ModalImage from "react-modal-image";
-import './Cards.css';
+import classes from './Cards.module.css';
 
 const filterDetails = (card) => {
 
@@ -11,14 +11,14 @@ const filterDetails = (card) => {
 }
 
 const modalDescription = (name, desc) => {
-    return(
+    return (
         <>
-        <div style={{textAlign: "center"}}>
-            {name}
-        </div>
+            <div style={{ textAlign: "center" }}>
+                {name}
+            </div>
             <br></br>
             {desc}
-        
+
         </>
     );
 }
@@ -38,19 +38,19 @@ const showAtkDef = (card) => {
 }
 
 const cards = props => (
-    <div className="card-wrapper">
-        <div className="col-img">
-        <ModalImage
-                    small={props.image}
-                    large={props.image}
-                    alt={modalDescription(props.title, props.effect)}
-                    className="modal"
-                    style={{width: 200}}
-                />
-           
+    <div className={classes.cardWrapper}>
+        <div className={classes.colImg}>
+            <ModalImage
+                small={props.image}
+                large={props.image}
+                alt={modalDescription(props.title, props.effect)}
+                className="modal"
+                style={{ width: 200 }}
+            />
+
             {/* <img src={props.image} alt={props.source} /> */}
         </div>
-        <div className="col-text">
+        <div className={classes.colText}>
             <span id="card-name">{props.title}</span>
             <br></br>
             <br></br>
@@ -59,7 +59,6 @@ const cards = props => (
             <p id="atkDef">{showAtkDef(props)}</p>
             <p id="where-to-get">{props.box}</p>
             <p id="card-description">{props.effect}</p>
-            
         </div>
 
     </div>

@@ -7,18 +7,19 @@
     width: 50%;
 } */
 
-.card-wrapper {
+.cardWrapper {
     display: flex;
     width: 90%;
     margin: 50px 150px;
+    text-align: left;
 }
 
-.col-img {
+.colImg {
     margin-left: 100px;
     padding-top: 25px;
 }
 
-.col-text{
+.colText {
     flex: 20%;
     text-align: left;
     padding: 25px;
@@ -26,13 +27,17 @@
     margin-left: 50px;
 }
 
+.colText p {
+    text-align: left;
+}
+
 #card-name {
     font-size: 36px;
-    
+
 }
 
 #card-type {
-    color:rgb(100, 172, 255);
+    color: rgb(100, 172, 255);
     font-size: 24px;
     line-height: 0;
 }
@@ -66,7 +71,7 @@
     /* bottom: 0 !important; */
     top: 10% !important;
     background-color: transparent !important;
-    
+
 }
 
 .__react_modal_image__caption {
@@ -79,7 +84,4 @@
     margin-left: 65% !important;
     text-align: left;
     background-color: rgba(0, 0, 0, 0.8) !important;
-
-    
-
 }

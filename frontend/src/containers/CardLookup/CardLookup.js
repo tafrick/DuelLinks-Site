@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Grandpa from '../../components/Grandpa/Grandpa';
-import './CardLookup.css';
+import classes from './CardLookup.module.css';
 import Cards from '../../components/Cards/Cards';
 import Button from '@material-ui/core/Button';
 import Boxes from './yugioh-boxes-updated.json';
@@ -141,7 +141,7 @@ class CardLookup extends Component {
             for (let box in this.state.loadedBoxes) {
                 let ithBoxCardsIn = this.state.loadedBoxes[box].cardsIn;
                 for (let j in ithBoxCardsIn) {
-                    if (ithBoxCardsIn[j] === name) {
+                    if (ithBoxCardsIn[j].name === name) {
                         let box_title = this.state.loadedBoxes[box].name;
                         return box_title;
                     }
@@ -174,7 +174,7 @@ class CardLookup extends Component {
             })
         }
         return (
-            <div className="CardLookup">
+            <div className={classes.CardLookup}>
                 <header>
                     <Grandpa />
                     Hello! Which card would you like to search?

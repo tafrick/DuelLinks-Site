@@ -37,7 +37,6 @@ class App extends Component {
 						<Route path="/" exact component={Homepage} />
 						<Route path="/boxes" exact component={Boxes} />
 						<Route path="/boxes/:boxId" exact component={FullBox} />
-						<Route path="/boxes/:boxId/:cardName" exact component={FullCard} />
 						<Route path="/community/:postId" exact component={FullPost} />
 						<Route path="/deckbuilder" exact component={DeckBuilder} />
 						<Route path="/decks" exact component={Decks} />
