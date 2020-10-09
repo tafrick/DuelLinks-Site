@@ -7,6 +7,7 @@ const initialState = {
     token: null,
     userEmail: null,
     userName: null,
+    userPic: null,
     error: null,
     loading: false
 };
@@ -23,6 +24,7 @@ const authSuccess = (state, action) => {
         token: action.idToken,
         userEmail: action.uEmail,
         userName: action.uName,
+        userPic: action.pic,
         error: null,
         loading: false
     });
@@ -39,7 +41,8 @@ const authLogout = (state, action) => {
     return updateObject(state, {
         token: null,
         userEmail: null,
-        userName: null
+        userName: null,
+        userPic: null
     })
 }
 

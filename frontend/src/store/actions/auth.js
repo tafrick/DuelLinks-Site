@@ -6,12 +6,13 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, email, uname) => {
+export const authSuccess = (token, email, uname, pic) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         idToken: token,
         uEmail: email,
-        uName: uname
+        uName: uname,
+        pic: pic
     };
 };
 
@@ -40,15 +41,16 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 }
 
-export const auth = (token, email, uname, expireTime) => {
+export const auth = (token, email, uname, expireTime, pic) => {
     return dispatch => {
         const expirationDate = new Date(new Date().getTime() + (expireTime * 1000));
         localStorage.setItem('token', token);
         localStorage.setItem('email', email);
         localStorage.setItem('uname', uname);
+        localStorage.setItem('pic', pic);
         localStorage.setItem('expirationDate', expirationDate);
-        dispatch(authSuccess(token, email, uname));
-        dispatch(checkAuthTimeout(expireTime))
+        dispatch(authSuccess(token, email, uname, pic));
+        dispatch(checkAuthTimeout(expireTime));
     };
 };
 

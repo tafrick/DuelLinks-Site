@@ -30,6 +30,7 @@ class App extends Component {
 			<div>
 				<Layout>
 					{this.props.isAuth ? <h3>Welcome: {this.props.name}!</h3> : null}
+					{this.props.isAuth ? <img src={this.props.pic} /> : null}
 					<Switch>
 						<Route path="/cardlookup" exact component={CardLookup} />
 						<Route path="/beginners" exact render={Beginners} />
@@ -62,7 +63,8 @@ const mapStateToProps = state => {
 		token: state.token,
 		isAuth: state.token !== null,
 		email: state.userEmail,
-		name: state.userName
+		name: state.userName,
+		pic: state.userPic,
 	}
 }
 
