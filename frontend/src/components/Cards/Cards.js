@@ -51,14 +51,15 @@ const cards = props => (
             {/* <img src={props.image} alt={props.source} /> */}
         </div>
         <div className={classes.colText}>
-            <span id="card-name">{props.title}</span>
+            <span id={classes.cardName}>{props.title}</span>
             <br></br>
             <br></br>
-            <span id="card-type">{filterDetails(props)}{props.race} / {props.type}{showLevel(props)}</span>
+            <span id={classes.cardType}>{filterDetails(props)}{props.race} / {props.type}{showLevel(props)}</span>
             <br></br>
-            <p id="atkDef">{showAtkDef(props)}</p>
-            <p id="where-to-get">{props.box}</p>
-            <p id="card-description">{props.effect}</p>
+            <br></br>
+            <p id={classes.atkDef}>{showAtkDef(props)}</p>
+            <p id={classes.whereToget}>{props.box}</p>
+            <p id={classes.cardDescription}>{props.effect}</p>
         </div>
 
     </div>

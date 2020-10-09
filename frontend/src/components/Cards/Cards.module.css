@@ -25,31 +25,32 @@
     padding: 25px;
     position: relative;
     margin-left: 50px;
+    display: table;
+    padding: auto;
 }
 
 .colText p {
     text-align: left;
 }
 
-#card-name {
+#cardName {
     font-size: 36px;
-
 }
 
-#card-type {
+#cardType {
     color: rgb(100, 172, 255);
     font-size: 24px;
     line-height: 0;
 }
 
-#card-description {
+#cardDescription {
     position: absolute;
     /* bottom: 0; */
     width: 85%;
     font-size: 17px;
 }
 
-#where-to-get {
+#whereToget {
     line-height: 1;
 }
 
