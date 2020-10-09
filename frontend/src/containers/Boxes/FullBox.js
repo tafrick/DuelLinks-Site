@@ -7,6 +7,8 @@ import rateLimit from 'axios-rate-limit';
 import './FullBox.css';
 import Cards from '../../components/Cards/Cards';
 import FullCard from './FullCard';
+import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
 
 
 
@@ -17,6 +19,9 @@ class FullBox extends Component {
             loadedBox: null,
             cardsArray: [],
             loadedCards: null,
+            searchResult: [],
+            displaySearch: false,
+            displayDefault: true
 
         }
     }
@@ -39,12 +44,19 @@ class FullBox extends Component {
             })
     }
 
-
-    loadCardData(name) {
-        if (name !== 'undefined') {
-            console.log(name);
-
+    loadResult(text) {
+        this.setState({ searchResult: [] });
+        let searchResultArr = [];
+        for (let i = 0; i < this.state.cardsArray.length; i++) {
+            if (this.state.cardsArray[i].name.toLowerCase().includes(text.toLowerCase())) {
+                searchResultArr.push(this.state.cardsArray[i]);
+            }
         }
+        this.setState({
+            searchResult: searchResultArr,
+            displaySearch: true,
+            displayDefault: false
+        })
     }
 
     handleChange = (event) => {
@@ -71,23 +83,33 @@ class FullBox extends Component {
         return(<div>Released: {format.toLocaleDateString()}</div>);
     }
     render() {
-
-        let cards = "";
-        if (this.state.loadedCards) {
-            cards = this.state.box_array.map(card => {
-                // console.log("cardData: " , card)
-                return (
-                    <Cards
-                        key={card.id}
-                        title={card.name}
-                        effect={card.description}
-                        image={card.img} />
-                );
-            })
-        }
-
         let Box = null;
+        let searchResults= "";
         let displayCards = "";
+        
+        searchResults = (
+            <div className="card-search-container">
+                <form onSubmit={this.handleClick}>
+                    <label>
+                        <input
+                            type="text"
+                            value={this.state.text}
+                            onChange={this.handleChange}
+                            placeholder="Search card name..." />
+                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
+                    </label>
+                </form>
+                <br></br>
+                <div className="search-results">
+                    {this.state.searchResult.map(card => {
+                        return (<span>
+                            {undefined ? null : <FullCard getCard = {card} />}
+                        </span>)
+                    }
+                    )}
+                </div>
+            </div>
+        );
         
         if (this.state.loadedBox) {
             Box = (
@@ -95,42 +117,21 @@ class FullBox extends Component {
                     <h2>{this.state.loadedBox.name} [{this.state.loadedBox.cardsIn.length}]</h2>
                     <h4>{this.getDate(this.state.loadedBox.releaseDate)}</h4>
                     <img src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
-
-                    
                 </div>
             );
 
             displayCards = this.state.cardsArray.map((card, index) => {
-
-                // this.loadCardData(card);
-
                 return (
                     <span key={index}>
-                        
-                        {/* {console.log("name of card: ", card)} */}
-                        
-                        
                         {undefined ? null : <FullCard getCard = {card} />}
-                        {/* <Link to={this.props.match.params.url + '/' + card}><span style={{display: "inline-block"}}>{card}</span>,</Link> */}
-                        {/* {console.log('Link to: ' + this.props.match.params.url + '/' + card)} */}
-                        {/* <FullCard box = {this.props.match.params.boxId} /> */}
                     </span>
-                    // <table className={classes.cardlist}>
-                    //     <tr>
-                    //         <th>Card Name</th>
-                    //         <th> Set </th>
-                    //     </tr>
-                    //     <tr>
-                    //         <td><Link to={this.props.match.params.url + '/' + card}><p>{card}</p></Link></td>
-                    //         <td>{this.state.loadedBox.name}</td>
-                    //     </tr>
-                    // </table>
                 );
             })
         }
         // console.log("completed cycle: ",this.state.cardsArray);
         return (
             <div className="box-page">
+                {searchResults}
                 {Box}
                 <br></br>
                 <span className="cardlist">

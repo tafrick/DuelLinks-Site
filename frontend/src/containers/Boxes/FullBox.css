@@ -26,23 +26,18 @@
     text-decoration: underline;
 }
 
-table,
-td,
-th {
-    border: 1px solid #ddd;
-    text-align: left;
+
+.card-search-container {
+    /* text-align: center;
+    margin-left: -30%; */
+    padding-bottom: -20px;
+    margin-bottom: -10px;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th,
-td {
-    padding: 15px;
-    text-align: left;
-    vertical-align: bottom;
+.card-search-container form{
+    display: flex;
+    justify-content: left;
+    margin-left: 100px;
 }
 
 .box-page {
