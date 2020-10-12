@@ -36,6 +36,8 @@ input.title-input {
     border-bottom: none;
 }
 
+
+
 input.skill-input {
     /* background: rgba(0, 0, 0, 0);
     border: none;
@@ -54,14 +56,16 @@ input.skill-input {
 .build-wrapper {
     float: left;
     width: 48%;
-    background: #0B0C10;
+    background-color: #0B0C10;
+    background-image: url("https://i.pinimg.com/originals/dc/2e/54/dc2e54733d48a96bf85e05382bccead3.jpg");
     height: 70vh;
     overflow-y: scroll;
     box-sizing: border-box;
     padding: 0.5em;
     min-height: 200px;
     margin: auto 1%;
-    border: 2px solid #66FCF1;
+    border: 1px solid black;
+    /* border: 1px solid #66FCF1; */
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -84,10 +88,10 @@ input.skill-input {
     padding: 0.5em;
     overflow-y: scroll;
     background-color: black;
-
+    background-image: url("https://i.pinimg.com/originals/dc/2e/54/dc2e54733d48a96bf85e05382bccead3.jpg");
     margin: auto 1%;
-    
-    border: 2px solid #66FCF1;
+    /* border: 1px solid #66FCF1; */
+    border: 1px solid black;
 }
 
 .searchWrapper:hover {
