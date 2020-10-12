@@ -41,18 +41,6 @@ class CardLookup extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     //this.loadData();
-    //     //this.postData();
-    //     this.patchData();
-    // }
-
-    // componentDidUpdate() {
-    //     //this.loadData();
-    //     this.patchData();
-    // }
-
-
     loadData(name) {
 
         if (name !== 'undefined') {
@@ -126,13 +114,6 @@ class CardLookup extends Component {
                         console.error(error.message);
                     })
             }
-            // axios.patch('http://localhost:9000/boxes', newBox)
-            //     .then(response => {
-            //         console.log(response.data)
-            //     })
-            //     .catch(error => {
-            //         console.error(error.message)
-            //     })
         }
     }
 

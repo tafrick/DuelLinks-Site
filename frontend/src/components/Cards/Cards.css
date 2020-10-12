@@ -38,14 +38,14 @@
 }
 
 #card-description {
-    position: absolute;
+    /* position: absolute; */
     /* bottom: 0; */
     width: 85%;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 #where-to-get {
-    line-height: 1;
+    line-height: 2;
 }
 
 #atkDef {

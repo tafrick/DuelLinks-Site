@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import DeckTypes from '../../components/DeckTypes/DeckTypes';
 import classes from './Decks.module.css';
+import Collapsible from 'react-collapsible';
+import ModalImage from "react-modal-image";
 
 class Decks extends Component {
     constructor(props) {
@@ -62,7 +64,7 @@ class Decks extends Component {
 
     deckGradeCalcHandler(GPA, totalVotes) {
         if (totalVotes == 0) {
-            return <p>Not Graded</p>
+            return <div style={{ "color": "red" }}>Not Graded</div>
         }
         if (GPA >= 90) {
             return <div style={{ "color": "red" }}>S+</div>
@@ -99,19 +101,56 @@ class Decks extends Component {
         }
     }
 
+    modalDescription = (name, desc) => 
+        <>
+            <div style={{ textAlign: "center" }}>
+                {name}
+            </div>
+            <br></br>
+            {desc}
+        </>;
+
     render() {
         let decks = [];
         if (this.state.loadedDecks) {
             console.log(this.state.loadedDecks)
             decks = this.state.loadedDecks.map(deck => {
-                let mainCards = deck.mainDeck.map(card => { return <img key={card.name + Math.random()} src={card.img} alt={card.name} /> })
-                let extraCards = deck.extraDeck.map(xcard => { return <img key={xcard.name + Math.random()} src={xcard.img} alt={xcard.name} /> })
+                // let mainCards = deck.mainDeck.map(card => { return <img key={card.name + Math.random()} src={card.img} alt={card.name} /> })
+                let mainCards = deck.mainDeck.map(card =>  
+                <span className={classes.modalTag}>
+                    <span style={{width: "120px", margin: "0px 3px", display: "inline-block"}}>
+                        {<ModalImage
+                        small={card.img}
+                        large={card.img}
+                        alt={this.modalDescription(card.name, card.description)}
+                        className="modal"
+                        style={{width: "100px"}}
+                    />}
+                    </span>
+                </span>
+                )
+                // let extraCards = deck.extraDeck.map(xcard => { return <img key={xcard.name + Math.random()} src={xcard.img} alt={xcard.name} /> })
+                let extraCards = deck.extraDeck.map(xcard => 
+                <span className={classes.modalTag}>
+                    <span style={{width: "110px", margin: "0px 3px", display: "inline-block"}}>
+                        {<ModalImage
+                        small={xcard.img}
+                        large={xcard.img}
+                        alt={this.modalDescription(xcard.name, xcard.description)}
+                        className="modal"
+                    />}
+                    </span>
+                </span>
+                )
                 return (
                     <div className={[classes.DeckWrapper, this.classSelectHandler(deck.category)].join(' ')} key={deck._id}>
-                        <div className={classes.DeckInfoWrapper}>
-                            <h1>{deck.title} [{deck.category}]</h1>
-                            <p>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
+                        <Collapsible trigger={<div className={classes.DeckInfoWrapper}>
+                            <div className={classes.categoryText}>{deck.category}</div>
+                            <h1>{deck.title}</h1>
+                            <p style={{color: "white"}}>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
                             {this.pictSelectHandler(deck.category)}
+
+                            
                             <table className={classes.DeckInfo}>
                                 <tr>
                                     <th>Deck Grade</th>
@@ -122,6 +161,8 @@ class Decks extends Component {
                                     {deck.totalVotes == 1 ? <td>1 Vote</td> : <td>{deck.totalVotes} Votes</td>}
                                 </tr>
                             </table>
+                           
+                            </div>}>
                             <div className={classes.GradeSelector}>
                                 <label>Grade Deck</label>
                                 <select value={this.state.newDeckGrade} disabled={!this.props.isAuth} onChange={(event) => this.setState({ newDeckGrade: event.target.value })}>
@@ -134,11 +175,10 @@ class Decks extends Component {
                                 </select>
                                 <button disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</button>
                             </div>
-                        </div>
-                        <br></br>
-                        {mainCards}
-                        <br></br>
-                        {extraCards}
+                            {mainCards}
+                            <br></br>
+                            {extraCards}
+                        </Collapsible>
                     </div>
                 )
             })

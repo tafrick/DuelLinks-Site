@@ -1,12 +1,22 @@
-.CardLookup {
-    text-align: center;
-    margin: auto 10%;
-    padding: auto 10%;
+@media screen and (min-width: 1200px) {
+    .CardLookup {
+        text-align: center;
+        margin: auto 0%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .CardLookup {
+        text-align: center;
+        margin: auto 5%;
+    }
 }
 
 p {
     text-align: left;
 }
+
+
 
 input {
     height: 32px;

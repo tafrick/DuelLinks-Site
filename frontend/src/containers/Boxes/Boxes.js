@@ -100,7 +100,7 @@ class Boxes extends Component {
                 <br></br>
                 <div className="search-results">
                     {this.state.searchResult.map(row => {
-                        return (<Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link>)
+                        return (<Link to={'/boxes/' + row._id}><img src={row.img_src} alt={row.name} /></Link>)
                     }
                     )}
                 </div>

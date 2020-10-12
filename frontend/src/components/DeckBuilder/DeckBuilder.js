@@ -27,7 +27,8 @@ class DeckBuilder extends Component {
             deck: [],
             extra: [],
             newDeckTitle: '',
-            newDeckCategory: 'Competitive_Deck',
+            newDeckCategory: 'None',
+            newDeckSkill: '',
             displayTitle: true,
             displayDeck: false,
             displaySubmit: false
@@ -151,6 +152,7 @@ class DeckBuilder extends Component {
             const newDeck = {
                 title: this.state.newDeckTitle,
                 category: this.state.newDeckCategory,
+                skill: this.state.newDeckSkill,
                 username: this.props.username,
                 mainDeck: this.state.deck,
                 extraDeck: this.state.extra
@@ -158,6 +160,7 @@ class DeckBuilder extends Component {
             axios.post('http://localhost:9000/decks/', newDeck)
                 .then(response => {
                     console.log(response);
+                    this.props.history.go('/decks');
                 })
                 .catch(err => {
                     console.error({ message: err.message })
@@ -250,8 +253,8 @@ class DeckBuilder extends Component {
                     <img src={CardTraderBlack} width="260" />
                 </div> : ""}
 
-                <div className="form-container">
-                    <form onSubmit={this.handleClick}>
+                <div style={{width: "50%", float:"left"}}>
+                <form onSubmit={this.handleClick}>
                         <label>
                             <input
                                 type="text"
@@ -261,13 +264,17 @@ class DeckBuilder extends Component {
                         </label>
                         <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
                     </form>
-                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
-                        <option value="Competitive">Competitive Deck</option>
-                        <option value="Casual">Casual Deck</option>
-                        <option value="Farming">Farming Deck</option>
-                    </select>
-                </div>
                 <div className="searchWrapper">
+                    {/* <form onSubmit={this.handleClick}>
+                        <label>
+                            <input
+                                type="text"
+                                value={this.state.text}
+                                onChange={this.handleChange}
+                                placeholder="Enter card name..." />
+                        </label>
+                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
+                    </form> */}
                     
                     <div className="searchComponent">
                         <div className="cards-wrapper">
@@ -278,21 +285,14 @@ class DeckBuilder extends Component {
                     </div>
 
                 </div>
+                </div>
 
-                <input type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
-                <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" />
-                
+                <input style={{width: "20%"}}type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
+                <span style={{float:"right", width: "22%"}}>
+                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{position: "absolute", marginLeft: "-25px", marginTop:"10px"}}/>
+                    <input style={{width: "90%"}}type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
+                </span>
                 <div className="build-wrapper">
-                    {this.state.deck.length >= 20 ? <div className="submitWrapper"> 
-                        
-                        <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
-                            <option value="Competitive">Competitive Deck</option>
-                            <option value="Casual">Casual Deck</option>
-                            <option value="Farming">Farming Deck</option>
-                        </select>
-                        
-                        <Button variant="contained" color="primary" disabled={deckList == ""} onClick={this.submitDeckHandler}>Submit Decklist</Button>
-                    </div> : ""}
                     
                     <div className="builderComponent">
                         <div className="deck-wrapper">
@@ -300,10 +300,21 @@ class DeckBuilder extends Component {
                             <br></br>
                             {extraList}
                         </div>
+                        
                     </div>
                     <br></br>
 
                 </div>
+                {this.state.deck.length >= 20 ? <div className="submitWrapper">
+                        <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                            <option value="None">Select Deck Type</option>
+                            <option value="Competitive">Competitive Deck</option>
+                            <option value="Casual">Casual Deck</option>
+                            <option value="Farming">Farming Deck</option>
+                        </select>
+                        <br></br>
+                        <Button variant="contained" color="primary" disabled={this.state.newDeckCategory == "None"} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                    </div> : ""}
             </div>
         )
     }
@@ -318,3 +329,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(DeckBuilder);
+//<img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" />
