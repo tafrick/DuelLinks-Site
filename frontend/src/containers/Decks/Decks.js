@@ -176,7 +176,7 @@ class Decks extends Component {
                                 <button disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</button>
                             </div>
                             {mainCards}
-                            <hr/>
+                            {extraCards.length == 0 ? "" : <hr/>}
                             {extraCards}
                         </Collapsible>
                     </div>
