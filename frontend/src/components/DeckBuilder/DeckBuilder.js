@@ -298,7 +298,6 @@ class DeckBuilder extends Component {
                     <div className="builderComponent">
                         <div className="deck-wrapper">
                             {deckList}
-                            {console.log(extraList)}
                             {extraList.length == 0 ? "" : <hr/>}
                             {extraList}
                         </div>
