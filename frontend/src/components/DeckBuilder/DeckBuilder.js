@@ -257,6 +257,7 @@ class DeckBuilder extends Component {
                 <form onSubmit={this.handleClick}>
                         <label>
                             <input
+                                className="search-input"
                                 type="text"
                                 value={this.state.text}
                                 onChange={this.handleChange}
@@ -287,10 +288,10 @@ class DeckBuilder extends Component {
                 </div>
                 </div>
 
-                <input style={{width: "20%"}}type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
-                <span style={{float:"right", width: "22%"}}>
+                <input className="title-input"type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
+                <span style={{float:"right", width: "15%"}}>
                     <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{position: "absolute", marginLeft: "-25px", marginTop:"10px"}}/>
-                    <input style={{width: "90%"}}type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
+                    <input style={{width: "83%"}}className="skill-input"type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
                 </span>
                 <div className="build-wrapper">
                     

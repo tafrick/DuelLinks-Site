@@ -75,14 +75,14 @@ class Homepage extends Component {
                         
                     </ul>
                 </div>
-                <div>
+                {/* <div>
                     <h1>Additional Duel Links Content Creators on Youtube:</h1>
                     <ul>
                         <li><a href="https://www.youtube.com/channel/UCz_cNcJzCy4asffzW5ERH1w" target="_blank">Duel Links Meta</a></li>
                         <li><a href="https://www.youtube.com/channel/UCXgNU9GtLPiE2dAYDwIQO6Q" target="_blank">YTDan Duel Links</a></li>
                         <li><a href="https://www.youtube.com/channel/UCGmqsD0yv9B3GGlhGcP5_xA" target="_blank">Playmaker Duel Links</a></li>
                     </ul>
-                </div>
+                </div> */}
                 
             </div>
         );

@@ -14,18 +14,37 @@
     display: inline-block;
 }
 
-input[type="text"] {
+input.search-input {
+    background: rgba(0, 0, 0, 0);
+    margin-bottom: 0px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 24px;
+    width: auto;
+}
+
+input.title-input {
     background: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
-    color: #66FCF1;
-    font-size: 28px;
-    width: auto;
-    
+    color: white;
+    font-size: 24px;
+    width: 30%;
+    margin-bottom: 0px;
+    margin-left: 1%;
+    border-bottom: none;
 }
 
-.db-input input {
-    margin:0% 0%;
+input.skill-input {
+    /* background: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    width: auto;
+    margin-left: 1%; */
+    margin-bottom: 0px;
 }
 
 .page-wrapper .title {
