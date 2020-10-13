@@ -101,17 +101,17 @@ class Decks extends Component {
             return <div style={{ "color": "red" }}>Not Graded</div>
         }
         if (GPA >= 90) {
-            return <div style={{ "color": "red" }}>S</div>
+            return <div style={{ "color": "silver", "fontSize": "150%", "fontFamily": "Verdana" }}><b>S</b></div>
         } else if (GPA >= 80 && GPA < 90) {
-            return <div style={{ "color": "red" }}>A</div>
+            return <div style={{ "color": "green", "fontSize": "150%", "fontFamily": "Verdana" }}><b>A</b></div>
         } else if (GPA >= 70 && GPA < 80) {
-            return <div style={{ "color": "red" }}>B</div>
+            return <div style={{ "color": "yellow", "fontSize": "150%", "fontFamily": "Verdana" }}><b>B</b></div>
         } else if (GPA >= 60 && GPA < 70) {
-            return <div style={{ "color": "red" }}>C</div>
+            return <div style={{ "color": "#FFC04C", "fontSize": "150%", "fontFamily": "Verdana" }}><b>C</b></div>
         } else if (GPA >= 50 && GPA < 60) {
-            return <div style={{ "color": "red" }}>D</div>
+            return <div style={{ "color": "orange", "fontSize": "150%", "fontFamily": "Verdana" }}><b>D</b></div>
         } else {
-            return <div style={{ "color": "red" }}>F</div>
+            return <div style={{ "color": "red", "fontSize": "150%", "fontFamily": "Verdana" }}><b>F</b></div>
         }
     }
 
