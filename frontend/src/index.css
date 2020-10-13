@@ -5,6 +5,8 @@ body {
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
   overflow: scroll;
+  margin: auto 15%;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -20,7 +22,7 @@ body {
     background-color: #2F4454;
     overflow: scroll;
     color: white;
-    padding-bottom: 10em;
+    padding-bottom: 13em;
   }
 }
 

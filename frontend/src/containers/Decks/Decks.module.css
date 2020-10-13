@@ -160,3 +160,33 @@ td {
     text-align: right;
     padding-right: 10px;
 }
+
+.pageTrapper {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.FilterWrapper {
+    display: flex;
+    margin: auto;
+    padding-left: 10em;
+    padding-right: 10em;
+    padding-bottom: 1em;
+}
+
+.Filter {
+    width: 15%;
+    /* padding: .25em; */
+    text-align: center;
+    margin: auto;
+    min-width: 150px;
+}
+
+.Filter p {
+    text-align: center;
+}
+
+.Filter select {
+    align-self: start;
+}
