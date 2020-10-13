@@ -9,6 +9,7 @@ import VagaBond from '../../assets/images/MagaBond.PNG';
 import CardTraderBlack from '../../assets/images/CardTraderBlack.png';
 import './DeckBuilder.css'
 import Button from '@material-ui/core/Button';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { NavLink } from 'react-router-dom';
 import CardData from './Cards.json';
 import { Resizable, ResizableBox } from 'react-resizable';
@@ -16,6 +17,8 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+
+import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 class DeckBuilder extends Component {
     constructor() {
@@ -92,6 +95,7 @@ class DeckBuilder extends Component {
     }
 
     addToDeck(text) {
+        console.log(this.state.deck);
         if (this.cardLimit(text.name, this.state.deck) < 3) {
             let arr = [];
             const newText = {
@@ -253,8 +257,8 @@ class DeckBuilder extends Component {
                     <img src={CardTraderBlack} width="260" />
                 </div> : ""}
 
-                <div style={{width: "50%", float:"left"}}>
-                <form onSubmit={this.handleClick}>
+                <div style={{ width: "50%", float: "left" }}>
+                    <form onSubmit={this.handleClick}>
                         <label>
                             <input
                                 className="search-input"
@@ -265,57 +269,59 @@ class DeckBuilder extends Component {
                         </label>
                         <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
                     </form>
-                <div className="searchWrapper">
-                    {/* <form onSubmit={this.handleClick}>
-                        <label>
-                            <input
-                                type="text"
-                                value={this.state.text}
-                                onChange={this.handleChange}
-                                placeholder="Enter card name..." />
-                        </label>
-                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
-                    </form> */}
-                    
-                    <div className="searchComponent">
-                        <div className="cards-wrapper">
-                            <div className="display-results" style={{ display: "inline-block" }}>
-                                {searchResults}
+                    {(this.state.loadedCards) ?
+                        <div className="searchWrapper">
+                            <div className="searchComponent">
+                                <div className="cards-wrapper">
+                                    <div className="display-results" style={{ display: "inline-block" }}>
+                                        {searchResults}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                        : <div className="emptySearch">
+                            <div className="empty-container">
+                                <SearchIcon style={{ "fill": "gray" }} />
+                                <p>Look up some cards...</p>
+                            </div>
+                        </div>}
                 </div>
-                </div>
 
-                <input className="title-input"type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
-                <span style={{float:"right", width: "15%"}}>
-                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{position: "absolute", marginLeft: "-25px", marginTop:"10px"}}/>
-                    <input style={{width: "83%"}}className="skill-input"type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
+                <input className="title-input" type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
+                <span style={{ float: "right", width: "15%" }}>
+                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{ position: "absolute", marginLeft: "-25px", marginTop: "10px" }} />
+                    <input style={{ width: "83%" }} className="skill-input" type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
                 </span>
-                <div className="build-wrapper">
-                    
-                    <div className="builderComponent">
-                        <div className="deck-wrapper">
-                            {deckList}
-                            {extraList.length == 0 ? "" : <hr/>}
-                            {extraList}
-                        </div>
-                        
-                    </div>
-                    <br></br>
+                {((this.state.deck.length > 0) || (this.state.extra.length > 0)) ?
+                    <div className="build-wrapper">
 
-                </div>
-                {this.state.deck.length >= 20 ? <div className="submitWrapper">
-                        <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
-                            <option value="None">Select Deck Type</option>
-                            <option value="Competitive">Competitive Deck</option>
-                            <option value="Casual">Casual Deck</option>
-                            <option value="Farming">Farming Deck</option>
-                        </select>
+                        <div className="builderComponent">
+                            <div className="deck-wrapper">
+                                {deckList}
+                                {extraList.length == 0 ? "" : <hr />}
+                                {extraList}
+                            </div>
+
+                        </div>
                         <br></br>
-                        <Button variant="contained" color="primary" disabled={this.state.newDeckCategory == "None"} onClick={this.submitDeckHandler}>Submit Decklist</Button>
-                    </div> : ""}
+
+                    </div>
+                    : <div className="emptyWrapper">
+                        <div className="empty-container">
+                            <AddCircleIcon style={{ "fill": "gray" }} />
+                            <p>Add some cards to your deck...</p>
+                        </div>
+                    </div>}
+                {this.state.deck.length >= 20 ? <div className="submitWrapper">
+                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                        <option value="None">Select Deck Type</option>
+                        <option value="Competitive">Competitive Deck</option>
+                        <option value="Casual">Casual Deck</option>
+                        <option value="Farming">Farming Deck</option>
+                    </select>
+                    <br></br>
+                    <Button variant="contained" color="primary" disabled={this.state.newDeckCategory == "None"} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                </div> : ""}
             </div>
         )
     }
