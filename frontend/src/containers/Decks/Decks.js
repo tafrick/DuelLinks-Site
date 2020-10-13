@@ -14,45 +14,12 @@ class Decks extends Component {
         super(props);
         this.state = {
             loadedDecks: [],
-            newDeckGrade: '100',
-            filter_grade: '0',
-            filter_category: '0',
+            newDeckGrade: '100'
         }
     }
 
     componentDidMount() {
         this.fetchDecks();
-    }
-
-    componentDidUpdate(_prevProps, prevState) {
-        if (this.state.filter_category !== prevState.filter_category) {
-            if (this.state.filter_category == "0") {
-                this.fetchDecks();
-            } else {
-                axios.get('http://localhost:9000/decks/category=/' + this.state.filter_category)
-                    .then(response => {
-                        const decks = [...response.data];
-                        this.setState({ loadedDecks: decks })
-                    })
-                    .catch(error => {
-                        console.error(error.message);
-                    })
-            }
-        }
-        if (this.state.filter_grade !== prevState.filter_grade) {
-            if (this.state.filter_grade == "0") {
-                this.fetchDecks();
-            } else {
-                axios.get('http://localhost:9000/decks/deckGPA=/' + this.state.filter_grade)
-                    .then(response => {
-                        const decks = [...response.data];
-                        this.setState({ loadedDecks: decks })
-                    })
-                    .catch(error => {
-                        console.error(error.message);
-                    })
-            }
-        }
     }
 
     fetchDecks() {
@@ -179,18 +146,20 @@ class Decks extends Component {
                 return (
                     <div className={[classes.DeckWrapper, this.classSelectHandler(deck.category)].join(' ')} key={deck._id}>
                         <Collapsible trigger={<div className={classes.DeckInfoWrapper}>
-                            <h1>{deck.title}</h1>
-                            <div className={classes.categoryText}><p>{deck.category}</p></div>
+                        {/* <div className={classes.categoryText}>{deck.category}</div> */}
+                            <h2>{deck.title}</h2>
                             <p style={{ color: "white" }}>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
                             {this.pictSelectHandler(deck.category)}
 
 
                             <table className={classes.DeckInfo}>
                                 <tr>
+                                    <th>Deck Type</th>
                                     <th>Deck Grade</th>
                                     <th>Total Votes</th>
                                 </tr>
                                 <tr>
+                                    <td>{deck.category}</td>
                                     <td>{this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}</td>
                                     {deck.totalVotes == 1 ? <td>1 Vote</td> : <td>{deck.totalVotes} Votes</td>}
                                 </tr>
@@ -209,7 +178,7 @@ class Decks extends Component {
                                 </select>
                                 <Button variant="outlined" disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</Button>
                             </div>
-
+                            
                             {mainCards}
                             {extraCards.length == 0 ? "" : <hr />}
                             {extraCards}
@@ -219,35 +188,9 @@ class Decks extends Component {
             })
         }
         return (
-            <div className={classes.pageTrapper}>
-                <div className="pageWrapper">
-                    <div className={classes.FilterWrapper}>
-                        <div className={classes.Filter}>
-                            <p>Deck Type</p>
-                            <select value={this.state.filter_category} onChange={(event) => this.setState({ filter_category: event.target.value })}>
-                                <option value="0">Toggle All</option>
-                                <option value="Competitive">Competitive (Obelisk)</option>
-                                <option value="Farming">Farming (Slifer)</option>
-                                <option value="Casual">Casual (Ra)</option>
-                            </select>
-                        </div>
-                        <div className={classes.Filter}>
-                            <p>Deck Grades</p>
-                            <select value={this.state.filter_grade} onChange={(event) => this.setState({ filter_grade: event.target.value })}>
-                                <option value="0">Toggle All</option>
-                                <option value="100">S</option>
-                                <option value="89">A</option>
-                                <option value="79">B</option>
-                                <option value="69">C</option>
-                                <option value="59">D</option>
-                                <option value="49">F</option>
-                            </select>
-                        </div>
-                    </div>
-                    {decks}
-                </div >
-            </div>
-
+            <div className="pageWrapper">
+                {decks}
+            </div >
         );
     };
 }
