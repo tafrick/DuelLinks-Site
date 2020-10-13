@@ -3,19 +3,39 @@
     margin: auto 200px;
 }
 
-.DeckWrapper {
-    text-align: center;
-    height: 50%;
-    width: 40%;
-    border: 1px solid black;
-    border-radius: 1em;
-    /* padding: 15px; */
-    margin: 1% 4%;
-    background-color: blue;
-    top: 0;
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
+@media
+only screen and (min-width: 1250px) and (max-width: 1440px) {
+    .DeckWrapper {
+        text-align: center;
+        width: 50%;
+        border: 1px solid black;
+        border-radius: 1em;
+        /* padding: 15px; */
+        margin: 4% auto;
+        background-color: blue;
+        top: 0;
+        /* display: inline-block; */
+        position: relative;
+        vertical-align: top;
+    }
+}
+
+@media
+only screen and (min-width: 1649px) and (max-width: 2530px) {
+    .DeckWrapper {
+        text-align: center;
+        height: 50%;
+        width: 40%;
+        border: 1px solid black;
+        border-radius: 1em;
+        /* padding: 15px; */
+        margin: 1% 4%;
+        background-color: blue;
+        top: 0;
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+    }
 }
 
 .DeckWrapper:hover {
@@ -150,7 +170,7 @@ td {
     color: inherit;
 }
 
-.DeckWrapper .DeckInfoWrapper h1 {
+.DeckWrapper .DeckInfoWrapper h1,h2 {
     padding: none;
     text-align: center;
     margin: 0px 0px 5px 0px;

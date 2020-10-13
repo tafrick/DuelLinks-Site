@@ -146,18 +146,20 @@ class Decks extends Component {
                 return (
                     <div className={[classes.DeckWrapper, this.classSelectHandler(deck.category)].join(' ')} key={deck._id}>
                         <Collapsible trigger={<div className={classes.DeckInfoWrapper}>
-                            <h1>{deck.title}</h1>
-                            <div className={classes.categoryText}><p>{deck.category}</p></div>
+                        {/* <div className={classes.categoryText}>{deck.category}</div> */}
+                            <h2>{deck.title}</h2>
                             <p style={{ color: "white" }}>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
                             {this.pictSelectHandler(deck.category)}
 
 
                             <table className={classes.DeckInfo}>
                                 <tr>
+                                    <th>Deck Type</th>
                                     <th>Deck Grade</th>
                                     <th>Total Votes</th>
                                 </tr>
                                 <tr>
+                                    <td>{deck.category}</td>
                                     <td>{this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}</td>
                                     {deck.totalVotes == 1 ? <td>1 Vote</td> : <td>{deck.totalVotes} Votes</td>}
                                 </tr>
