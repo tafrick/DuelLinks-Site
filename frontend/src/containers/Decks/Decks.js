@@ -7,6 +7,7 @@ import DeckTypes from '../../components/DeckTypes/DeckTypes';
 import classes from './Decks.module.css';
 import Collapsible from 'react-collapsible';
 import ModalImage from "react-modal-image";
+import Button from '@material-ui/core/Button';
 
 class Decks extends Component {
     constructor(props) {
@@ -164,7 +165,7 @@ class Decks extends Component {
 
                         </div>}>
                             <div className={classes.GradeSelector}>
-                                <label>Grade Deck</label>
+                                {/* <label>Grade Deck</label> */}
                                 <select value={this.state.newDeckGrade} disabled={!this.props.isAuth} onChange={(event) => this.setState({ newDeckGrade: event.target.value })}>
                                     <option value="100">S</option>
                                     <option value="89">A</option>
@@ -173,8 +174,9 @@ class Decks extends Component {
                                     <option value="59">D</option>
                                     <option value="49">F</option>
                                 </select>
-                                <button disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</button>
+                                <Button variant="outlined" disabled={!this.props.isAuth} onClick={() => this.gradeDeckHandler(this.state.newDeckGrade, deck.totalPoints, deck.totalVotes, deck.graders, deck._id)}>Grade Deck</Button>
                             </div>
+                            
                             {mainCards}
                             {extraCards.length == 0 ? "" : <hr />}
                             {extraCards}

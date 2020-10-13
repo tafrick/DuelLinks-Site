@@ -8,7 +8,7 @@
     height: 50%;
     width: 40%;
     border: 1px solid black;
-    border-radius: 2em;
+    border-radius: 1em;
     /* padding: 15px; */
     margin: 1% 4%;
     background-color: blue;
@@ -57,7 +57,7 @@
 .DeckWrapper .DeckInfo {
     color: black;
     width: 100%;
-    border-radius: 1em;
+    border-radius: 2em;
     border-collapse: collapse;
     background-color: gray;
 }
@@ -96,25 +96,28 @@ td {
 }
 
 .GradeSelector select {
-    margin: 0px 10px;
+    margin-left: 10px;
+    /* margin: 0px 0px; */
+    border-radius: 3px;
+    padding: 8px 10px;
+    background-color: transparent;
 }
 
 .DeckWrapper .GradeSelector button {
-    margin: 15px 10px;
-    padding: 10px;
-    font: inherit;
+    margin: 10px 10px;
+    /* font: inherit;
     border: 2px solid #ffffff;
     border-radius: .75em;
     background-color: transparent;
-    color: #ffffff;
+    color: #ffffff; */
     cursor: pointer;
 }
 
-.DeckWrapper .GradeSelector button:hover {
+/* .DeckWrapper .GradeSelector button:hover {
     border: 3px solid #ffffff;
     background-color: #FF1A1A;
     color: #ffffff;
-}
+} */
 
 .DeckWrapper .DeckInfoWrapper {
     /* background-image: linear-gradient(to bottom right, black, #2425A2); */
