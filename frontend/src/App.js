@@ -11,7 +11,6 @@ import FullPost from './containers/Community/FullPost';
 import Boxes from './containers/Boxes/Boxes';
 import FullBox from './containers/Boxes/FullBox';
 import FullCard from './containers/Boxes/FullCard';
-import CategoryPosts from './containers/Community/CategoryPosts';
 import DeckBuilder from './components/DeckBuilder/DeckBuilder';
 import Decks from './containers/Decks/Decks';
 import * as actions from './store/actions/index';
@@ -42,7 +41,6 @@ class App extends Component {
 						<Route path="/deckbuilder" exact component={DeckBuilder} />
 						<Route path="/decks" exact component={Decks} />
 						<Route path="/community" exact component={Community} />
-						<Route path="/:category" exact component={CategoryPosts} />
 						<Route path="/users/:user" exact component={Users} />
 						{/* <Redirect to="/" /> */}
 					</Switch>
