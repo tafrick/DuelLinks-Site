@@ -313,7 +313,7 @@ class DeckBuilder extends Component {
                         </div>
                     </div>}
                 {this.state.deck.length >= 20 ? <div className="submitWrapper">
-                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })}>
+                    <select value={this.state.newDeckCategory} onChange={(event) => this.setState({ newDeckCategory: event.target.value })} style={{ "marginTop": "1em", marginBottom: "1em" }}>
                         <option value="None">Select Deck Type</option>
                         <option value="Competitive">Competitive Deck</option>
                         <option value="Casual">Casual Deck</option>
