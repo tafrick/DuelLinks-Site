@@ -70,6 +70,7 @@ input.skill-input {
     position: sticky;
     top: 0;
     text-align: center;
+    border-radius: .5em;
 }
 
 .build-wrapper:hover {
@@ -92,6 +93,7 @@ input.skill-input {
     margin: auto 1%;
     /* border: 1px solid #66FCF1; */
     border: 1px solid black;
+    border-radius: .5em;
 }
 
 .searchWrapper:hover {
