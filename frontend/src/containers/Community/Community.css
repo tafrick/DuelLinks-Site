@@ -19,8 +19,6 @@ header {
 
 .posts-wrapper .post {
   display: grid;
-
-
   grid-template-columns: 1fr 12fr;
   grid-template-rows: 1fr auto 1fr;
 
@@ -39,7 +37,7 @@ header {
 }
 
 .posts-wrapper .post .post-title {
-  
+
   display: block;
 }
 
@@ -222,6 +220,7 @@ header {
   text-align: center;
   color: #66FCF1;
   background-color: #1F2833;
+  padding-bottom: 1em;
 }
 
 .NewPost label {
