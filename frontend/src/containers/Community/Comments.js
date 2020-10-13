@@ -2,46 +2,51 @@ import React from 'react';
 
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-
+import moment from "moment";
 import { Link } from 'react-router-dom';
 
 
 import './Comments.css';
 
 const formatDateAndTime = (dateTime) => {
+    // dateTime = new Date(dateTime);
     dateTime = new Date(dateTime);
+        // console.log("dateTime: ", dateTime)
+        const today = new Date();
+        const result = moment(dateTime).fromNow();
+        return result;
 
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = '0' + (today.getMonth() + 1).toString().slice(-2);
-    const currentDay = today.getDate().toString().slice(-2);
+    // const today = new Date();
+    // const currentYear = today.getFullYear();
+    // const currentMonth = '0' + (today.getMonth() + 1).toString().slice(-2);
+    // const currentDay = today.getDate().toString().slice(-2);
 
-    const getYear = dateTime.getFullYear();
-    const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
-    const getDay = dateTime.getDate().toString().slice(-2);
-    const getHour = dateTime.getHours();
-    const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
-    const timeStamp = getHour > 11 ?
-        (getHour - 12).toString() + ':' + getMinute + 'pm' :
-        getHour + ':' + getMinute + 'am';
+    // const getYear = dateTime.getFullYear();
+    // const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
+    // const getDay = dateTime.getDate().toString().slice(-2);
+    // const getHour = dateTime.getHours();
+    // const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
+    // const timeStamp = getHour > 11 ?
+    //     (getHour - 12).toString() + ':' + getMinute + 'pm' :
+    //     getHour + ':' + getMinute + 'am';
 
-    // console.log('getYear: ' , getYear);
-    // console.log('getMonth: ' , getMonth);
-    // console.log('getDay: ' , getDay);
-    // console.log('getHour: ' , getHour);
-    // console.log('getMinute: ' , getMinute);
+    // // console.log('getYear: ' , getYear);
+    // // console.log('getMonth: ' , getMonth);
+    // // console.log('getDay: ' , getDay);
+    // // console.log('getHour: ' , getHour);
+    // // console.log('getMinute: ' , getMinute);
 
-    const yearDifference = (currentYear - getYear) * 30;
-    const monthDifference = (currentMonth - getMonth) * 30;
-    const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) + monthDifference : Math.abs(currentDay - getDay);
+    // const yearDifference = (currentYear - getYear) * 30;
+    // const monthDifference = (currentMonth - getMonth) * 30;
+    // const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) + monthDifference : Math.abs(currentDay - getDay);
 
-    // console.log('currentDay: ', currentDay);
-    // console.log('getDay: ', getDay);
-    // console.log('difference: ', dayDifference);
+    // // console.log('currentDay: ', currentDay);
+    // // console.log('getDay: ', getDay);
+    // // console.log('difference: ', dayDifference);
 
-    const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : ' Yesterday');
-    // console.log('result: ', result);
-    return result === 'Today' || result === 'Yesterday' ? result + ' ' + timeStamp : result;
+    // const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : ' Yesterday');
+    // // console.log('result: ', result);
+    // return result === 'Today' || result === 'Yesterday' ? result + ' ' + timeStamp : result;
 }
 
 const Comment = (props) => {
