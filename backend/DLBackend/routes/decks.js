@@ -21,6 +21,36 @@ router.get('/:id', getDeck, (req, res) => {
     res.json(res.deck)
 })
 
+//getting posts for a specific category
+router.get('/category=/:category', async (req, res) => {
+    try {
+        const decks = await Deck.find({
+            category: req.params.category
+        })
+        res.json(decks)
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
+//getting posts for a specific category
+router.get('/deckGPA=/:deckGPA', async (req, res) => {
+    try {
+        const decks = await Deck.find({
+            "deckGPA": {
+                $eq: req.params.deckGPA
+            }
+        })
+        res.json(decks)
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
 //creating a deck
 router.post('/', async (req, res) => {
     const deck = new Deck({
