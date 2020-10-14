@@ -3,6 +3,11 @@
     margin: auto 200px;
 }
 
+.DeckWrapper {
+    max-width: 750px;
+    padding-bottom: .5em;
+}
+
 @media only screen and (max-width: 1410px) {
     .DeckWrapper {
         text-align: center;

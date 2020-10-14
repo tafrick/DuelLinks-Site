@@ -5,16 +5,19 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import moment from "moment";
 import { Link } from 'react-router-dom';
 
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
 
 import './Comments.css';
 
 const formatDateAndTime = (dateTime) => {
     // dateTime = new Date(dateTime);
     dateTime = new Date(dateTime);
-        // console.log("dateTime: ", dateTime)
-        const today = new Date();
-        const result = moment(dateTime).fromNow();
-        return result;
+    // console.log("dateTime: ", dateTime)
+    const today = new Date();
+    const result = moment(dateTime).fromNow();
+    return result;
 
     // const today = new Date();
     // const currentYear = today.getFullYear();
@@ -54,9 +57,11 @@ const Comment = (props) => {
         <div className="Comment">
             <div className="Comment-sidebar">
 
-                <div className="upvote" onClick={props.clickedUp}>&#128077;</div>
+                {/* <div className="upvote" onClick={props.clickedUp}>&#128077;</div> */}
+                <KeyboardArrowUpIcon className="upvote" onClick={props.clickedUp} />
                 <span>{props.upvotes}</span>
-                <div className="downvote" onClick={props.clickedDown}>&#128078;</div>
+                <KeyboardArrowDownIcon className="downvote" onClick={props.clickedDown} />
+                {/* <div className="downvote" onClick={props.clickedDown}>&#128078;</div> */}
             </div>
             <div className="Comment-title">
 

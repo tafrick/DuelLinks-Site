@@ -30,7 +30,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding-top: 15px;
+    padding: 5px;
 
     background-color: #1F2833;
 }
@@ -89,7 +89,7 @@
     color: rgb(150, 150, 150);
 }
 
-.Comment .Comment-title>.underline a{
+.Comment .Comment-title>.underline a {
     color: yellow;
     font-size: 18px;
 }
