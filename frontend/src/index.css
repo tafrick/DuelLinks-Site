@@ -3,7 +3,7 @@
   background: transparent;
 }
 
-@media only screen and (min-width: 1250px) and (max-width: 1409px) {
+@media only screen and (max-width: 1409px) {
   body {
     font-family: 'Lato', sans-serif;
     background-color: #2F4454;
