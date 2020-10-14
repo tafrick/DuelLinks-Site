@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-import DeckTypes from '../../components/DeckTypes/DeckTypes';
 import classes from './Decks.module.css';
 import Collapsible from 'react-collapsible';
 import ModalImage from "react-modal-image";
@@ -163,7 +161,6 @@ class Decks extends Component {
                         </span>
                     </span>
                 )
-                // let extraCards = deck.extraDeck.map(xcard => { return <img key={xcard.name + Math.random()} src={xcard.img} alt={xcard.name} /> })
                 let extraCards = deck.extraDeck.map(xcard =>
                     <span className={classes.modalTag}>
                         <span style={{ width: "110px", margin: "0px 3px", display: "inline-block" }}>
@@ -179,7 +176,6 @@ class Decks extends Component {
                 return (
                     <div className={[classes.DeckWrapper, this.classSelectHandler(deck.category)].join(' ')} key={deck._id}>
                         <Collapsible trigger={<div className={classes.DeckInfoWrapper}>
-                            {/* <div className={classes.categoryText}>{deck.category}</div> */}
                             <h2>{deck.title}</h2>
                             <p>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
                             {this.pictSelectHandler(deck.category)}

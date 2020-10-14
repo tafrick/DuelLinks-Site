@@ -1,5 +1,4 @@
 import React from 'react';
-
 import grandpaPic from '../../assets/images/grandpa-yugi.png';
 import classes from './Grandpa.module.css';
 

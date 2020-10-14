@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import * as actions from '../../store/actions/index';
 

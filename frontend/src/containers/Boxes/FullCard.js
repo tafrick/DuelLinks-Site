@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-
-import axios from 'axios';
-import rateLimit from 'axios-rate-limit';
 import ModalImage from "react-modal-image";
-import Cards from '../../components/Cards/Cards';
-import FullBox from './FullBox';
 import './FullBox.css'
-
 
 class FullCard extends Component {
     constructor(props) {
@@ -14,10 +8,6 @@ class FullCard extends Component {
         this.state = {
             loadedCard: null
         }
-    }
-
-    componentDidMount() {
-        // setTimeout(() => this.loadCard(), 2000);
     }
 
     modalDescription(name, desc) {
@@ -31,9 +21,7 @@ class FullCard extends Component {
             </>
         );
     }
-
     render() {
-
         return (
             <span>
                 <span style={{display: "inline-block"}}>

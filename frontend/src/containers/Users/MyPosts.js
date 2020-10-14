@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import Button from '@material-ui/core/Button';
 import ModeCommentIcon from "@material-ui/icons/ModeComment";
 import DeleteIcon from '@material-ui/icons/Delete';
+import moment from "moment";
 
 class MyPosts extends Component {
     constructor(props) {
@@ -161,44 +160,9 @@ class MyPosts extends Component {
 
     formatDateAndTime = (dateTime) => {
         dateTime = new Date(dateTime);
-        console.log("dateTime: ", dateTime)
         const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonth = '0' + (today.getMonth() + 1).toString().slice(-2);
-        const currentDay = today.getDate().toString().slice(-2);
-
-        const getYear = dateTime.getFullYear();
-
-        const getDay = dateTime.getDate().toString().slice(-2);
-
-
-        const getHour = dateTime.getHours();
-        const getMinute = ('0' + dateTime.getMinutes()).toString().slice(-2);
-        const timeStamp = getHour > 11 ?
-            (getHour - 12).toString() + ':' + getMinute + 'pm' :
-            getHour + ':' + getMinute + 'am';
-
-        // console.log('getYear: ' , getYear);
-        // console.log('getMonth: ' , getMonth);
-        // console.log('getDay: ' , getDay);
-        // console.log('getHour: ' , getHour);
-        // console.log('getMinute: ' , getMinute);
-
-        const yearDifference = (currentYear - getYear) * 30;
-        const dayDifference = Math.abs(currentDay - getDay) > 30 ? Math.abs(currentDay - getDay) + monthDifference : Math.abs(currentDay - getDay);
-        const getMonth = '0' + (dateTime.getMonth() + 1).toString().slice(-2);
-        const monthDifference = (currentMonth - getMonth) * 30;
-
-
-        // console.log('currentDay: ', currentDay);
-        // console.log('getDay: ', getDay);
-        // console.log('difference: ', dayDifference);
-
-        console.log('timestamp: ', timeStamp);
-
-        const result = dayDifference === 0 ? 'Today' : (dayDifference > 1 ? dayDifference + ' days ago ' : 'Yesterday');
-        // console.log('result: ', result);
-        return result === 'Today' || result === 'Yesterday' ? result + ' ' + timeStamp : result;
+        const result = moment(dateTime).fromNow();
+        return result;
     }
 
     deletePostHandler(postId) {
@@ -230,10 +194,7 @@ class MyPosts extends Component {
                             <span className="post-category"><em>{post.category}</em></span>
                             <DeleteIcon onClick={() => { this.deletePostHandler(post._id) }} style={{ "fill": "rgb(134, 40, 40)" }} />
                         </div>
-
                         <div className="spacer"></div>
-
-
                         <div className="post-body">
                             <span className="title"><Link to={'/community/' + post._id}>{post.title}</Link></span>
                             {post.description.length < 50 ? <span className="description">{post.description}</span> : <span className="description">{post.description.substring(0, 50) + '...'}</span>}

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
 import './Homepage.css';
 import Logo from '../components/Logo/Logo';
-
-import { makeStyles } from "@material-ui/core/styles";
 import '../components/DeckTypes/Table.css';
 
 import TournamentPic from '../assets/images/tournaments.png';
@@ -13,7 +10,6 @@ import TopTierPic from '../assets/images/top-tier-dekcs.png';
 import BeginnersPic from '../assets/images/beginners-guide.png';
 import KCPic from '../assets/images/kc-cup-things.png';
 import Black from '../assets/images/black.PNG';
-
 
 class Homepage extends Component {
     render() {
@@ -75,15 +71,6 @@ class Homepage extends Component {
                         
                     </ul>
                 </div>
-                {/* <div>
-                    <h1>Additional Duel Links Content Creators on Youtube:</h1>
-                    <ul>
-                        <li><a href="https://www.youtube.com/channel/UCz_cNcJzCy4asffzW5ERH1w" target="_blank">Duel Links Meta</a></li>
-                        <li><a href="https://www.youtube.com/channel/UCXgNU9GtLPiE2dAYDwIQO6Q" target="_blank">YTDan Duel Links</a></li>
-                        <li><a href="https://www.youtube.com/channel/UCGmqsD0yv9B3GGlhGcP5_xA" target="_blank">Playmaker Duel Links</a></li>
-                    </ul>
-                </div> */}
-                
             </div>
         );
     }

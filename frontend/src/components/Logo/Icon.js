@@ -1,5 +1,4 @@
 import React from 'react';
-
 import icon3 from '../../assets/images/icon3rd.png';
 
 const icon = props => (

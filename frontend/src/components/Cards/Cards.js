@@ -1,7 +1,6 @@
 import React from 'react';
 import ModalImage from "react-modal-image";
 import './Cards.css';
-
 const filterDetails = (card) => {
 
     if (card.attribute !== undefined) {
@@ -47,8 +46,6 @@ const cards = props => (
                 className="modal"
                 style={{ width: 200 }}
             />
-
-            {/* <img src={props.image} alt={props.source} /> */}
         </div>
         <div className="col-text">
             <span id="card-name">{props.title}</span>
@@ -59,9 +56,7 @@ const cards = props => (
             <p id="atkDef">{showAtkDef(props)}</p>
             <p id="where-to-get">{props.box}</p>
             <p id="card-description">{props.effect}</p>
-
         </div>
-
     </div>
 );
 

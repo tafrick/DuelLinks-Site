@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
-import { RiZoomInFill } from 'react-icons/ri';
 import ModalImage from "react-modal-image";
 import CardTraderGold from '../../assets/images/CardTraderGold.png';
 import VagaBond from '../../assets/images/MagaBond.PNG';
@@ -10,15 +9,7 @@ import CardTraderBlack from '../../assets/images/CardTraderBlack.png';
 import './DeckBuilder.css'
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { NavLink } from 'react-router-dom';
-import CardData from './Cards.json';
-import { Resizable, ResizableBox } from 'react-resizable';
 import SearchIcon from '@material-ui/icons/Search';
-
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-
-import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 class DeckBuilder extends Component {
     constructor() {
@@ -79,7 +70,6 @@ class DeckBuilder extends Component {
                         showCardNotFound: true
                     })
                 })
-            // console.log("sasas" , this.state.cardResults);
         }
     }
 
@@ -95,7 +85,6 @@ class DeckBuilder extends Component {
     }
 
     addToDeck(text) {
-        console.log(this.state.deck);
         if (this.cardLimit(text.name, this.state.deck) < 3) {
             let arr = [];
             const newText = {
@@ -191,14 +180,6 @@ class DeckBuilder extends Component {
                         />
                         <div className="overlay">
                             <a className="icon">
-                                {/* <RiZoomInFill
-                                className="icon-img"
-                                size= "35px"
-                                color="white"
-                                right="0"
-                                top="0"
-                        
-                            /> */}
                                 <BsFillPlusSquareFill
                                     className="icon-img"
                                     size="35px"
@@ -240,8 +221,7 @@ class DeckBuilder extends Component {
                             style={{ cursor: "pointer" }}
                             onClick={() => this.removeCard(result, this.state.extra)}>
                             Remove Card
-                    </a>
-
+                        </a>
                     </div>
                 )
             })
@@ -301,10 +281,8 @@ class DeckBuilder extends Component {
                                 {extraList.length == 0 ? "" : <hr />}
                                 {extraList}
                             </div>
-
                         </div>
                         <br></br>
-
                     </div>
                     : <div className="emptyWrapper">
                         <div className="empty-container">
@@ -336,4 +314,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(DeckBuilder);
-//<img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" />

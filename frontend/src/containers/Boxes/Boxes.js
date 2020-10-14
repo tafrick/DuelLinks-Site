@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import '../../components/DeckTypes/Table.css';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
@@ -39,7 +30,6 @@ class Boxes extends Component {
     handleClick = (event) => {
         event.preventDefault();
         if (this.state.text !== "" && this.state.text !== " ") {
-            // this.loadData(this.state.text);
             this.setState({
                 searchResult: [],
                 displaySearch: true
@@ -53,7 +43,6 @@ class Boxes extends Component {
             .then(response => {
                 let boxes = [...response.data];
                 this.setState({ loadedBoxes: boxes })
-                // console.log(boxes[0].name)
             })
             .catch(error => {
                 console.error(error.message);

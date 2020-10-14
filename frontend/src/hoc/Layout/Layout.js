@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Footer from '../../components/Navigation/Footer/Footer';
 import classes from './Layout.module.css';
@@ -8,7 +7,6 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 const Layout = (props) => {
     const [sideDrawerIsVisible, setSideDrawerVisibility] = useState(false);
-
     const sideDrawerClosedHandler = () => {
         setSideDrawerVisibility(false);
     }

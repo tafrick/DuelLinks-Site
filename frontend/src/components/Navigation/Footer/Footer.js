@@ -1,8 +1,6 @@
 import React from 'react';
-
 import Icon from '../../Logo/Icon';
 import styles from './Footer.module.css';
-
 const footer = (props) => {
 
     return (

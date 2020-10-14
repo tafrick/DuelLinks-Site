@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import NavigationItem from './NavigationItem/NavigationItem';
 import styles from './NavigationItems.module.css';
 
-
 const navigationItems = (props) => (
-
     <ul className={styles.NavigationItems}>
         <NavigationItem link="/" exact>Home</NavigationItem>
         <NavigationItem link="/boxes" exact>Boxes</NavigationItem>
@@ -16,8 +13,6 @@ const navigationItems = (props) => (
         <NavigationItem link="/community" exact>Community</NavigationItem>
         {props.isAuth ? <NavigationItem link={"/my_posts/" + props.email} exact>My Posts</NavigationItem> : null}
     </ul>
-
-
 );
 
 const mapStateToProps = state => {

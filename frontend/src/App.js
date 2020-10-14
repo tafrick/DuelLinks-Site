@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import Layout from './hoc/Layout/Layout';
 import Homepage from './containers/Homepage';
 import CardLookup from './containers/CardLookup/CardLookup';
@@ -16,8 +15,6 @@ import Decks from './containers/Decks/Decks';
 import * as actions from './store/actions/index';
 import Users from './containers/Users/Users';
 import MyPosts from './containers/Users/MyPosts';
-
-import GoogleBtn from './components/Login/GoogleBtn';
 
 class App extends Component {
 	componentDidMount() {

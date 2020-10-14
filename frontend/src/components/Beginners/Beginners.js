@@ -1,7 +1,6 @@
 import React from 'react';
 import slang from './slang.json';
 import Button from '@material-ui/core/Button';
-
 import classes from './Beginners.module.css';
 import goldGif from '../../assets/images/gold.gif';
 import Zexal from '../../assets/images/YuGiOhZexal.jpg';
