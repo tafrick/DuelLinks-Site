@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Comments from './Comments';
 import './FullPost.css';
 import Button from '@material-ui/core/Button';
-import ModalImage from "react-modal-image";
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import moment from "moment";
@@ -222,13 +221,11 @@ class FullPost extends Component {
 
     formatDateAndTime = (dateTime) => {
         dateTime = new Date(dateTime);
-        const today = new Date();
         const result = moment(dateTime).fromNow();
         return result;
     }
 
     render() {
-        let post = null;
         let postComments = null;
         if (this.state.loadedPost) {
             postComments = this.state.loadedcomments.map((comment, index) => (
@@ -254,7 +251,7 @@ class FullPost extends Component {
                                 {this.props.isAuth ? <KeyboardArrowDownIcon className="downvote" onClick={() => { this.downvotePostHandler(this.state.loadedPost._id, this.state.loadedPost.upvotes, this.state.loadedPost.liked_by, this.state.loadedPost.disliked_by) }} /> : <KeyboardArrowDownIcon />}
                             </div>
                             <div className="post-title">
-                                <img src={this.state.loadedPost.image_src} />
+                                <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.image_src}/>
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
                                 <span className="post-user">Posted by <Link to={"/users/" + this.state.loadedPost.username}>{this.state.loadedPost.username}</Link><br></br>{this.formatDateAndTime(this.state.loadedPost.date)}</span>
                                 <span className="post-category"><em>{this.state.loadedPost.category}</em></span>
@@ -266,7 +263,7 @@ class FullPost extends Component {
                                 <span className="title">{this.state.loadedPost.title}</span>
                                 <hr/>
                                 <span className="description">{this.state.loadedPost.description}</span>
-                                {this.state.loadedPost.image_src && <img src={this.state.loadedPost.image_src} style={{ width: 200, height: 200 }} />}
+                                {this.state.loadedPost.image_src && <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.image_src} style={{ width: 200, height: 200 }} />}
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ class Decks extends Component {
 
     componentDidUpdate(_prevProps, prevState) {
         if (this.state.filter_category !== prevState.filter_category) {
-            if (this.state.filter_category == "0") {
+            if (this.state.filter_category === "0") {
                 this.fetchDecks();
             } else {
                 axios.get('http://localhost:9000/decks/category=/' + this.state.filter_category)
@@ -38,7 +38,7 @@ class Decks extends Component {
             }
         }
         if (this.state.filter_grade !== prevState.filter_grade) {
-            if (this.state.filter_grade == "0") {
+            if (this.state.filter_grade === "0") {
                 this.fetchDecks();
             } else {
                 axios.get('http://localhost:9000/decks/deckGPA=/' + this.state.filter_grade)
@@ -95,7 +95,7 @@ class Decks extends Component {
     }
 
     deckGradeCalcHandler(GPA, totalVotes) {
-        if (totalVotes == 0) {
+        if (totalVotes === 0) {
             return <div style={{ "color": "red" }}>Not Graded</div>
         }
         if (GPA >= 90) {
@@ -190,7 +190,7 @@ class Decks extends Component {
                                 <tr>
                                     <td>{deck.category}</td>
                                     <td>{this.deckGradeCalcHandler(deck.deckGPA, deck.totalVotes)}</td>
-                                    {deck.totalVotes == 1 ? <td>1 Vote</td> : <td>{deck.totalVotes} Votes</td>}
+                                    {deck.totalVotes === 1 ? <td>1 Vote</td> : <td>{deck.totalVotes} Votes</td>}
                                 </tr>
                             </table>
 
@@ -209,7 +209,7 @@ class Decks extends Component {
                             </div>
 
                             {mainCards}
-                            {extraCards.length == 0 ? "" : <hr />}
+                            {extraCards.length === 0 ? "" : <hr />}
                             {extraCards}
                         </Collapsible>
                     </div>

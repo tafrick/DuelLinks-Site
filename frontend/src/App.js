@@ -9,7 +9,6 @@ import Community from './containers/Community/Community';
 import FullPost from './containers/Community/FullPost';
 import Boxes from './containers/Boxes/Boxes';
 import FullBox from './containers/Boxes/FullBox';
-import FullCard from './containers/Boxes/FullCard';
 import DeckBuilder from './components/DeckBuilder/DeckBuilder';
 import Decks from './containers/Decks/Decks';
 import * as actions from './store/actions/index';
@@ -26,7 +25,7 @@ class App extends Component {
 			<div>
 				<Layout>
 					{this.props.isAuth ? <h3>Welcome: {this.props.name}!</h3> : null}
-					{this.props.isAuth ? <img src={this.props.pic} /> : null}
+					{this.props.isAuth ? <img src={this.props.pic} alt={this.props.name}/> : null}
 					<Switch>
 						<Route path="/cardlookup" exact component={CardLookup} />
 						<Route path="/beginners" exact render={Beginners} />

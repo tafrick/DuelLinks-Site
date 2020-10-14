@@ -158,7 +158,6 @@ class Users extends Component {
 
     formatDateAndTime = (dateTime) => {
         dateTime = new Date(dateTime);
-        const today = new Date();
         const result = moment(dateTime).fromNow();
         return result;
     }
@@ -175,7 +174,7 @@ class Users extends Component {
                             {this.props.isAuth ? <KeyboardArrowDownIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <KeyboardArrowDownIcon />}
                         </div>
                         <div className="post-title">
-                            <img src={post.image_src} />
+                            <img src={post.image_src} alt={post.image_src}/>
                             <span className="post-user">Posted by <Link to={"/users/" + post.username}>{post.username}</Link><br></br>{this.formatDateAndTime(post.date)}</span>
                             <span className="post-category"><em>{post.category}</em></span>
                         </div>
@@ -185,7 +184,7 @@ class Users extends Component {
                         <div className="post-body">
                             <span className="title"><Link to={'/community/' + post._id}>{post.title}</Link></span>
                             {post.description.length < 50 ? <span className="description">{post.description}</span> : <span className="description">{post.description.substring(0, 50) + '...'}</span>}
-                            {post.image_src && <img src={post.image_src} style={{ width: 200, height: 200 }} />}
+                            {post.image_src && <img src={post.image_src} alt={post.image_src} style={{ width: 200, height: 200 }} />}
                         </div>
                         <div className="post-footer">
                             <div className="comments footer-action">

@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
 import axios from 'axios';
-import rateLimit from 'axios-rate-limit';
-//import classes from './FullBox.module.css';
 import './FullBox.css';
-import Cards from '../../components/Cards/Cards';
 import FullCard from './FullCard';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-
-
 
 class FullBox extends Component {
     constructor(props) {
@@ -68,10 +61,8 @@ class FullBox extends Component {
     handleClick = (event) => {
         event.preventDefault();
         if (this.state.text !== "" && this.state.text !== " ") {
-            // this.loadData(this.state.text);
             this.setState({
                 searchResult: [],
-                displaySearch: true,
                 displaySearch: false
             });
             this.loadResult(this.state.text);
@@ -128,7 +119,6 @@ class FullBox extends Component {
                 );
             })
         }
-        // console.log("completed cycle: ",this.state.cardsArray);
         return (
             <div className="box-page">
                 {searchResults}

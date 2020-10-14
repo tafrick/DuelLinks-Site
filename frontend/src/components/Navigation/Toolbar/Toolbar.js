@@ -1,6 +1,4 @@
 import React from 'react';
-
-import Logo from '../../Logo/Logo';
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import styles from './Toolbar.module.css';

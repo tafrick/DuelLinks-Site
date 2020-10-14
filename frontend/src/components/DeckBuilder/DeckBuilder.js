@@ -40,20 +40,10 @@ class DeckBuilder extends Component {
         if (this.state.text !== "" && this.state.text !== " ") {
             this.loadData(this.state.text);
             this.setState({ result: this.state.text });
-            // this.setState({
-            //     text: ''
-            // });
         }
     }
     loadData(name) {
-
-        const cards = [];
         if (name !== 'undefined') {
-            // CardData.map(result => {        
-            //     if(result.name.toLowerCase().includes(this.state.text.toLowerCase())){
-            //         res.push(result);
-            //     }
-            // })
             axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=' + name)
                 .then(response => {
                     let cards = [];
@@ -202,11 +192,11 @@ class DeckBuilder extends Component {
                 return (
                     <div className="deck-container">
                         <img src={result.img} alt={result.name} />
-                        <a className="button"
+                        <button className="button"
                             style={{ cursor: "pointer" }}
                             onClick={() => this.removeCard(result, this.state.deck)}>
                             Remove Card
-                        </a>
+                        </button>
                     </div>
                 )
             })
@@ -217,11 +207,11 @@ class DeckBuilder extends Component {
                 return (
                     <div className="deck-container">
                         <img src={result.img} alt={result.name} />
-                        <a className="button"
+                        <button className="button"
                             style={{ cursor: "pointer" }}
                             onClick={() => this.removeCard(result, this.state.extra)}>
                             Remove Card
-                        </a>
+                        </button>
                     </div>
                 )
             })
@@ -232,9 +222,9 @@ class DeckBuilder extends Component {
             <div className="page-wrapper">
                 {this.state.displayTitle ? <div className="title">
                     <h1>Still can't get past MAGAbond? Perhaps we could be of assistance...</h1>
-                    <img src={CardTraderGold} width="250" />
-                    <img src={VagaBond} width="250" height="375" />
-                    <img src={CardTraderBlack} width="260" />
+                    <img src={CardTraderGold} width="250" alt="CardTraderGold"/>
+                    <img src={VagaBond} width="250" height="375" alt="MagaBond"/>
+                    <img src={CardTraderBlack} width="260" alt="CardTraderBlack"/>
                 </div> : ""}
 
                 <div style={{ width: "50%", float: "left" }}>
@@ -269,7 +259,7 @@ class DeckBuilder extends Component {
 
                 <input className="title-input" type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
                 <span style={{ float: "right", width: "15%" }}>
-                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{ position: "absolute", marginLeft: "-25px", marginTop: "10px" }} />
+                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{ position: "absolute", marginLeft: "-25px", marginTop: "10px" }} alt="skills-logo"/>
                     <input style={{ width: "83%" }} className="skill-input" type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
                 </span>
                 {((this.state.deck.length > 0) || (this.state.extra.length > 0)) ?
@@ -278,7 +268,7 @@ class DeckBuilder extends Component {
                         <div className="builderComponent">
                             <div className="deck-wrapper">
                                 {deckList}
-                                {extraList.length == 0 ? "" : <hr />}
+                                {extraList.length === 0 ? "" : <hr />}
                                 {extraList}
                             </div>
                         </div>
@@ -298,7 +288,7 @@ class DeckBuilder extends Component {
                         <option value="Farming">Farming Deck</option>
                     </select>
                     <br></br>
-                    <Button variant="contained" color="primary" disabled={this.state.newDeckCategory == "None"} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                    <Button variant="contained" color="primary" disabled={this.state.newDeckCategory === "None"} onClick={this.submitDeckHandler}>Submit Decklist</Button>
                 </div> : ""}
             </div>
         )

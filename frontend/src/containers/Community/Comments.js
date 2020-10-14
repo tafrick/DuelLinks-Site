@@ -7,7 +7,6 @@ import './Comments.css';
 
 const formatDateAndTime = (dateTime) => {
     dateTime = new Date(dateTime);
-    const today = new Date();
     const result = moment(dateTime).fromNow();
     return result;
 }
