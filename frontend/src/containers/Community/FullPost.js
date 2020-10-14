@@ -305,6 +305,7 @@ class FullPost extends Component {
 
                             <div className="post-body">
                                 <span className="title">{this.state.loadedPost.title}</span>
+                                <hr/>
                                 <span className="description">{this.state.loadedPost.description}</span>
                                 {this.state.loadedPost.image_src && <img src={this.state.loadedPost.image_src} style={{ width: 200, height: 200 }} />}
                             </div>
