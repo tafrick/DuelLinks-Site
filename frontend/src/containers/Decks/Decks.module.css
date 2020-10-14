@@ -6,7 +6,7 @@
 @media only screen and (min-width: 1250px) and (max-width: 1440px) {
     .DeckWrapper {
         text-align: center;
-        width: 50%;
+        width: 70%;
         border: 1px solid black;
         border-radius: 1em;
         /* padding: 15px; */

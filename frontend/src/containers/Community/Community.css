@@ -1,7 +1,18 @@
-.Community {
-  text-align: center;
-  margin: auto;
+/* Current 13in Mac screen */
+@media only screen and (min-width: 1410px) and (max-width: 1889px) {
+  .Community {
+    text-align: center;
+    margin: auto 15%;
+  }
 }
+
+@media only screen and (min-width: 1890px) {
+  .Community {
+    text-align: center;
+    margin: auto auto;
+  }
+}
+
 
 header {
   text-align: center;

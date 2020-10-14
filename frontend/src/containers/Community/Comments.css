@@ -89,8 +89,8 @@
     color: rgb(150, 150, 150);
 }
 
-.Comment .Comment-title>.underline {
-    color: steelblue;
+.Comment .Comment-title>.underline a{
+    color: yellow;
     font-size: 18px;
 }
 

@@ -1,30 +1,55 @@
-body {
-  font-family: Verdana, Geneva, sans-serif;
-  background-color: #2F4454;
-  /* background-image: url("https://cutewallpaper.org/21/yugioh-background/Showcase-Yu-Gi-Oh-Legacy-of-the-Duelist.jpg"); */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
-  overflow: scroll;
-  margin: auto 15%;
-  height: 100%;
-}
-
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
 }
 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 1250px) and (max-width: 1409px) {
   body {
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #2F4454;
     overflow: scroll;
     color: white;
     padding-bottom: 13em;
+    margin: auto 0%;
   }
 }
+
+/* Current 13in Mac screen */
+@media only screen and (min-width: 1410px) and (max-width: 1889px) {
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #2F4454;
+    overflow: scroll;
+    color: white;
+    padding-bottom: 13em;
+    margin: auto 0%;
+  }
+}
+
+/* Current 23in monitor */
+@media only screen and (min-width: 1890px) and (max-width: 2529px) {
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #2F4454;
+    overflow: scroll;
+    color: white;
+    padding-bottom: 13em;
+    margin: auto 10%;
+  }
+}
+
+
+@media only screen and (min-width: 2530px) {
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #2F4454;
+    overflow: scroll;
+    color: white;
+    padding-bottom: 13em;
+    margin: auto 15%;
+  }
+}
+
 
 /*https://www.iconfinder.com/data/icons/7-millennium-items/512/Milennium_Puzzle_Icon_Colored-512.png
 */
