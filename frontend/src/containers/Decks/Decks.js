@@ -181,7 +181,7 @@ class Decks extends Component {
                         <Collapsible trigger={<div className={classes.DeckInfoWrapper}>
                             {/* <div className={classes.categoryText}>{deck.category}</div> */}
                             <h2>{deck.title}</h2>
-                            <p style={{ color: "white" }}>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
+                            <p>Submitted by: <Link to={"/users/" + deck.username}>{deck.username}</Link></p>
                             {this.pictSelectHandler(deck.category)}
 
 
