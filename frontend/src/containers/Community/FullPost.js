@@ -305,7 +305,7 @@ class FullPost extends Component {
 
                             <div className="post-body">
                                 <span className="title">{this.state.loadedPost.title}</span>
-                                {this.state.loadedPost.description.length < 50 ? <span className="description">{this.state.loadedPost.description}</span> : <span className="description">{this.state.loadedPost.description.substring(0, 50) + '...'}</span>}
+                                <span className="description">{this.state.loadedPost.description}</span>
                                 {this.state.loadedPost.image_src && <img src={this.state.loadedPost.image_src} style={{ width: 200, height: 200 }} />}
                             </div>
                         </div>
