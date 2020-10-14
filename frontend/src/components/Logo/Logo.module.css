@@ -8,4 +8,15 @@
 
 .Logo img {
     height: 100%;
+    width: 600px;
+}
+
+@media (max-width: 501px) {
+    .Logo {
+        padding: 1px;
+    }
+
+    .Logo img {
+        width: 93%;
+    }
 }

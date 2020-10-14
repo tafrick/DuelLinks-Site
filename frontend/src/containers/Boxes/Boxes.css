@@ -11,12 +11,12 @@
     margin-bottom: -10px;
 }
 
-.search-container form{
+.search-container form {
     display: flex;
     justify-content: left;
 }
 
-.search-container .search-results img{
+.search-container .search-results img {
     margin: 5px 5px;
     border: white solid 1px;
     border-radius: 7px;
@@ -34,6 +34,29 @@
     box-shadow: 3px 2px 4px 3px rgba(70, 174, 219, 1);
 }
 
+/*exclusive mobile */
+@media (max-width: 501px) {
+    .boxes-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .boxes-container h2 {
+        margin: 0px 0px;
+        margin-top: 0px;
+        text-align: left;
+    }
+
+    .box-list ul {
+        padding: 1em;
+        margin-top: 0px;
+    }
+
+    .boxes-container img {
+        max-width: 95%;
+    }
+}
+
 
 @media only screen and (min-width: 1250px) and (max-width: 1409px) {
     .boxes-container {
@@ -42,27 +65,27 @@
         font-size: 25px;
     }
 }
-  
-  /* Current 13in Mac screen */
-  @media only screen and (min-width: 1410px) and (max-width: 1889px) {
+
+/* Current 13in Mac screen */
+@media only screen and (min-width: 1410px) and (max-width: 1889px) {
     .boxes-container {
         margin: auto 13%;
         display: inline-block;
         font-size: 25px;
     }
-  }
-  
-  /* Current 23in monitor */
-  @media only screen and (min-width: 1890px) and (max-width: 2529px) {
+}
+
+/* Current 23in monitor */
+@media only screen and (min-width: 1890px) and (max-width: 2529px) {
     .boxes-container {
         margin: auto 6%;
         display: inline-block;
         font-size: 25px;
     }
 }
-  
-  
-  @media only screen and (min-width: 2530px) {
+
+
+@media only screen and (min-width: 2530px) {
     .boxes-container {
         margin: auto 0%;
         display: inline-block;
