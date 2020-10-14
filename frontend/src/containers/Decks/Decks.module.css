@@ -3,10 +3,10 @@
     margin: auto 200px;
 }
 
-@media only screen and (min-width: 1250px) and (max-width: 1440px) {
+@media only screen and (max-width: 1410px) {
     .DeckWrapper {
         text-align: center;
-        width: 70%;
+        width: 90%;
         border: 1px solid black;
         border-radius: 1em;
         /* padding: 15px; */
@@ -19,11 +19,42 @@
     }
 }
 
-@media only screen and (min-width: 1649px) and (max-width: 2530px) {
+@media only screen and (min-width: 1410px) and (max-width: 1889px) {
     .DeckWrapper {
         text-align: center;
-        height: 50%;
+        width: 90%;
+        border: 1px solid black;
+        border-radius: 1em;
+        /* padding: 15px; */
+        margin: 4% auto;
+        background-color: blue;
+        top: 0;
+        /* display: inline-block; */
+        position: relative;
+        vertical-align: top;
+    }
+}
+
+@media only screen and (min-width: 1890px) and (max-width: 2529px) {
+    .DeckWrapper {
+        text-align: center;
         width: 40%;
+        border: 1px solid black;
+        border-radius: 1em;
+        /* padding: 15px; */
+        margin: 1% 4%;
+        background-color: blue;
+        top: 0;
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+    }
+}
+
+@media only screen and (min-width: 2530px) {
+    .DeckWrapper {
+        text-align: center;
+        width: 50%;
         border: 1px solid black;
         border-radius: 1em;
         /* padding: 15px; */
