@@ -228,11 +228,11 @@ class MyPosts extends Component {
                             {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
                             <span className="post-user">Posted by <Link to={"/users/" + post.username}>{post.username}</Link><br></br>{this.formatDateAndTime(post.date)}</span>
                             <span className="post-category"><em>{post.category}</em></span>
+                            <DeleteIcon onClick={() => { this.deletePostHandler(post._id) }} style={{ "fill": "rgb(134, 40, 40)" }} />
                         </div>
 
                         <div className="spacer"></div>
 
-                        <DeleteIcon onClick={() => { this.deletePostHandler(post._id) }} />
 
                         <div className="post-body">
                             <span className="title"><Link to={'/community/' + post._id}>{post.title}</Link></span>
