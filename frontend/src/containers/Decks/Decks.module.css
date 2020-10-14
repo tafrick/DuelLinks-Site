@@ -8,7 +8,7 @@
     padding-bottom: .5em;
 }
 
-@media only screen and (max-width: 1410px) {
+@media only screen and (min-width: 502px) and (max-width: 1410px) {
     .DeckWrapper {
         text-align: center;
         width: 90%;
@@ -251,4 +251,45 @@ h2 {
 
 .Filter select {
     align-self: start;
+}
+
+.Filter select {
+    width: 100%;
+}
+
+@media (max-width: 501px) {
+    .DeckWrapper {
+        text-align: center;
+        width: 90%;
+        border: 1px solid black;
+        border-radius: 1em;
+        /* padding: 15px; */
+        margin: 4% auto;
+        background-color: blue;
+        top: 0;
+        /* display: inline-block; */
+        position: relative;
+        vertical-align: top;
+    }
+
+    .FilterWrapper {
+        display: flex;
+        margin: auto;
+        padding-left: 1em;
+        padding-right: 10em;
+        padding-bottom: 1em;
+    }
+
+    .Filter {
+        width: 15%;
+        /* padding: .25em; */
+        text-align: center;
+        margin: auto 1%;
+        padding: 1px;
+        min-width: 100px;
+    }
+
+    .Filter select {
+        width: 100%;
+    }
 }

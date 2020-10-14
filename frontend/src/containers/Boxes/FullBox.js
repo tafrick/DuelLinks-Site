@@ -71,13 +71,13 @@ class FullBox extends Component {
 
     getDate(releaseDate) {
         const format = new Date(releaseDate);
-        return(<div>Released: {format.toLocaleDateString()}</div>);
+        return (<div>Released: {format.toLocaleDateString()}</div>);
     }
     render() {
         let Box = null;
-        let searchResults= "";
+        let searchResults = "";
         let displayCards = "";
-        
+
         searchResults = (
             <div className="card-search-container">
                 <form onSubmit={this.handleClick}>
@@ -94,27 +94,27 @@ class FullBox extends Component {
                 <div className="search-results">
                     {this.state.searchResult.map(card => {
                         return (<span>
-                            {undefined ? null : <FullCard getCard = {card} />}
+                            {undefined ? null : <FullCard getCard={card} />}
                         </span>)
                     }
                     )}
                 </div>
             </div>
         );
-        
+
         if (this.state.loadedBox) {
             Box = (
                 <div>
                     <h2>{this.state.loadedBox.name} [{this.state.loadedBox.cardsIn.length}]</h2>
                     <h4>{this.getDate(this.state.loadedBox.releaseDate)}</h4>
-                    <img src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
+                    <img className="boxImage" src={this.state.loadedBox.img_src} alt={this.state.loadedBox.name} />
                 </div>
             );
 
             displayCards = this.state.cardsArray.map((card, index) => {
                 return (
                     <span key={index}>
-                        {undefined ? null : <FullCard getCard = {card} />}
+                        {undefined ? null : <FullCard getCard={card} />}
                     </span>
                 );
             })
@@ -130,9 +130,9 @@ class FullBox extends Component {
 
             </div >
         );
-        
+
     }
-    
+
 }
 
 export default FullBox;

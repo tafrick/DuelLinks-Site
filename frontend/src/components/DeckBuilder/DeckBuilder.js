@@ -222,9 +222,9 @@ class DeckBuilder extends Component {
             <div className="page-wrapper">
                 {this.state.displayTitle ? <div className="title">
                     <h1>Still can't get past MAGAbond? Perhaps we could be of assistance...</h1>
-                    <img src={CardTraderGold} width="250" alt="CardTraderGold"/>
-                    <img src={VagaBond} width="250" height="375" alt="MagaBond"/>
-                    <img src={CardTraderBlack} width="260" alt="CardTraderBlack"/>
+                    <img src={CardTraderGold} width="250" alt="CardTraderGold" />
+                    <img src={VagaBond} width="250" height="375" alt="MagaBond" />
+                    <img src={CardTraderBlack} width="260" alt="CardTraderBlack" />
                 </div> : ""}
 
                 <div style={{ width: "50%", float: "left" }}>
@@ -237,7 +237,7 @@ class DeckBuilder extends Component {
                                 onChange={this.handleChange}
                                 placeholder="Enter card name..." />
                         </label>
-                        <Button variant="contained" color="primary" onClick={this.handleClick}><SearchIcon /></Button>
+                        <button onClick={this.handleClick}><SearchIcon /></button>
                     </form>
                     {(this.state.loadedCards) ?
                         <div className="searchWrapper">
@@ -259,7 +259,7 @@ class DeckBuilder extends Component {
 
                 <input className="title-input" type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
                 <span style={{ float: "right", width: "15%" }}>
-                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{ position: "absolute", marginLeft: "-25px", marginTop: "10px" }} alt="skills-logo"/>
+                    <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" style={{ position: "absolute", marginLeft: "-25px", marginTop: "10px" }} alt="skills-logo" />
                     <input style={{ width: "83%" }} className="skill-input" type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
                 </span>
                 {((this.state.deck.length > 0) || (this.state.extra.length > 0)) ?
@@ -288,7 +288,7 @@ class DeckBuilder extends Component {
                         <option value="Farming">Farming Deck</option>
                     </select>
                     <br></br>
-                    <Button variant="contained" color="primary" disabled={this.state.newDeckCategory === "None"} onClick={this.submitDeckHandler}>Submit Decklist</Button>
+                    <button disabled={this.state.newDeckCategory === "None"} onClick={this.submitDeckHandler}>Submit Decklist</button>
                 </div> : ""}
             </div>
         )

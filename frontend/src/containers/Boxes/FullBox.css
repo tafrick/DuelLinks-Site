@@ -34,7 +34,7 @@
     margin-bottom: -10px;
 }
 
-.card-search-container form{
+.card-search-container form {
     display: flex;
     justify-content: left;
     margin-left: 100px;
@@ -44,7 +44,20 @@
     text-align: center;
 }
 
-.modal {
-    width: 200px;
-    margin: auto 5px;
+@media (max-width: 501px) {
+    .box-page {
+        text-align: center;
+        margin: auto;
+    }
+
+    .box-page .card-search-container form {
+        place-content: center;
+        margin-left: 0px;
+    }
+
+    .box-page .boxImage {
+        width: 85%;
+        padding-bottom: 1em;
+        border-radius: .5em;
+    }
 }

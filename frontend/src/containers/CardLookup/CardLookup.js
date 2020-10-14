@@ -152,16 +152,18 @@ class CardLookup extends Component {
                     <Grandpa />
                     Hello! Which card would you like to search?
                 </header>
-                <form onSubmit={this.handleClick}>
-                    <label>
-                        <input
-                            type="text"
-                            value={this.state.text}
-                            onChange={this.handleChange}
-                            placeholder="Enter card name..." />
-                    </label>
-                    <Button variant="contained" color="primary" onClick={this.handleClick}>Search</Button>
-                </form>
+                <div className={classes.submitForm}>
+                    <form onSubmit={this.handleClick}>
+                        <label>
+                            <input
+                                type="text"
+                                value={this.state.text}
+                                onChange={this.handleChange}
+                                placeholder="Enter card name..." />
+                        </label>
+                        <Button variant="contained" color="primary" onClick={this.handleClick}>Search</Button>
+                    </form>
+                </div>
                 {this.state.cardNotFound !== true && this.state.showResult && <h2 id="searchResult">Ah! Based on your request for {this.state.result.toUpperCase()} <br></br>this is what I have for you!</h2>}
                 {this.state.cardNotFound && this.state.showCardNotFound && <h2 id="searchResult">Oh no! It doesn't appear like I have {this.state.result.toUpperCase()}!</h2>}
                 {cards}

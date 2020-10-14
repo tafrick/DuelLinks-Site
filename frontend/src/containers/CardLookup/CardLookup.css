@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-input {
+.submitForm {
     height: 32px;
     width: 200px;
     margin: 10px 10px;
@@ -14,4 +14,15 @@ input {
     color: #66FCF1;
 
     text-align: center;
+    margin: auto;
+}
+
+@media (max-width: 501px) {
+    .CardLookup #searchResult {
+        font-size: 20px;
+    }
+
+    .submitForm {
+        margin: auto;
+    }
 }
