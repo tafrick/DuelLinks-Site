@@ -42,7 +42,9 @@ const authLogout = (state, action) => {
         token: null,
         userEmail: null,
         userName: null,
-        userPic: null
+        userPic: null,
+        error: null,
+        loading: false
     })
 }
 
