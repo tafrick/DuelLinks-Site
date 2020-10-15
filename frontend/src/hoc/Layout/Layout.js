@@ -23,6 +23,8 @@ const Layout = (props) => {
                 open={sideDrawerIsVisible}
                 closed={sideDrawerClosedHandler} />
             <main className={classes.Content}>
+                {props.isAuth ? <h3>Welcome: {props.name}!</h3> : null}
+                {props.isAuth ? <img className="GooglePic" src={props.pic} alt={props.name} /> : null}
                 {props.children}
             </main>
             <footer>
@@ -34,6 +36,8 @@ const Layout = (props) => {
 
 const mapStateToProps = state => {
     return {
+        pic: state.userPic,
+        name: state.userName,
         isAuthenticated: state.token !== null
     }
 }
