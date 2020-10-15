@@ -158,7 +158,7 @@ class DeckBuilder extends Component {
         if (this.state.loadedCards) {
             searchResults = this.state.loadedCards[0].data.map(card => {
                 return (
-                    <div className="img-container">
+                    <div className="img-container" key={card.name + Math.random()}>
                         <ModalImage
                             small={card.card_images[0].image_url}
                             large={card.card_images[0].image_url}
@@ -203,7 +203,7 @@ class DeckBuilder extends Component {
         if (this.state.extra) {
             extraList = this.state.extra.map(result => {
                 return (
-                    <div className="deck-container">
+                    <div className="deck-container" key={result.name + Math.random()}>
                         <img src={result.img} alt={result.name} />
                         <button className="button"
                             style={{ cursor: "pointer" }}
