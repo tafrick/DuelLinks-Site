@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Comments from './Comments';
 import './FullPost.css';
 import Button from '@material-ui/core/Button';
+import ModalImage from "react-modal-image";
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import moment from "moment";
@@ -244,6 +245,7 @@ class FullPost extends Component {
             <div className="Page-wrapper" style={{ textAlign: "center" }}>
                 {this.state.loadedPost ?
                     <div className="posts-wrapper">
+                        <h1>{this.state.loadedPost.title}</h1>
                         <div className="post">
                             <div className="post-sidebar">
                                 {this.props.isAuth ? <KeyboardArrowUpIcon className="upvote" onClick={() => { this.upvotePostHandler(this.state.loadedPost._id, this.state.loadedPost.upvotes, this.state.loadedPost.liked_by, this.state.loadedPost.disliked_by) }} /> : <KeyboardArrowUpIcon />}
@@ -251,19 +253,21 @@ class FullPost extends Component {
                                 {this.props.isAuth ? <KeyboardArrowDownIcon className="downvote" onClick={() => { this.downvotePostHandler(this.state.loadedPost._id, this.state.loadedPost.upvotes, this.state.loadedPost.liked_by, this.state.loadedPost.disliked_by) }} /> : <KeyboardArrowDownIcon />}
                             </div>
                             <div className="post-title">
-                                <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.image_src}/>
+                                {/* <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.image_src}/> */}
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
-                                <span className="post-user">Posted by <Link to={"/users/" + this.state.loadedPost.username}>{this.state.loadedPost.username}</Link><br></br>{this.formatDateAndTime(this.state.loadedPost.date)}</span>
+                                <span className="post-username"><Link to={"/users/" + this.state.loadedPost.username}>{this.state.loadedPost.username}</Link></span>
+                                
                                 <span className="post-category"><em>{this.state.loadedPost.category}</em></span>
+                                
                             </div>
-
+                            
                             <div className="spacer"></div>
-
                             <div className="post-body">
-                                <span className="title">{this.state.loadedPost.title}</span>
-                                <hr/>
-                                <span className="description">{this.state.loadedPost.description}</span>
-                                {this.state.loadedPost.image_src && <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.image_src} style={{ width: 200, height: 200 }} />}
+                                <span className="post-user">{this.formatDateAndTime(this.state.loadedPost.date)}</span>
+                            <br/><hr/>
+                                <span className="fullpost-description">{this.state.loadedPost.description}</span>
+                                <br/>
+                                {this.state.loadedPost.image_src && <ModalImage small={this.state.loadedPost.image_src} large={this.state.loadedPost.image_src} alt={""} className="modal" />}
                             </div>
                         </div>
                     </div>
@@ -277,7 +281,6 @@ class FullPost extends Component {
                 {this.state.displayPost ? (<div className="NewComment">
                     <label>Body</label>
                     <textarea rows="4" value={this.state.newCommentBody} onChange={(event) => this.setState({ newCommentBody: event.target.value })} />
-
                     <Button variant="contained" color="primary" onClick={this.postDataHandler}>Submit Comment </Button>
                 </div>) : null
                 }

@@ -7,7 +7,7 @@ import CardTraderGold from '../../assets/images/CardTraderGold.png';
 import VagaBond from '../../assets/images/MagaBond.PNG';
 import CardTraderBlack from '../../assets/images/CardTraderBlack.png';
 import './DeckBuilder.css'
-import Button from '@material-ui/core/Button';
+import Popup from 'reactjs-popup';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import SearchIcon from '@material-ui/icons/Search';
 

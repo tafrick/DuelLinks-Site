@@ -13,6 +13,11 @@
     box-shadow: 0 8px 16px 1px rgba(0, 0, 0, 0.2);
 }
 
+.post-body .post-user{
+    font-size: 14px;
+    padding-left: 10px;
+    color: rgb(150, 150, 150);
+}
 
 .post:hover {
     transform: scale(1.005);
@@ -41,14 +46,15 @@
 }
 
 .posts-wrapper .post .post-title {
-
+    
     display: block;
 }
 
-.posts-wrapper .post .post-user {
+.posts-wrapper .post .post-username {
     text-align: left;
     width: 50%;
     float: left;
+    font-size: 16px;
 }
 
 .posts-wrapper .post .post-category {
@@ -103,7 +109,7 @@
 .posts-wrapper .post .post-title {
     grid-area: post-title;
     display: flex;
-    align-items: center;
+
 }
 
 .posts-wrapper .post .post-body {
@@ -139,10 +145,10 @@
     text-decoration: underline;
 }
 
-.posts-wrapper .post .post-title>.post-user {
-    padding-left: 5px;
-    font-size: 12px;
-
+.posts-wrapper .post .post-title>.post-username {
+    padding-left: 10px;
+    font-size: 18px;
+    text-decoration: underline;
     color: rgb(150, 150, 150);
 }
 
@@ -173,11 +179,11 @@
     height: 500px;
 }
 
-.posts-wrapper .post .post-body>.description {
+.posts-wrapper .post .post-body>.fullpost-description {
     margin-top: 10px;
-    margin-left: 5px;
-
+    padding-left: 10px;
     display: block;
+    text-align: left;
 }
 
 .posts-wrapper .post .post-footer .footer-action {
