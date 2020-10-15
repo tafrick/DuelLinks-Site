@@ -5,6 +5,14 @@
     margin-top: 8%;
 }
 
+@media (max-width: 501px) {
+    .page-wrapper {
+        display: grid;
+        margin: 0;
+        align-content: center;
+    }
+}
+
 .form-container {
     position: absolute;
 }
@@ -79,7 +87,7 @@ input.skill-input {
 
 .emptyWrapper {
     border: 1px solid black;
-    width: 48%;
+    width: 100%;
     float: left;
     background-color: #0B0C10;
     height: 15vh;
@@ -100,7 +108,7 @@ input.skill-input {
 
 .emptySearch {
     border: 1px solid black;
-    width: 95%;
+    width: 100%;
     float: left;
     background-color: #0B0C10;
     height: 15vh;

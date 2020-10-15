@@ -20,7 +20,7 @@ body {
   overflow: scroll;
   color: white;
   padding-bottom: 13em;
-  margin: auto 5%;
+  margin: auto 2.5%;
 }
 
 @media only screen and (max-width: 1409px) {
@@ -30,7 +30,7 @@ body {
     overflow: scroll;
     color: white;
     padding-bottom: 13em;
-    margin: auto 5%;
+    margin: auto 2.5%;
   }
 }
 
