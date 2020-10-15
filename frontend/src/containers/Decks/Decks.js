@@ -86,7 +86,7 @@ class Decks extends Component {
                     console.error(err.message);
                 })
         } else {
-            alert("you may only grade once!");
+            return 0;
         }
     }
 
@@ -144,7 +144,7 @@ class Decks extends Component {
             decks = this.state.loadedDecks.map(deck => {
                 // let mainCards = deck.mainDeck.map(card => { return <img key={card.name + Math.random()} src={card.img} alt={card.name} /> })
                 let mainCards = deck.mainDeck.map(card =>
-                    <span className={classes.modalTag}>
+                    <span className={classes.modalTag} key={card.name + Math.random()}>
                         <span style={{ width: "120px", margin: "0px 3px", display: "inline-block" }}>
                             {<ModalImage
                                 small={card.img}
@@ -157,7 +157,7 @@ class Decks extends Component {
                     </span>
                 )
                 let extraCards = deck.extraDeck.map(xcard =>
-                    <span className={classes.modalTag}>
+                    <span className={classes.modalTag} key={xcard.name + Math.random()}>
                         <span style={{ width: "110px", margin: "0px 3px", display: "inline-block" }}>
                             {<ModalImage
                                 small={xcard.img}

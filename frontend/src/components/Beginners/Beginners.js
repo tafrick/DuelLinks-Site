@@ -3,7 +3,6 @@ import slang from './slang.json';
 import Button from '@material-ui/core/Button';
 import classes from './Beginners.module.css';
 import goldGif from '../../assets/images/gold.gif';
-import Zexal from '../../assets/images/YuGiOhZexal.jpg';
 
 const beginner = (props) => {
     return (
@@ -39,7 +38,7 @@ const beginner = (props) => {
                 <li>
                     <h3>A new account is the easiest way to get a lot of gems, but then it becomes harder and harder to consistently get gems. Spend gems wisely, always consider future gameplay</h3>
                     <p>Duel Links is probably gonna get access to XYZ summoning very soon! Consider what cards might come out which might benefit your strategies and win conditions.</p>
-                    <img src="https://de7i3bh7bgh0d.cloudfront.net/2016/11/02/20/55/04/30de93b6-e6a9-416e-86b9-387b63239f27/YuGiOhZexal.jpg" alt="zexal" width="700px" height="400px"/>
+                    <img src="https://de7i3bh7bgh0d.cloudfront.net/2016/11/02/20/55/04/30de93b6-e6a9-416e-86b9-387b63239f27/YuGiOhZexal.jpg" alt="zexal" width="700px" height="400px" />
                 </li>
             </ol>
             <h3>Some Commonly Used Words within the Duel Links Community</h3>

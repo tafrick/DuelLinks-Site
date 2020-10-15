@@ -7,7 +7,6 @@ import CardTraderGold from '../../assets/images/CardTraderGold.png';
 import VagaBond from '../../assets/images/MagaBond.PNG';
 import CardTraderBlack from '../../assets/images/CardTraderBlack.png';
 import './DeckBuilder.css'
-import Popup from 'reactjs-popup';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -148,7 +147,7 @@ class DeckBuilder extends Component {
                     console.error({ message: err.message })
                 })
         } else {
-            alert("log in...bitch")
+            return 0;
         }
     }
 
@@ -189,7 +188,7 @@ class DeckBuilder extends Component {
             deckList = this.state.deck.map(result => {
 
                 return (
-                    <div className="deck-container">
+                    <div className="deck-container" key={result.name + Math.random()}>
                         <img src={result.img} alt={result.name} />
                         <button className="button"
                             style={{ cursor: "pointer" }}
