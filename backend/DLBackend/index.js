@@ -4,6 +4,7 @@ require('dotenv').config({
 
 const cors = require('cors')
 const express = require('express')
+const PORT = process.env.PORT || 5000;
 const app = express()
 const mongoose = require('mongoose')
 
@@ -32,4 +33,4 @@ app.use('/comments', commentRouter)
 const decksRouter = require('./routes/decks')
 app.use('/decks', decksRouter)
 
-app.listen(9000, () => console.log('Server Started'))
+app.listen(PORT, () => console.log('Server Started on ' + PORT))
