@@ -7,10 +7,8 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 const sideDrawer = (props) => {
     let attachedClasses = [classes.SideDrawer, classes.Close];
     if (props.open) {
-        console.log("open pressed")
         attachedClasses = [classes.SideDrawer, classes.Open];
     } else {
-        console.log("closed pressed")
         attachedClasses = [classes.SideDrawer, classes.Close];
     }
     return (

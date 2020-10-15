@@ -4,8 +4,6 @@ import Grandpa from '../../components/Grandpa/Grandpa';
 import classes from './CardLookup.module.css';
 import Cards from '../../components/Cards/Cards';
 import Button from '@material-ui/core/Button';
-import Boxes from './yugioh-boxes-updated.json';
-import box_imgs from './box_images.json';
 
 class CardLookup extends Component {
     constructor(props) {
@@ -69,45 +67,45 @@ class CardLookup extends Component {
         }
     }
 
-    postData() {
-        for (let box_title in Boxes) {
-            let newBox = {
-                name: box_title,
-                cardsIn: Boxes[box_title]
-            }
-            axios.post('http://localhost:9000/boxes', newBox)
-                .then(response => {
-                    console.log(response.data)
-                })
-                .catch(error => {
-                    console.error(error.message)
-                })
-        }
-    }
+    // postData() {
+    //     for (let box_title in Boxes) {
+    //         let newBox = {
+    //             name: box_title,
+    //             cardsIn: Boxes[box_title]
+    //         }
+    //         axios.post('http://localhost:9000/boxes', newBox)
+    //             .then(response => {
+    //                 console.log(response.data)
+    //             })
+    //             .catch(error => {
+    //                 console.error(error.message)
+    //             })
+    //     }
+    // }
 
-    patchData() {
-        console.log("patching data");
-        let all_ids = [];
-        for (let box in this.state.loadedBoxes) {
-            let box_id = this.state.loadedBoxes[box]._id;
-            all_ids.push(box_id);
-        }
+    // patchData() {
+    //     console.log("patching data");
+    //     let all_ids = [];
+    //     for (let box in this.state.loadedBoxes) {
+    //         let box_id = this.state.loadedBoxes[box]._id;
+    //         all_ids.push(box_id);
+    //     }
 
-        for (let b_title in box_imgs) {
-            let newBox = {
-                img_src: box_imgs[b_title].img_src
-            }
-            if (this.state.loadedBoxes) {
-                axios.patch('http://localhost:9000/boxes/' + all_ids[b_title], newBox)
-                    .then(response => {
-                        console.log(response.data);
-                    })
-                    .catch(error => {
-                        console.error(error.message);
-                    })
-            }
-        }
-    }
+    //     for (let b_title in box_imgs) {
+    //         let newBox = {
+    //             img_src: box_imgs[b_title].img_src
+    //         }
+    //         if (this.state.loadedBoxes) {
+    //             axios.patch('http://localhost:9000/boxes/' + all_ids[b_title], newBox)
+    //                 .then(response => {
+    //                     console.log(response.data);
+    //                 })
+    //                 .catch(error => {
+    //                     console.error(error.message);
+    //                 })
+    //         }
+    //     }
+    // }
 
     cardBoxCheckHandler(name) {
         if (this.state.loadedBoxes) {

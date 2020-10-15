@@ -18,11 +18,9 @@ class MyPosts extends Component {
 
     componentDidMount() {
         this.loadData();
-        console.log("did mount?");
     }
 
     loadData() {
-        console.log("loading data!");
         axios.get('http://localhost:9000/posts/username=/' + this.props.email)
             .then(response => {
                 const posts = [...response.data];
@@ -39,43 +37,36 @@ class MyPosts extends Component {
         let newLikedList = [];
         //case 1: not in like or dislike
         if (!dislikeList.includes(this.props.email) && !likeList.includes(this.props.email)) {
-            console.log("not in like or dislike");
             newUpvotes = oldUpvotes + 1;
             newLikedList = [...likeList];
             newLikedList.push(this.props.email);
-            console.log(newLikedList);
             updatedPost = {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/my_posts');
                 })
                 .catch(err => {
                     console.error(err.message);
                 })
         } else if (likeList.includes(this.props.email)) {
-            console.log("in like not dislike");
             newUpvotes = oldUpvotes - 1;
             newLikedList = [...likeList];
             newLikedList = newLikedList.filter(e => e !== this.props.email);
-            console.log(newLikedList);
             updatedPost = {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/my_posts');
                 })
                 .catch(err => {
                     console.error(err.message);
                 })
         } else if (dislikeList.includes(this.props.email)) {
-            console.log("in dilsikelike not like");
             newUpvotes = oldUpvotes + 1;
             let newDislikeList = [...dislikeList];
             newDislikeList = newDislikeList.filter(e => e !== this.props.email);
@@ -88,7 +79,6 @@ class MyPosts extends Component {
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/my_posts');
                 })
                 .catch(err => {
@@ -103,18 +93,15 @@ class MyPosts extends Component {
         let newDislikeList = [];
         //case 1
         if (!dislikeList.includes(this.props.email) && !likeList.includes(this.props.email)) {
-            console.log("not on any list");
             newDownvotes = oldVotes - 1;
             newDislikeList = [...dislikeList];
             newDislikeList.push(this.props.email);
-            console.log(newDislikeList);
             updatedDownvotedPost = {
                 upvotes: newDownvotes,
                 disliked_by: newDislikeList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/my_posts');
                 })
                 .catch(err => {
@@ -130,7 +117,6 @@ class MyPosts extends Component {
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/my_posts');
                 })
                 .catch(err => {
@@ -149,7 +135,6 @@ class MyPosts extends Component {
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/my_posts');
                 })
                 .catch(err => {
@@ -167,7 +152,6 @@ class MyPosts extends Component {
     deletePostHandler(postId) {
         axios.delete('http://localhost:9000/posts/' + postId)
             .then(response => {
-                console.log(response);
                 this.props.history.go('/my_posts');
             })
             .catch(error => {
@@ -187,7 +171,7 @@ class MyPosts extends Component {
                             {this.props.isAuth ? <ArrowDownwardIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <ArrowDownwardIcon />}
                         </div>
                         <div className="post-title">
-                            <img src={post.image_src} alt={post.image_src}/>
+                            <img src={post.image_src} alt={post.image_src} />
                             {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
                             <span className="post-user">Posted by <Link to={"/users/" + post.username}>{post.username}</Link><br></br>{this.formatDateAndTime(post.date)}</span>
                             <span className="post-category"><em>{post.category}</em></span>
@@ -197,7 +181,7 @@ class MyPosts extends Component {
                         <div className="post-body">
                             <span className="title"><Link to={'/community/' + post._id}>{post.title}</Link></span>
                             {post.description.length < 50 ? <span className="description">{post.description}</span> : <span className="description">{post.description.substring(0, 50) + '...'}</span>}
-                            {post.image_src && <img src={post.image_src} alt={post.image_src}style={{ width: 200, height: 200 }} />}
+                            {post.image_src && <img src={post.image_src} alt={post.image_src} style={{ width: 200, height: 200 }} />}
                         </div>
                         <div className="post-footer">
                             <div className="comments footer-action">
@@ -213,7 +197,6 @@ class MyPosts extends Component {
             <div>
                 <p>My posts:</p>
                 {posts}
-                {console.log(this.props.email)}
             </div>
         );
     }

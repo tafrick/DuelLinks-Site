@@ -27,7 +27,6 @@ class FullBox extends Component {
         const boxID = this.props.match.params.boxId;
         axios.get('http://localhost:9000/boxes/' + boxID)
             .then(response => {
-                // console.log("sdasdas",response.data.cardsIn)
                 const box = { ...response.data };
                 const box_array = [...box.cardsIn];
                 this.setState({ loadedBox: box, cardsArray: box_array });

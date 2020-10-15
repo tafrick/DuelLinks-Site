@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import './Table.css';
-import ReactDOM from "react-dom";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 const data = require("./finalUpdatedBoxes.json");
 const rows = data;

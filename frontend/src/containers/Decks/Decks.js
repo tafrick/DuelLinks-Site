@@ -65,7 +65,6 @@ class Decks extends Component {
     }
 
     gradeDeckHandler(deckGrade, totalPoints, totalVotes, gradersList, deckId) {
-        console.log(deckGrade);
         //only allow one grade for now
         if (!gradersList.includes(this.props.username)) {
             const newPointTotal = parseInt(totalPoints) + parseInt(deckGrade);
@@ -73,17 +72,14 @@ class Decks extends Component {
             const newGPA = newPointTotal / newVoterTotal;
             let newGradersList = [...gradersList];
             newGradersList.push(this.props.username);
-            console.log(`new GPA is ${newGPA}`);
             const updatedDeck = {
                 totalPoints: newPointTotal,
                 graders: newGradersList,
                 totalVotes: newVoterTotal,
                 deckGPA: newGPA
             }
-            console.log(updatedDeck);
             axios.patch('http://localhost:9000/decks/' + deckId, updatedDeck)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/decks');
                 })
                 .catch(err => {
@@ -145,7 +141,6 @@ class Decks extends Component {
     render() {
         let decks = [];
         if (this.state.loadedDecks) {
-            console.log(this.state.loadedDecks)
             decks = this.state.loadedDecks.map(deck => {
                 // let mainCards = deck.mainDeck.map(card => { return <img key={card.name + Math.random()} src={card.img} alt={card.name} /> })
                 let mainCards = deck.mainDeck.map(card =>

@@ -31,7 +31,6 @@ class GoogleBtn extends Component {
             });
             axios.get('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + response.accessToken)
                 .then(response => {
-                    console.log(response)
                     this.props.onAuth(this.state.accessToken, response.data.email, response.data.given_name, this.state.expirationTime, response.data.picture)
                     this.setState({ username: response.data.given_name })
                 })

@@ -12,7 +12,6 @@ class Community extends Component {
     constructor(props) {
         super(props);
         this.fileSelectedHandler.bind(this);
-        this.fileUploadHandler.bind(this);
         this.state = {
             loadedPosts: [],
             selectedFile: "",
@@ -27,23 +26,9 @@ class Community extends Component {
     }
 
     fileSelectedHandler = (event) => {
-        console.log(event.target.files[0]);
         this.setState({
             selectedFile: event.target.files
         })
-    }
-
-    fileUploadHandler = () => {
-        const fd = new FormData();
-        fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-        axios.post('', fd, {
-            onUploadProgress: progressEvent => {
-                console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%');
-            }
-        })//api endpoint
-            .then(res => {
-                console.log(res);
-            })
     }
 
     postDataHandler = () => {
@@ -56,7 +41,6 @@ class Community extends Component {
         };
         axios.post('http://localhost:9000/posts/', newPost)
             .then(response => {
-                console.log(response);
                 this.props.history.replace('/');
             })
             .catch(err => {
@@ -105,43 +89,36 @@ class Community extends Component {
         let newLikedList = [];
         //case 1: not in like or dislike
         if (!dislikeList.includes(this.props.email) && !likeList.includes(this.props.email)) {
-            console.log("not in like or dislike");
             newUpvotes = oldUpvotes + 1;
             newLikedList = [...likeList];
             newLikedList.push(this.props.email);
-            console.log(newLikedList);
             updatedPost = {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/community');
                 })
                 .catch(err => {
                     console.error(err.message);
                 })
         } else if (likeList.includes(this.props.email)) {
-            console.log("in like not dislike");
             newUpvotes = oldUpvotes - 1;
             newLikedList = [...likeList];
             newLikedList = newLikedList.filter(e => e !== this.props.email);
-            console.log(newLikedList);
             updatedPost = {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/community');
                 })
                 .catch(err => {
                     console.error(err.message);
                 })
         } else if (dislikeList.includes(this.props.email)) {
-            console.log("in dilsikelike not like");
             newUpvotes = oldUpvotes + 1;
             let newDislikeList = [...dislikeList];
             newDislikeList = newDislikeList.filter(e => e !== this.props.email);
@@ -154,7 +131,6 @@ class Community extends Component {
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/community');
                 })
                 .catch(err => {
@@ -169,18 +145,15 @@ class Community extends Component {
         let newDislikeList = [];
         //case 1
         if (!dislikeList.includes(this.props.email) && !likeList.includes(this.props.email)) {
-            console.log("not on any list");
             newDownvotes = oldVotes - 1;
             newDislikeList = [...dislikeList];
             newDislikeList.push(this.props.email);
-            console.log(newDislikeList);
             updatedDownvotedPost = {
                 upvotes: newDownvotes,
                 disliked_by: newDislikeList
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/community');
                 })
                 .catch(err => {
@@ -196,7 +169,6 @@ class Community extends Component {
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/community');
                 })
                 .catch(err => {
@@ -215,7 +187,6 @@ class Community extends Component {
             }
             axios.patch('http://localhost:9000/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
-                    console.log("Update Successful!");
                     this.props.history.go('/community');
                 })
                 .catch(err => {
@@ -241,11 +212,11 @@ class Community extends Component {
             <div className="NewPost">
                 <h1>Add a Post</h1>
                 <label>Title</label>
-                <input type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
+                <input placeholder="Post Title" type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
                 <label>Desciption</label>
-                <textarea rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
+                <textarea placeholder="what do you want to talk about?" rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
                 <label>Image URL</label>
-                <input type="text" value={this.state.imgURL} onChange={(event) => this.setState({ imgURL: event.target.value })} />
+                <input placeholder="please enter image url (such as imgur)..." type="text" value={this.state.imgURL} onChange={(event) => this.setState({ imgURL: event.target.value })} />
                 <label>Category</label>
                 <select value={this.state.newPostCategory} onChange={(event) => this.setState({ newPostCategory: event.target.value })}>
                     <option value="KOG_Deck">KOG Deck</option>
@@ -258,7 +229,6 @@ class Community extends Component {
                     <option value="Gameplay_Tips">Gameplay Tips</option>
                     <option value="Farming_Deck">Farming Deck</option>
                 </select>
-                <button onClick={this.fileUploadHandler}>Upload</button>
                 <button onClick={this.postDataHandler}>Add Post</button>
             </div>
         );
@@ -297,7 +267,7 @@ class Community extends Component {
                                 {this.props.isAuth ? <KeyboardArrowDownIcon className="downvote" onClick={() => { this.downvoteHandler(post._id, post.upvotes, post.liked_by, post.disliked_by) }} /> : <KeyboardArrowDownIcon />}
                             </div>
                             <div className="post-title">
-                                <img src={post.image_src} alt={post.image_src}/>
+                                <img src={post.image_src} alt={post.image_src} />
                                 <span className="post-user">Posted by <Link to={"/users/" + post.username}>{post.username}</Link><br></br>{this.formatDateAndTime(post.date)}</span>
                                 <span className="post-category"><em>{post.category}</em></span>
                             </div>

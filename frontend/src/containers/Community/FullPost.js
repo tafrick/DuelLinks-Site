@@ -33,7 +33,6 @@ class FullPost extends Component {
             // this.toggleFullPost: !this.state.toggleFullPost
             toggleFullPost: !this.state.toggleFullPost
         })
-        console.log(this.state.toggleFullPost)
     }
     componentDidMount() {
         this.fetchData();
@@ -67,7 +66,6 @@ class FullPost extends Component {
         };
         axios.post('http://localhost:9000/comments', newComment)
             .then(response => {
-                console.log(response);
                 this.updatePostComments(this.state.postID)
             })
             .catch(error => {
@@ -80,7 +78,6 @@ class FullPost extends Component {
         const updatedPost = { comments: updatedComments };
         axios.patch('http://localhost:9000/posts/' + postId, updatedPost)
             .then(response => {
-                console.log(response.data);
                 this.props.history.go('/community' + this.state.postID);
             })
             .catch(error => {
@@ -110,7 +107,6 @@ class FullPost extends Component {
                 }
                 axios.patch('http://localhost:9000/comments/' + commentID, updatedComment)
                     .then(response => {
-                        console.log("Update Successful!");
                         window.location.reload();
                     })
                     .catch(err => {
@@ -126,7 +122,6 @@ class FullPost extends Component {
                 }
                 axios.patch('http://localhost:9000/comments/' + commentID, updatedComment)
                     .then(response => {
-                        console.log("Update Successful!");
                         window.location.reload();
                     })
                     .catch(err => {
@@ -145,7 +140,6 @@ class FullPost extends Component {
                 }
                 axios.patch('http://localhost:9000/comments/' + commentID, updatedComment)
                     .then(response => {
-                        console.log("Update Successful!");
                         window.location.reload();
                     })
                     .catch(err => {
@@ -173,7 +167,6 @@ class FullPost extends Component {
                 }
                 axios.patch('http://localhost:9000/comments/' + commentID, updatedDownComment)
                     .then(response => {
-                        console.log("Update Successful!");
                         window.location.reload();
                     })
                     .catch(err => {
@@ -189,7 +182,6 @@ class FullPost extends Component {
                 }
                 axios.patch('http://localhost:9000/comments/' + commentID, updatedDownComment)
                     .then(response => {
-                        console.log("Update Successful!");
                         window.location.reload();
                     })
                     .catch(err => {
@@ -208,7 +200,6 @@ class FullPost extends Component {
                 }
                 axios.patch('http://localhost:9000/comments/' + commentID, updatedDownComment)
                     .then(response => {
-                        console.log("Update Successful!");
                         window.location.reload();
                     })
                     .catch(err => {
@@ -256,17 +247,17 @@ class FullPost extends Component {
                                 {/* <img src={this.state.loadedPost.image_src} alt={this.state.loadedPost.image_src}/> */}
                                 {/* <span className="subreddit-name">r/{post.subreddit.name}</span> */}
                                 <span className="post-username"><Link to={"/users/" + this.state.loadedPost.username}>{this.state.loadedPost.username}</Link></span>
-                                
+
                                 <span className="post-category"><em>{this.state.loadedPost.category}</em></span>
-                                
+
                             </div>
-                            
+
                             <div className="spacer"></div>
                             <div className="post-body">
                                 <span className="post-user">{this.formatDateAndTime(this.state.loadedPost.date)}</span>
-                            <br/><hr/>
+                                <br /><hr />
                                 <span className="fullpost-description">{this.state.loadedPost.description}</span>
-                                <br/>
+                                <br />
                                 {this.state.loadedPost.image_src && <ModalImage small={this.state.loadedPost.image_src} large={this.state.loadedPost.image_src} alt={""} className="modal" />}
                             </div>
                         </div>
