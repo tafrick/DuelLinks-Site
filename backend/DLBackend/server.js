@@ -1,4 +1,6 @@
-require('dotenv').config()
+require('dotenv').config({
+    silent: process.env.NODE_ENV === 'production'
+})
 
 const cors = require('cors')
 const express = require('express')
