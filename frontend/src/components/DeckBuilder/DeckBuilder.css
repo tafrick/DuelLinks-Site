@@ -1,5 +1,5 @@
 .page-wrapper {
-    margin: auto 7.5%;
+    margin: auto 5.5%;
     height: 100%;
     overflow: auto;
     margin-top: 8%;
@@ -38,22 +38,27 @@ input.title-input {
     outline: none;
     color: white;
     font-size: 24px;
-    width: 30%;
+    width: 53%;
     margin-bottom: 0px;
     margin-left: 1%;
     border-bottom: none;
 }
 
-
+.skill-container img{
+    /* float:right; */
+    /* float:right; */
+    /* padding-left: 185px; */
+    margin: -8px;
+}
 
 input.skill-input {
     /* background: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
     color: white;
-    font-size: 18px;
+    font-size: 18px; */
     width: auto;
-    margin-left: 1%; */
+    /* float: right; */
     margin-bottom: 0px;
 }
 

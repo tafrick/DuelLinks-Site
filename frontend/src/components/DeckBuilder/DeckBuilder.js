@@ -164,10 +164,9 @@ class DeckBuilder extends Component {
                             large={card.card_images[0].image_url}
                             alt={card.name}
                             className="modal"
-
                         />
                         <div className="overlay">
-                            <a className="icon">
+                            <span href="#" className="icon">
                                 <BsFillPlusSquareFill
                                     className="icon-img"
                                     size="35px"
@@ -177,7 +176,7 @@ class DeckBuilder extends Component {
                                     onClick={() => this.validateType(card)}
                                     style={{ cursor: "pointer" }}
                                 />
-                            </a>
+                            </span>
                         </div>
                     </div>
                 )
@@ -260,9 +259,9 @@ class DeckBuilder extends Component {
                 <div className="mobile-Shifted" style={{ width: "45%", float: "right", display: "grid", minWidth: "350px" }}>
                     <div style={{ width: "100%", height: "55px" }}>
                         <input className="title-input" type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
-                        <span style={{ width: "15%" }}>
+                        <span className="skill-container"style={{ width: "15%" }}>
                             <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" alt="skills-logo" />
-                            <input style={{ width: "30%", maxWidth: "30ch" }} className="skill-input" type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
+                            <input style={{ width: "30%", maxWidth: "40ch" }} className="skill-input" type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
                         </span>
                     </div>
                     {((this.state.deck.length > 0) || (this.state.extra.length > 0)) ?
