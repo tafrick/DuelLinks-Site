@@ -23,7 +23,18 @@ body {
   margin: auto 2.5%;
 }
 
-@media only screen and (max-width: 1409px) {
+@media (max-width: 502px) {
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #2F4454;
+    overflow: scroll;
+    color: white;
+    padding-bottom: 13em;
+    margin: auto 2.5%;
+  }
+}
+
+@media only screen (min-width: 502px) and (max-width: 1409px) {
   body {
     font-family: 'Lato', sans-serif;
     background-color: #2F4454;

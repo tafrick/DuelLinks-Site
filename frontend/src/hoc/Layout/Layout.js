@@ -25,7 +25,9 @@ const Layout = (props) => {
             <main className={classes.Content}>
                 {props.children}
             </main>
-            <Footer />
+            <footer>
+                <Footer />
+            </footer>
         </React.Fragment>
     )
 };

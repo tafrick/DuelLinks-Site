@@ -19,3 +19,9 @@
     justify-content: center;
     margin: auto 10px;
 }
+
+@media (min-width: 501px) {
+    .Footer a {
+        margin: auto;
+    }
+}

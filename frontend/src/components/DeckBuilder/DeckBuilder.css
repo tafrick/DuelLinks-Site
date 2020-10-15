@@ -63,7 +63,7 @@ input.skill-input {
 
 .build-wrapper {
     float: left;
-    width: 48%;
+    width: 100%;
     background-color: #0B0C10;
     background-image: url("https://i.pinimg.com/originals/dc/2e/54/dc2e54733d48a96bf85e05382bccead3.jpg");
     height: 60vh;
@@ -133,7 +133,7 @@ input.skill-input {
 
 .searchWrapper {
     float: left;
-    width: 95%;
+    width: 100%;
     background: transparent;
     color: #0B0C10;
     height: 60vh;
