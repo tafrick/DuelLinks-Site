@@ -8,6 +8,7 @@ A Web application for the popular game Yugioh Duel Links. It contains beginner's
 ### Box Lookup
 - User can view all the in-game shop item Boxes. Each box routes to its own page which displays all the respective cards contained in the box via card images.
 - User can click on a card and a React-Modal pops up for an expanded view of that card.
+- User can search for a card (via input search bar) within the box
 
 ### Deck Builder
 - User can build a deck in compliance to the Yugioh Duel Links regulations.
