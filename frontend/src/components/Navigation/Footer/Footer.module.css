@@ -20,8 +20,41 @@
     margin: auto 10px;
 }
 
-@media (min-width: 501px) {
-    .Footer a {
-        margin: auto;
+.FooterMobile{
+    display: none;
+}
+@media (max-width: 501px) {
+
+    .FooterMobile a {
+        margin: 0 0;
+        width: 150px;
     }
+    .FooterMobile img {
+        display: flex;
+        width: 110px;
+        
+    }
+    .FooterMobile {
+        height: 15%;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #1F2833;
+        /* background-image: linear-gradient(black, steelblue); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 90;
+    }
+
+    .Footer {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 502px) and (max-width: 1889px) {
+
 }
