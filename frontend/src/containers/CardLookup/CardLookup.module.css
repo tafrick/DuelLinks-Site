@@ -16,7 +16,16 @@ p {
     text-align: left;
 }
 
-
+.CardLookup a{
+    font-size: 18px;
+    text-decoration: none;
+    color: red;
+}
+.CardLookup a:hover{
+    font-size: 18px;
+    text-decoration: underline;
+    color: red;
+}
 
 input {
     height: 32px;

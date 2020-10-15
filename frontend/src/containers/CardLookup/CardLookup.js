@@ -4,7 +4,9 @@ import Grandpa from '../../components/Grandpa/Grandpa';
 import classes from './CardLookup.module.css';
 import Cards from '../../components/Cards/Cards';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
+let route = "";
 class CardLookup extends Component {
     constructor(props) {
         super(props)
@@ -114,6 +116,7 @@ class CardLookup extends Component {
                 for (let j in ithBoxCardsIn) {
                     if (ithBoxCardsIn[j].name === name) {
                         let box_title = this.state.loadedBoxes[box].name;
+                        route = this.state.loadedBoxes[box]._id;
                         return box_title;
                     }
                 }
@@ -140,7 +143,7 @@ class CardLookup extends Component {
                         image={card.card_images[0].image_url}
                         source={card.name}
                         effect={card.desc}
-                        box={(this.cardBoxCheckHandler(card.name) == null) ? 'Currently Unavailable in Any Box' : this.cardBoxCheckHandler(card.name)} />
+                        box={(this.cardBoxCheckHandler(card.name) == null) ? 'Currently Unavailable in Any Box' : <Link to={"/boxes/"+ route} target='_blank' rel='noopener noreferrer'>{this.cardBoxCheckHandler(card.name)}</Link>  } />
                 );
             })
         }
