@@ -39,7 +39,7 @@ class Boxes extends Component {
     }
 
     loadData() {
-        axios.get('http://localhost:9000/boxes')
+        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/boxes')
             .then(response => {
                 let boxes = [...response.data];
                 this.setState({ loadedBoxes: boxes })

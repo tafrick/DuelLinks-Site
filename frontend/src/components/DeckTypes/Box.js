@@ -21,7 +21,7 @@ class Box extends Component {
 
     fetchData() {
         const boxName = this.props.match.params.boxName;
-        axios.get('http://localhost:9000/decks/' + data[0].name)
+        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/decks/' + data[0].name)
             .then(response => {
                 const post = { ...response.data };
                 this.setState({ loadedPost: boxName });

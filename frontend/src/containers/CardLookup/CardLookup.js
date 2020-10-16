@@ -58,7 +58,7 @@ class CardLookup extends Component {
                         showCardNotFound: true
                     })
                 })
-            axios.get('http://localhost:9000/boxes')
+            axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/boxes')
                 .then(response => {
                     let boxes = { ...response.data };
                     this.setState({ loadedBoxes: boxes })
@@ -75,7 +75,7 @@ class CardLookup extends Component {
     //             name: box_title,
     //             cardsIn: Boxes[box_title]
     //         }
-    //         axios.post('http://localhost:9000/boxes', newBox)
+    //         axios.post('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/boxes', newBox)
     //             .then(response => {
     //                 console.log(response.data)
     //             })
@@ -98,7 +98,7 @@ class CardLookup extends Component {
     //             img_src: box_imgs[b_title].img_src
     //         }
     //         if (this.state.loadedBoxes) {
-    //             axios.patch('http://localhost:9000/boxes/' + all_ids[b_title], newBox)
+    //             axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/boxes/' + all_ids[b_title], newBox)
     //                 .then(response => {
     //                     console.log(response.data);
     //                 })

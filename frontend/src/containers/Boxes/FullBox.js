@@ -25,7 +25,7 @@ class FullBox extends Component {
 
     loadData() {
         const boxID = this.props.match.params.boxId;
-        axios.get('http://localhost:9000/boxes/' + boxID)
+        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/boxes/' + boxID)
             .then(response => {
                 const box = { ...response.data };
                 const box_array = [...box.cardsIn];
