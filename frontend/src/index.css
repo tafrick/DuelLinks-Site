@@ -4,11 +4,6 @@
   background: transparent;
 }
 
-/* body {
-  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/84dc13b7-a2e7-4b45-83ec-311e72e82900/dd6hhqr-4d78dc79-421a-4504-9431-6e10e1efdf1e.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODRkYzEzYjctYTJlNy00YjQ1LTgzZWMtMzExZTcyZTgyOTAwXC9kZDZoaHFyLTRkNzhkYzc5LTQyMWEtNDUwNC05NDMxLTZlMTBlMWVmZGYxZS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.rlMLe26tqLH_TgIRWS5dDdSHZccBalzyMOcGW6xDcI0");
-  background-size: cover;
-} */
-
 .GooglePic {
   max-width: 15%;
   border-radius: 50%;
@@ -19,7 +14,7 @@ body {
   background-color: #2F4454;
   overflow: scroll;
   color: white;
-  padding-bottom: 13em;
+  /* padding-bottom: 13em; */
   margin: auto 2.5%;
 }
 
@@ -29,7 +24,7 @@ body {
     background-color: #2F4454;
     overflow: scroll;
     color: white;
-    padding-bottom: 13em;
+    /* padding-bottom: 13em; */
     margin: auto 2.5%;
   }
 }
@@ -40,7 +35,7 @@ body {
     background-color: #2F4454;
     overflow: scroll;
     color: white;
-    padding-bottom: 13em;
+    /* padding-bottom: 13em; */
     margin: auto 2.5%;
   }
 }
@@ -52,7 +47,7 @@ body {
     background-color: #2F4454;
     overflow: scroll;
     color: white;
-    padding-bottom: 13em;
+    /* padding-bottom: 13em; */
     margin: auto 2%;
   }
 }
@@ -64,7 +59,7 @@ body {
     background-color: #2F4454;
     overflow: scroll;
     color: white;
-    padding-bottom: 13em;
+    /* padding-bottom: 13em; */
     margin: auto 5%;
   }
 }
