@@ -36,13 +36,19 @@
         border-bottom: 4px solid transparent;
     }
 
-    .NavigationItem a:hover,
+    .NavigationItem a:hover {
+        background-color: #6B88A2;
+        border-radius: .5em;
+        color: #F5EDDE;
+    }
+
     .NavigationItem a:active,
     .NavigationItem a.active {
         /* background-color: rgb(126, 124, 124); */
         /* border-radius: .5em; */
         /* background-image: linear-gradient(90%, rgb(20, 52, 78), rgb(0, 0, 0)); */
-        border-bottom: 4px solid #29958F;
-        color: #29958F;
+        border-radius: .5em;
+        color: #F5EDDE;
+        background-color: #6D6DC4;
     }
 }
