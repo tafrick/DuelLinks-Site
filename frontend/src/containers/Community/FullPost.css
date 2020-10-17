@@ -13,7 +13,7 @@
     box-shadow: 0 8px 16px 1px rgba(0, 0, 0, 0.2);
 }
 
-.post-body .post-user{
+.post-body .post-user {
     font-size: 14px;
     padding-left: 10px;
     color: rgb(150, 150, 150);
@@ -38,15 +38,18 @@
         "post-sidebar post-body"
         "post-sidebar post-footer";
 
-    background-color: #0B0C10;
+    background-color: rgba(247, 249, 249, 0.9);
+    color: #010330;
 }
 
 .posts-wrapper .post:hover {
     cursor: pointer;
+    background-color: rgba(60, 107, 178, .6);
+    color: #F7F9F9;
 }
 
 .posts-wrapper .post .post-title {
-    
+
     display: block;
 }
 
@@ -80,7 +83,8 @@
 
     padding-top: 15px;
 
-    background-color: #1F2833;
+    background-color: #010330;
+    color: #F7F9F9;
 }
 
 .posts-wrapper .post .post-sidebar>svg {
@@ -254,12 +258,12 @@
 
 .posts-wrapper a:link {
     text-decoration: none;
-    color: #66FCF1;
+    color: inherit;
 }
 
 .posts-wrapper a:visited {
     text-decoration: none;
-    color: #66FCF1;
+    color: inherit;
 }
 
 .posts-wrapper a:hover {

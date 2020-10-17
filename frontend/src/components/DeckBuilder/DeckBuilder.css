@@ -290,8 +290,9 @@ input.skill-input {
 
 .page-wrapper button {
     border-radius: .5em;
-    border: 1px solid black;
-    background-color: #29958F;
+    border: 1px solid #F7F9F9;
+    background-color: #6D6DC4;
+    color: #F7F9F9;
 }
 
 .img-container:hover img {
