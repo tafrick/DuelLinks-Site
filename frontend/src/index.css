@@ -15,8 +15,8 @@ body {
   overflow: scroll;
   background-image: url("https://wallpaperaccess.com/full/283134.png");
   /* background-image: url("https://i.pinimg.com/originals/bf/14/69/bf14697e71d1e10c174972a40f4246c4.jpg") */
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   color: white;
   padding-bottom: 13em;
   margin: auto 2.5%;
