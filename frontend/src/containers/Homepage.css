@@ -1,9 +1,6 @@
 /*exclusive mobile */
 @media (max-width: 501px) {
-    .Homepage:after {
-        width: 105%;
-        height: 120%;
-    }
+
 
     .Homepage h3 {
         max-width: 25ch;
@@ -20,10 +17,7 @@
 
 /* Mobile to MacBook 13in*/
 @media only screen and (min-width: 502px) and (max-width: 1889px) {
-    .Homepage:after {
-        width: 104%;
-        height: 140%;
-    }
+
 
     .guide {
         width: 400px;
@@ -33,10 +27,7 @@
 
 /* Current 23in monitor */
 @media only screen and (min-width: 1890px) and (max-width: 2529px) {
-    .Homepage:after {
-        width: 111%;
-        height: 130%;
-    }
+
 
     .guide {
         width: 400px;
@@ -45,10 +36,7 @@
 
 /* Bigger monitor */
 @media only screen and (min-width: 2530px) {
-    .Homepage:after {
-        width: 120%;
-        height: 150%;
-    }
+
 
     .guide {
         width: 400px;
@@ -122,10 +110,14 @@
 .guide {
     position: relative;
     text-align: left;
-    color: white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    background-color: rgba(60, 107, 178, .6);
+    /* background-color: rgba(60, 107, 178, .6); */
+
+    background:linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+
     /* background: linear-gradient(rgb(255, 255, 255), rgba(44, 67, 87, 0.692)); */
     /* border: solid 1px white; */
     border: solid 1px black;
@@ -145,7 +137,7 @@
 .guide img {
     width: 100%;
     height: 80%;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     border-bottom: black 1px solid;
 }
 
