@@ -44,7 +44,7 @@ input.title-input {
     border-bottom: none;
 }
 
-.skill-container img{
+.skill-container img {
     /* float:right; */
     /* float:right; */
     /* padding-left: 185px; */
@@ -291,8 +291,7 @@ input.skill-input {
 .page-wrapper button {
     border-radius: .5em;
     border: 1px solid black;
-    background-color: #66FCF1;
-    color: black;
+    background-color: #29958F;
 }
 
 .img-container:hover img {

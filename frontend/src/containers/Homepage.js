@@ -9,6 +9,7 @@ import TopTierPic from '../assets/images/top-tier-dekcs.png';
 import BeginnersPic from '../assets/images/beginners-guide.png';
 import KCPic from '../assets/images/kc-cup-things.png';
 import Black from '../assets/images/black.PNG';
+import Globe from '../assets/images/global.png';
 
 class Homepage extends Component {
     render() {
@@ -17,6 +18,10 @@ class Homepage extends Component {
                 <div className="home-wrapper">
                     <h1 className="animate__animated animate__fadeIn animate__slower">Welcome to the Duel Links Academy!</h1>
                     <h3 className="animate__animated animate__fadeIn animate__slower">A fansite for the popular mobile game, no affiliation with Konami</h3>
+                    <div>
+                        <h4 style={{ placeContent: 'center' }}>Now Global!</h4>
+                        <img src={Globe} alt="global" style={{ display: 'inlineBlock', width: '100%', height: '100%', zIndex: '1' }} />
+                    </div>
                     <Logo />
                     <ul className="articles">
                         <li>

@@ -4,6 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    background-color: #010330;
     /* background-color: #373a40; */
     /* background-color: #1F2833; */
     /* will be "on top", if browser supports it */
