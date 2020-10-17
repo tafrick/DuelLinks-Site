@@ -21,7 +21,7 @@ class Users extends Component {
 
     loadData() {
         const username = this.props.match.params.user;
-        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/username=/' + username)
+        axios.get('https://duellinksacademy.xyz/api/posts/username=/' + username)
             .then(response => {
                 const posts = [...response.data];
                 this.setState({ loadedPosts: posts })
@@ -44,7 +44,7 @@ class Users extends Component {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -59,7 +59,7 @@ class Users extends Component {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -77,7 +77,7 @@ class Users extends Component {
                 disliked_by: newDislikeList,
                 liked_by: newLikedList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -100,7 +100,7 @@ class Users extends Component {
                 upvotes: newDownvotes,
                 disliked_by: newDislikeList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedDownvotedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -115,7 +115,7 @@ class Users extends Component {
                 upvotes: newDownvotes,
                 disliked_by: newDislikeList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedDownvotedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -133,7 +133,7 @@ class Users extends Component {
                 disliked_by: newDislikeList,
                 liked_by: newLikeList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedDownvotedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })

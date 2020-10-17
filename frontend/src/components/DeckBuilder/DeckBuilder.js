@@ -139,7 +139,7 @@ class DeckBuilder extends Component {
                 mainDeck: this.state.deck,
                 extraDeck: this.state.extra
             };
-            axios.post('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/decks/', newDeck)
+            axios.post('https://duellinksacademy.xyz/api/decks/', newDeck)
                 .then(response => {
                     this.props.history.go('/decks');
                 })

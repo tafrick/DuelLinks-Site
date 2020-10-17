@@ -40,7 +40,7 @@ class FullPost extends Component {
 
     fetchData() {
         const postId = this.props.match.params.postId;
-        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId)
+        axios.get('https://duellinksacademy.xyz/api/posts/' + postId)
             .then(response => {
                 const post = { ...response.data };
                 this.setState({ loadedPost: post, postID: postId });
@@ -48,7 +48,7 @@ class FullPost extends Component {
             .catch(err => {
                 console.error(err.message);
             })
-        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/postId=/' + postId)
+        axios.get('https://duellinksacademy.xyz/api/comments/postId=/' + postId)
             .then(response => {
                 const comments = [...response.data];
                 this.setState({ loadedcomments: comments });
@@ -64,7 +64,7 @@ class FullPost extends Component {
             body: this.state.newCommentBody,
             postId: this.state.postID
         };
-        axios.post('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments', newComment)
+        axios.post('https://duellinksacademy.xyz/api/comments', newComment)
             .then(response => {
                 this.updatePostComments(this.state.postID)
             })
@@ -76,7 +76,7 @@ class FullPost extends Component {
     updatePostComments(postId) {
         let updatedComments = [...this.state.loadedcomments];
         const updatedPost = { comments: updatedComments };
-        axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+        axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
             .then(response => {
                 this.props.history.go('/community' + this.state.postID);
             })
@@ -105,7 +105,7 @@ class FullPost extends Component {
                     upvotes: newUpvotes,
                     liked_by: newLikedList
                 }
-                axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/' + commentID, updatedComment)
+                axios.patch('https://duellinksacademy.xyz/api/comments/' + commentID, updatedComment)
                     .then(response => {
                         window.location.reload();
                     })
@@ -120,7 +120,7 @@ class FullPost extends Component {
                     upvotes: newUpvotes,
                     liked_by: newLikedList
                 }
-                axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/' + commentID, updatedComment)
+                axios.patch('https://duellinksacademy.xyz/api/comments/' + commentID, updatedComment)
                     .then(response => {
                         window.location.reload();
                     })
@@ -138,7 +138,7 @@ class FullPost extends Component {
                     disliked_by: newDislikeList,
                     liked_by: newLikedList
                 }
-                axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/' + commentID, updatedComment)
+                axios.patch('https://duellinksacademy.xyz/api/comments/' + commentID, updatedComment)
                     .then(response => {
                         window.location.reload();
                     })
@@ -165,7 +165,7 @@ class FullPost extends Component {
                     upvotes: newDownvotes,
                     disliked_by: newDislikeList
                 }
-                axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/' + commentID, updatedDownComment)
+                axios.patch('https://duellinksacademy.xyz/api/comments/' + commentID, updatedDownComment)
                     .then(response => {
                         window.location.reload();
                     })
@@ -180,7 +180,7 @@ class FullPost extends Component {
                     upvotes: newDownvotes,
                     disliked_by: newDislikeList
                 }
-                axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/' + commentID, updatedDownComment)
+                axios.patch('https://duellinksacademy.xyz/api/comments/' + commentID, updatedDownComment)
                     .then(response => {
                         window.location.reload();
                     })
@@ -198,7 +198,7 @@ class FullPost extends Component {
                     disliked_by: newDislikeList,
                     liked_by: newLikedList
                 }
-                axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/comments/' + commentID, updatedDownComment)
+                axios.patch('https://duellinksacademy.xyz/api/comments/' + commentID, updatedDownComment)
                     .then(response => {
                         window.location.reload();
                     })

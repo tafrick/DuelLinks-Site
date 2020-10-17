@@ -39,7 +39,7 @@ class Community extends Component {
             category: this.state.newPostCategory,
             image_src: this.state.imgURL
         };
-        axios.post('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/', newPost)
+        axios.post('https://duellinksacademy.xyz/api/posts/', newPost)
             .then(response => {
                 this.props.history.replace('/');
             })
@@ -60,7 +60,7 @@ class Community extends Component {
             if (this.state.filter === "0") {
                 this.fetchPosts();
             } else {
-                axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/category=/' + this.state.filter)
+                axios.get('https://duellinksacademy.xyz/api/posts/category=/' + this.state.filter)
                     .then(response => {
                         const posts = [...response.data];
                         this.setState({ loadedPosts: posts })
@@ -73,7 +73,7 @@ class Community extends Component {
     }
 
     fetchPosts() {
-        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts')
+        axios.get('https://duellinksacademy.xyz/api/posts')
             .then(response => {
                 let posts = [...response.data];
                 this.setState({ loadedPosts: posts })
@@ -96,7 +96,7 @@ class Community extends Component {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -111,7 +111,7 @@ class Community extends Component {
                 upvotes: newUpvotes,
                 liked_by: newLikedList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -129,7 +129,7 @@ class Community extends Component {
                 disliked_by: newDislikeList,
                 liked_by: newLikedList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -152,7 +152,7 @@ class Community extends Component {
                 upvotes: newDownvotes,
                 disliked_by: newDislikeList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedDownvotedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -167,7 +167,7 @@ class Community extends Component {
                 upvotes: newDownvotes,
                 disliked_by: newDislikeList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedDownvotedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })
@@ -185,7 +185,7 @@ class Community extends Component {
                 disliked_by: newDislikeList,
                 liked_by: newLikeList
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/posts/' + postId, updatedDownvotedPost)
+            axios.patch('https://duellinksacademy.xyz/api/posts/' + postId, updatedDownvotedPost)
                 .then(response => {
                     this.props.history.go('/community');
                 })

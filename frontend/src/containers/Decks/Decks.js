@@ -27,7 +27,7 @@ class Decks extends Component {
             if (this.state.filter_category === "0") {
                 this.fetchDecks();
             } else {
-                axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/decks/category=/' + this.state.filter_category)
+                axios.get('https://duellinksacademy.xyz/api/decks/category=/' + this.state.filter_category)
                     .then(response => {
                         const decks = [...response.data];
                         this.setState({ loadedDecks: decks })
@@ -41,7 +41,7 @@ class Decks extends Component {
             if (this.state.filter_grade === "0") {
                 this.fetchDecks();
             } else {
-                axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/decks/deckGPA=/' + this.state.filter_grade)
+                axios.get('https://duellinksacademy.xyz/api/decks/deckGPA=/' + this.state.filter_grade)
                     .then(response => {
                         const decks = [...response.data];
                         this.setState({ loadedDecks: decks })
@@ -54,7 +54,7 @@ class Decks extends Component {
     }
 
     fetchDecks() {
-        axios.get('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/decks')
+        axios.get('https://duellinksacademy.xyz/api/decks')
             .then(response => {
                 let decks = [...response.data];
                 this.setState({ loadedDecks: decks })
@@ -78,7 +78,7 @@ class Decks extends Component {
                 totalVotes: newVoterTotal,
                 deckGPA: newGPA
             }
-            axios.patch('http://ec2-3-219-83-187.compute-1.amazonaws.com:5000/decks/' + deckId, updatedDeck)
+            axios.patch('https://duellinksacademy.xyz/api/decks/' + deckId, updatedDeck)
                 .then(response => {
                     this.props.history.go('/decks');
                 })
