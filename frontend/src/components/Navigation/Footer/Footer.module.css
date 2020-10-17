@@ -1,10 +1,12 @@
 .Footer {
     height: 15%;
+    max-height: 115px;
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: #1F2833;
+    /* background-color: #1F2833; */
+    background-color: #373a40;
     /* background-image: linear-gradient(black, steelblue); */
     display: flex;
     justify-content: center;
@@ -20,20 +22,23 @@
     margin: auto 10px;
 }
 
-.FooterMobile{
+.FooterMobile {
     display: none;
 }
+
 @media (max-width: 501px) {
 
     .FooterMobile a {
         margin: 0 0;
         width: 150px;
     }
+
     .FooterMobile img {
         display: flex;
         width: 110px;
-        
+
     }
+
     .FooterMobile {
         height: 15%;
         width: 100%;
@@ -55,6 +60,4 @@
     }
 }
 
-@media only screen and (min-width: 502px) and (max-width: 1889px) {
-
-}
+@media only screen and (min-width: 502px) and (max-width: 1889px) {}

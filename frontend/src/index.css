@@ -11,9 +11,11 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  background-color: #2F4454;
+  /* background-color: #2F4454; */
   overflow: scroll;
-  background-image: url("https://media.istockphoto.com/vectors/dark-gradient-tech-geometric-background-vector-modern-trend-colors-vector-id959399806?k=6&m=959399806&s=612x612&w=0&h=b8CY5_7Ra_MT7XGQwvWZXXIKHEdO5KiIC784STwxk20=");
+  background-color: black;
+  background-image: url('./assets/images/dark-honeycomb.png');
+  /* background-image: url("https://media.istockphoto.com/vectors/dark-gradient-tech-geometric-background-vector-modern-trend-colors-vector-id959399806?k=6&m=959399806&s=612x612&w=0&h=b8CY5_7Ra_MT7XGQwvWZXXIKHEdO5KiIC784STwxk20="); */
   /* background-image: url("https://i.pinimg.com/originals/bf/14/69/bf14697e71d1e10c174972a40f4246c4.jpg") */
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
@@ -25,22 +27,18 @@ body {
 @media only screen and (max-width: 502px) {
   body {
     font-family: 'Lato', sans-serif;
-    background-color: #2F4454;
     overflow: scroll;
-    color: white;
     /* padding-bottom: 13em; */
     margin: auto 2.5%;
     /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+    /* background-size: cover; */
   }
 }
 
 @media only screen and (min-width: 502px) and (max-width: 1409px) {
   body {
     font-family: 'Lato', sans-serif;
-    background-color: #2F4454;
     overflow: scroll;
-    color: white;
     /* padding-bottom: 13em; */
     margin: auto 2.5%;
   }
@@ -50,9 +48,7 @@ body {
 @media only screen and (min-width: 1410px) and (max-width: 1889px) {
   body {
     font-family: 'Lato', sans-serif;
-    background-color: #2F4454;
     overflow: scroll;
-    color: white;
     /* padding-bottom: 10em; */
     margin: auto 2%;
   }
@@ -62,9 +58,7 @@ body {
 @media only screen and (min-width: 1890px) and (max-width: 2529px) {
   body {
     font-family: 'Lato', sans-serif;
-    background-color: #2F4454;
     overflow: scroll;
-    color: white;
     /* padding-bottom: 13em; */
     margin: auto 5%;
   }
@@ -74,9 +68,7 @@ body {
 @media only screen and (min-width: 2530px) {
   body {
     font-family: 'Lato', sans-serif;
-    background-color: #2F4454;
     overflow: scroll;
-    color: white;
     /* padding-bottom: 13em; */
     margin: auto 15%;
   }

@@ -28,20 +28,21 @@
         width: auto;
         align-items: center;
     }
-    
+
     .NavigationItem a {
         color: white;
         height: 100%;
         padding: 16px 10px;
         border-bottom: 4px solid transparent;
     }
-    
+
     .NavigationItem a:hover,
     .NavigationItem a:active,
     .NavigationItem a.active {
-        background-color: darkblue;
-        background-image: linear-gradient(rgb(20, 52, 78), rgb(11, 63, 105));
-        border-bottom: 4px solid white;
+        background-color: gray;
+        border-radius: .5em;
+        background-image: linear-gradient(90%, rgb(20, 52, 78), rgb(0, 0, 0));
+        border-bottom: 4px solid #19d3da;
         color: white;
     }
 }
