@@ -29,10 +29,8 @@
 
     grid-template-columns: 1fr 12fr;
     grid-template-rows: 1fr auto 1fr;
-
     width: 100%;
     margin: 1% 0%;
-
     grid-template-areas:
         "post-sidebar post-title"
         "post-sidebar post-body"
@@ -40,12 +38,14 @@
 
     background-color:  rgba(247, 249, 249, 0.85);
     color: #010330;
+    border-radius: 0.3em;
 }
 
-.posts-wrapper .post:hover {
+.posts-wrapper:hover .post:hover {
     cursor: pointer;
-    background-color:rgb(46,80,144,0.7);
-    color: #F7F9F9;
+    border-radius: 0.3em;
+    /* background-color:rgb(46,80,144,0.7); */
+    /* color: #F7F9F9; */
 }
 
 .posts-wrapper .post .post-title {
@@ -154,7 +154,8 @@
     padding-left: 10px;
     font-size: 18px;
     text-decoration: underline;
-    color: rgb(150, 150, 150);
+    /* color: rgb(150, 150, 150); */
+    color: black;
 }
 
 .posts-wrapper .post .post-title>.underline:hover {
@@ -269,7 +270,8 @@
 
 .posts-wrapper a:hover {
     text-decoration: underline;
-    color: #66FCF1;
+    /* color: #66FCF1; */
+    color: black;
 }
 
 .posts-wrapper a:active {
