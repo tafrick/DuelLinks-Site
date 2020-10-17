@@ -10,19 +10,21 @@
 }
 
 body {
+  
   font-family: 'Lato', sans-serif;
   /* background-color: #2F4454; */
   overflow: scroll;
   background-color: black;
-  background-image: url('./assets/images/dark-honeycomb.png');
+  background-image: url(assets/images/dark-pattern.jpg);
   /* background-image: url("https://media.istockphoto.com/vectors/dark-gradient-tech-geometric-background-vector-modern-trend-colors-vector-id959399806?k=6&m=959399806&s=612x612&w=0&h=b8CY5_7Ra_MT7XGQwvWZXXIKHEdO5KiIC784STwxk20="); */
   /* background-image: url("https://i.pinimg.com/originals/bf/14/69/bf14697e71d1e10c174972a40f4246c4.jpg") */
-  /* background-repeat: no-repeat; */
+  background-repeat: repeat-y;
   /* background-size: cover; */
   color: white;
   padding-bottom: 13em;
   margin: auto 2.5%;
 }
+
 
 @media only screen and (max-width: 502px) {
   body {
