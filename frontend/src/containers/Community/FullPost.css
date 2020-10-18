@@ -36,7 +36,7 @@
         "post-sidebar post-body"
         "post-sidebar post-footer";
 
-    background-color:  rgba(247, 249, 249, 0.85);
+    background-color: rgba(247, 249, 249, 0.85);
     color: #010330;
     border-radius: 0.3em;
 }
@@ -44,8 +44,8 @@
 .posts-wrapper:hover .post:hover {
     cursor: pointer;
     border-radius: 0.3em;
-    /* background-color:rgb(46,80,144,0.7); */
-    /* color: #F7F9F9; */
+    background-color: rgba(60, 107, 178, .6);
+    color: #F7F9F9;
 }
 
 .posts-wrapper .post .post-title {

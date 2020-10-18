@@ -1,8 +1,22 @@
 .BeginnerList {
     text-align: center;
     background-color: white;
-    margin: auto 220px;
+    margin: auto;
+    width: 50%;
+    max-width: 900px;
     color: black;
+}
+
+@media (max-width: 501px) {
+    .BeginnerList {
+        width: 100%;
+        min-width: 300px;
+        height: auto;
+    }
+
+    .BeginnerList img {
+        height: 100%;
+    }
 }
 
 .BeginnerList p {
@@ -17,4 +31,6 @@
 
 .BeginnerList img {
     max-height: 700px;
+    height: 100%;
+    width: 60%;
 }
