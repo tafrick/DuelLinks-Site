@@ -70,6 +70,7 @@ class GoogleBtn extends Component {
                         buttonText='Login'
                         onSuccess={this.login}
                         onFailure={this.handleLoginFailure}
+                        redirectUri="http://localhost:3000/"
                         cookiePolicy={'single_host_origin'}
                         responseType='code,token'
                     />

@@ -34,7 +34,7 @@ class Community extends Component {
     postDataHandler = () => {
         const newPost = {
             title: this.state.newPostTitle,
-            username: this.state.username,
+            username: this.props.email,
             description: this.state.newPostDescription,
             category: this.state.newPostCategory,
             image_src: this.state.imgURL
