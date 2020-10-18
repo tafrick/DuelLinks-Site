@@ -25,7 +25,7 @@ class App extends Component {
 			<div>
 				<Layout>
 					{this.props.isAuth ? <h3>Welcome: {this.props.name}!</h3> : null}
-					{this.props.isAuth ? <img className="GooglePic" src={this.props.pic} alt={this.props.name} /> : null}
+					{/* {this.props.isAuth ? <img className="GooglePic" src={this.props.pic} alt={this.props.name} /> : null} */}
 					<Switch>
 						<Route path="/cardlookup" exact component={CardLookup} />
 						<Route path="/beginners" exact render={Beginners} />
