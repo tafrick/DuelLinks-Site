@@ -22,6 +22,7 @@ class Community extends Component {
             selectedPost: null,
             newPostCategory: 'Meme',
             filter: '0',
+            formValid: true
         }
     }
 
@@ -29,6 +30,47 @@ class Community extends Component {
         this.setState({
             selectedFile: event.target.files
         })
+    }
+
+    inputCheckValidity = () => {
+        let postIsValid = false;
+        const newPost = {
+            title: this.state.newPostTitle,
+            description: this.state.newPostDescription,
+            image_src: this.state.imgURL
+        };
+
+        if ((newPost.title.length > 0) && (newPost.description.length > 0)) {
+            postIsValid = true;
+        }
+
+        if (newPost.title.trim() !== '') {
+            postIsValid = ((newPost.title.length > 0) && (newPost.title.length < 60)) && postIsValid;
+        }
+
+        if (newPost.description.trim() !== '') {
+            postIsValid = ((newPost.description.length > 0) && (newPost.description.length < 2000)) && postIsValid;
+        }
+
+        if (newPost.image_src.trim() === '') {
+            postIsValid = true && postIsValid;
+        } else {
+            var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+                '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+                '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+                '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+            postIsValid = pattern.test(newPost.image_src) && postIsValid;
+        }
+
+        // alert(postIsValid);
+        this.setState({ formValid: postIsValid });
+        if (postIsValid) {
+            return this.postDataHandler();
+        } else {
+            return postIsValid;
+        }
     }
 
     postDataHandler = () => {
@@ -208,16 +250,25 @@ class Community extends Component {
 
     render() {
         let selectedPost = null;
+        let newPostClass = "NewPost"
+        let titplaceholder = "Post Title";
+        let desplaceholder = "what do you want to talk about?";
+        if (!this.state.formValid) {
+            newPostClass += "Invalid";
+            titplaceholder = "Title is required!"
+            desplaceholder = "Desciption is Required!"
+        }
         const newPost = (
-            <div className="NewPost">
+            <div className={newPostClass}>
                 <h1>Add a Post</h1>
-                <label>Title</label>
-                <input placeholder="Post Title" type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
-                <label>Desciption</label>
-                <textarea placeholder="what do you want to talk about?" rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
+                <p>* is required</p>
+                <label>Title*</label>
+                <input placeholder={titplaceholder} type="text" value={this.state.newPostTitle} onChange={(event) => this.setState({ newPostTitle: event.target.value })} />
+                <label>Desciption*</label>
+                <textarea placeholder={desplaceholder} rows="4" value={this.state.newPostDescription} onChange={(event) => this.setState({ newPostDescription: event.target.value })} />
                 <label>Image URL</label>
                 <input placeholder="please enter image url (such as imgur)..." type="text" value={this.state.imgURL} onChange={(event) => this.setState({ imgURL: event.target.value })} />
-                <label>Category</label>
+                <label>Category*</label>
                 <select value={this.state.newPostCategory} onChange={(event) => this.setState({ newPostCategory: event.target.value })}>
                     <option value="KOG_Deck">KOG Deck</option>
                     <option value="Meta_Deck">Meta Deck</option>
@@ -229,7 +280,7 @@ class Community extends Component {
                     <option value="Gameplay_Tips">Gameplay Tips</option>
                     <option value="Farming_Deck">Farming Deck</option>
                 </select>
-                <button onClick={this.postDataHandler}>Add Post</button>
+                <button onClick={this.inputCheckValidity}>Add Post</button>
             </div>
         );
 

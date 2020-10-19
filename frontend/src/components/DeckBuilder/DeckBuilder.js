@@ -24,7 +24,8 @@ class DeckBuilder extends Component {
             newDeckSkill: '',
             displayTitle: true,
             displayDeck: false,
-            displaySubmit: false
+            displaySubmit: false,
+            validDeck: true
         }
     }
 
@@ -128,6 +129,22 @@ class DeckBuilder extends Component {
         this.setState({ displayDeck: true, displayTitle: false })
     }
 
+    checkDeckValidity = () => {
+        let deckIsValid = false;
+        const newTitle = this.state.newDeckTitle;
+
+        if ((newTitle.length > 0) && (newTitle.length <= 60)) {
+            deckIsValid = true;
+        }
+
+        this.setState({ validDeck: deckIsValid })
+        if (deckIsValid) {
+            return this.submitDeckHandler();
+        } else {
+            return deckIsValid;
+        }
+    }
+
     submitDeckHandler = () => {
 
         if (this.props.isAuth) {
@@ -155,6 +172,12 @@ class DeckBuilder extends Component {
         let searchResults = "";
         let deckList = "";
         let extraList = "";
+        let inputTitleClass = "title-input";
+        let inputTitlePlaceholder = "Deck title...";
+        if (!this.state.validDeck) {
+            inputTitleClass = "title-input-invalid";
+            inputTitlePlaceholder = "Title Required!"
+        }
         if (this.state.loadedCards) {
             searchResults = this.state.loadedCards[0].data.map(card => {
                 return (
@@ -258,8 +281,8 @@ class DeckBuilder extends Component {
 
                 <div className="mobile-Shifted" style={{ width: "45%", float: "right", display: "grid", minWidth: "350px" }}>
                     <div style={{ width: "100%", height: "55px" }}>
-                        <input className="title-input" type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder="Deck title..." />
-                        <span className="skill-container"style={{ width: "15%" }}>
+                        <input className={inputTitleClass} type="text" value={this.state.newDeckTitle} onChange={(event) => this.setState({ newDeckTitle: event.target.value })} placeholder={inputTitlePlaceholder} />
+                        <span className="skill-container" style={{ width: "15%" }}>
                             <img src="https://d33wubrfki0l68.cloudfront.net/1f0c6ee2d9b3dd18413e2b0a7c6f6fa7703713dc/4dc02/img/assets/skill.png" width="30px" alt="skills-logo" />
                             <input style={{ width: "30%", maxWidth: "40ch" }} className="skill-input" type="text" value={this.state.newDeckSkill} onChange={(event) => this.setState({ newDeckSkill: event.target.value })} placeholder="Input skill if any..." />
                         </span>
@@ -294,7 +317,7 @@ class DeckBuilder extends Component {
                                 <option value="Farming">Farming Deck</option>
                             </select>
                             <br></br>
-                            <button disabled={this.state.newDeckCategory === "None"} onClick={this.submitDeckHandler}>Submit Decklist</button>
+                            <button disabled={this.state.newDeckCategory === "None"} onClick={this.checkDeckValidity}>Submit Decklist</button>
                         </div> : ""
                     }
                 </div>

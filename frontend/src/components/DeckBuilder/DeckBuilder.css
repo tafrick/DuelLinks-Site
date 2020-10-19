@@ -44,6 +44,18 @@ input.title-input {
     border-bottom: none;
 }
 
+input.title-input-invalid {
+    background-color: #FDA49A;
+    border: none;
+    outline: none;
+    color: red;
+    font-size: 24px;
+    width: 53%;
+    margin-bottom: 0px;
+    margin-left: 1%;
+    border-bottom: none;
+}
+
 .skill-container img {
     /* float:right; */
     /* float:right; */

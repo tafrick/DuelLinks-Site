@@ -257,6 +257,74 @@ header {
   color: #0B0C10;
 }
 
+.NewPost p {
+  text-align: center;
+}
+
+.NewPostInvalid {
+  width: 100%;
+  margin: 20px auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  text-align: center;
+  color: #66FCF1;
+  background-color: #1F2833;
+  padding-bottom: 1em;
+}
+
+.NewPostInvalid label {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  font-weight: bold;
+  color: #66FCF1;
+}
+
+.NewPostInvalid input,
+.NewPostInvalid textarea {
+  display: block;
+  width: 80%;
+  box-sizing: border-box;
+  outline: none;
+  font: inherit;
+  margin: auto;
+  color: red;
+  border: 1px solid red;
+  background-color: #FDA49A;
+}
+
+.NewPostInvalid select {
+  display: block;
+  width: 80%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  outline: none;
+  font: inherit;
+  margin: auto;
+  background-color: #CCCCCC;
+  color: #0B0C10;
+}
+
+.NewPostInvalid p {
+  text-align: center;
+}
+
+.NewPostInvalid button {
+  margin: 5px 0;
+  padding: 10px;
+  font: inherit;
+  border: 1px solid #66FCF1;
+  background-color: transparent;
+  color: #66FCF1;
+  cursor: pointer;
+}
+
+.NewPostInvalid button:hover,
+.NewPostInvalid button:active {
+  color: white;
+  background-color: #fa923f;
+}
+
 .NewPost button {
   margin: 5px 0;
   padding: 10px;
