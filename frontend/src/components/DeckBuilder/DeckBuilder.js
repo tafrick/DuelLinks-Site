@@ -241,9 +241,8 @@ class DeckBuilder extends Component {
         return (
             <div className="page-wrapper">
                 {this.state.displayTitle ? <div className="title">
-                    <h1>Still can't get past MAGAbond? Perhaps we could be of assistance...</h1>
+                    <h1>Having trouble winning duels? Perhaps we could be of assistance...</h1>
                     <img src={CardTraderGold} width="250" alt="CardTraderGold" />
-                    <img src={VagaBond} width="250" height="375" alt="MagaBond" />
                     <img src={CardTraderBlack} width="260" alt="CardTraderBlack" />
                 </div> : ""}
 
