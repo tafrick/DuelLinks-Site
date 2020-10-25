@@ -22,7 +22,8 @@ class Community extends Component {
             selectedPost: null,
             newPostCategory: 'Meme',
             filter: '0',
-            formValid: true
+            formValid: true,
+            displayAdd: false
         }
     }
 
@@ -248,6 +249,12 @@ class Community extends Component {
         return result;
     }
 
+    toggleAddPost = () => {
+        this.setState({
+            displayAdd: !this.state.displayAdd
+        })
+    }
+
     render() {
         let selectedPost = null;
         let newPostClass = "NewPost"
@@ -284,6 +291,10 @@ class Community extends Component {
             </div>
         );
 
+        const toggle = 
+        (<button onClick={this.toggleAddPost}>Create a Post {this.state.displayAdd ?
+             newPost : ''}</button>)
+
         return (
             <div className="Community">
 
@@ -308,7 +319,7 @@ class Community extends Component {
                     </select>
                 </div>
 
-                {this.props.isAuth ? newPost : <p>Please login to post!</p>}
+                {this.props.isAuth ? toggle : <p>Please login to post!</p>}
                 <div className="posts-wrapper">
                     {this.state.loadedPosts.map((post, index) => (
                         <div className="post" key={index * Math.random()}>

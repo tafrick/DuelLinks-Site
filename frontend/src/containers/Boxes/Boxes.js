@@ -63,8 +63,8 @@ class Boxes extends Component {
             displayDefault: false
         })
     }
-    validate(text) {
-        let box = ["Arena of Sanctuary", "Fortress of Gears", "Spirit Of The Beast", "Soul Of Resurrection", "Chronicle of Glory", "Flames of the Heart", "Lords Of Shining", "Secrets Of The Ancients", "Masters of Shadow", "Clash Of Wings", "Curse Of Dread", "Dimension Of The Wizards", "Power Of Bravery", "Guardians Of Rock", "Visions Of Ice", "Resonance Of Contrast", "Servants Of Kings", "Empire Of Scarlet", "Blades Of Spirits", "Tornado Of Phantoms", "Rampage Of The Forest", "Dawn Of Destiny", "Flame Of The Tyrant", "Echoes Of Silence", "Wonders Of The Sky", "Age Of Discovery", "Land of the Titans"]
+    validateMiniBox(text) {
+        let box = ["Voltage Of The Metal", "Arena of Sanctuary", "Fortress of Gears", "Spirit Of The Beast", "Soul Of Resurrection", "Chronicle of Glory", "Flames of the Heart", "Lords Of Shining", "Secrets Of The Ancients", "Masters of Shadow", "Clash Of Wings", "Curse Of Dread", "Dimension Of The Wizards", "Power Of Bravery", "Guardians Of Rock", "Visions Of Ice", "Resonance Of Contrast", "Servants Of Kings", "Empire Of Scarlet", "Blades Of Spirits", "Tornado Of Phantoms", "Rampage Of The Forest", "Dawn Of Destiny", "Flame Of The Tyrant", "Echoes Of Silence", "Wonders Of The Sky", "Age Of Discovery", "Land of the Titans"]
         const mini = box.some(name => text.toLowerCase() === name.toLowerCase());
         return mini;
     }
@@ -101,7 +101,7 @@ class Boxes extends Component {
                     <h2>Main Boxes</h2>
                     <hr />
                     {this.state.loadedBoxes.map(row => {
-                        return (row.name.includes("SD") ? "" : this.validate(row.name) ? "" : <li><Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /></Link></li>)
+                        return (row.name.includes("SD") ? "" : this.validateMiniBox(row.name) ? "" : <li><Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /></Link></li>)
                     })}
                 </div>
             );
@@ -110,7 +110,7 @@ class Boxes extends Component {
                     <h2>Mini Boxes</h2>
                     <hr />
                     {this.state.loadedBoxes.map(row => {
-                        return (this.validate(row.name) ? <li><Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link></li> : '')
+                        return (this.validateMiniBox(row.name) ? <li><Link to={'/boxes/' + row._id}> <img src={row.img_src} alt={row.name} /> </Link></li> : '')
                     })}
                 </div>
             );
